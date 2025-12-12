@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+    <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
+                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="relative">
+                <input type="text" placeholder="Buscar análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="relative p-2 text-gray-600 hover:text-gray-800">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right">
+                    <p class="text-sm font-medium text-gray-800">Carlos Silva</p>
+                    <p class="text-xs text-gray-500">Analista</p>
+                </div>
+                <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 overflow-y-auto">
+    <nav class="p-4">
+        <div class="space-y-1">
+            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
+                Dashboard
+            </a>
+            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
+                Nova Análise
+            </a>
+            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
+                Análises
+            </a>
+            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-primary-700 rounded-lg">
+                <i class="fa-solid fa-file-chart-column mr-3 text-base"></i>
+                Relatórios
+            </a>
+            <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-clipboard-check mr-3 text-base text-gray-500"></i>
+                Conclusões
+            </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
+            <div class="space-y-1">
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
+                    Marcas
+                </a>
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-car mr-3 text-gray-500"></i>
+                    Modelos
+                </a>
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
+                    Tipos de Dano
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
+            <div class="space-y-1">
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Usuários
+                </a>
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
+                    Configurações
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+        <div class="flex items-center justify-between text-white">
+            <div>
+                <p class="text-xs font-medium opacity-90">Parceiro</p>
+                <p class="text-sm font-bold">Grupo Vipal</p>
+            </div>
+            <i class="fa-solid fa-handshake text-2xl opacity-80"></i>
+        </div>
+    </div>
+</aside>
+
+<main id="main-content" class="ml-64 mt-[61px] p-6">
+    <div class="mb-6 flex items-center justify-between">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">Relatórios Interativos</h2>
+            <p class="text-sm text-gray-600 mt-1">Visualize e exporte dados de pneus analisados</p>
+        </div>
+        <div class="flex items-center space-x-3">
+            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center">
+                <i class="fa-solid fa-file-excel mr-2 text-green-600"></i>
+                Exportar Excel
+            </button>
+            <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center">
+                <i class="fa-solid fa-file-pdf mr-2"></i>
+                Exportar PDF
+            </button>
+        </div>
+    </div>
+
+    <div id="filters-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+                <i class="fa-solid fa-filter mr-2 text-primary-700"></i>
+                Filtros
+            </h3>
+            <button class="text-sm text-primary-700 hover:text-primary-800 font-medium">Limpar filtros</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Período</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option>Últimos 30 dias</option>
+                    <option>Últimos 3 meses</option>
+                    <option>Últimos 6 meses</option>
+                    <option>Último ano</option>
+                    <option>Personalizado</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Marca</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option>Todas as marcas</option>
+                    <option>Michelin</option>
+                    <option>Goodyear</option>
+                    <option>Pirelli</option>
+                    <option>Continental</option>
+                    <option>Bridgestone</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option>Todos</option>
+                    <option>Sucateado</option>
+                    <option>Aprovado</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Dano</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option>Todos os tipos</option>
+                    <option>Desgaste Irregular</option>
+                    <option>Corte Lateral</option>
+                    <option>Separação Banda</option>
+                    <option>Deformação</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="report-tabs" class="bg-white rounded-lg border border-gray-200 mb-6">
+        <div class="border-b border-gray-200">
+            <div class="flex">
+                <button class="px-6 py-3 text-sm font-medium text-primary-700 border-b-2 border-primary-700">
+                    Sucateados por Marca
+                </button>
+                <button class="px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50">
+                    Sucateados por Modelo
+                </button>
+                <button class="px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50">
+                    Tipos de Dano
+                </button>
+                <button class="px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50">
+                    Vida Útil
+                </button>
+                <button class="px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50">
+                    Análise por DOT
+                </button>
+            </div>
+        </div>
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Análise de Sucateamento por Marca</h3>
+                    <p class="text-sm text-gray-600 mt-1">Distribuição percentual de pneus sucateados por fabricante</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="p-2 text-gray-500 hover:text-gray-700 border border-gray-300 rounded">
+                        <i class="fa-solid fa-chart-bar"></i>
+                    </button>
+                    <button class="p-2 text-gray-500 hover:text-gray-700 border border-gray-300 rounded">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </button>
+                    <button class="p-2 text-gray-500 hover:text-gray-700 border border-gray-300 rounded">
+                        <i class="fa-solid fa-table"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="chart-brand-analysis" style="height: 480px"></div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div id="damage-types-card" class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Distribuição de Tipos de Dano</h3>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+            <div id="chart-damage-distribution" style="height: 380px"></div>
+        </div>
+
+        <div id="lifespan-card" class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Vida Útil Média por Marca</h3>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+            <div id="chart-lifespan" style="height: 380px"></div>
+        </div>
+    </div>
+
+    <div id="timeline-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800">Evolução Temporal de Sucateamento</h3>
+                <p class="text-sm text-gray-600 mt-1">Análise mensal dos últimos 12 meses</p>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">3M</button>
+                <button class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">6M</button>
+                <button class="px-3 py-1.5 text-sm bg-primary-700 text-white rounded-lg">12M</button>
+            </div>
+        </div>
+        <div id="chart-timeline" style="height: 420px"></div>
+    </div>
+
+    <div id="detailed-table" class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-800">Dados Detalhados</h3>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <input type="text" placeholder="Buscar na tabela..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400 text-sm"></i>
+                    </div>
+                    <button class="text-gray-600 hover:text-gray-800">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Marca
+                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Total Analisados
+                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Sucateados
+                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            % Sucateamento
+                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Vida Útil Média (km)
+                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Principal Dano
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Michelin</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">354</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">101</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-800 mr-2">28.4%</span>
+                                <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 28.4%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">41,250</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Desgaste Irregular</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Goodyear</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">298</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">66</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-800 mr-2">22.1%</span>
+                                <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-orange-500 h-2 rounded-full" style="width: 22.1%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">44,800</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Corte Lateral</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Pirelli</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">245</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">46</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-800 mr-2">18.6%</span>
+                                <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 18.6%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">43,100</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Separação Banda</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Continental</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">189</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">31</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-800 mr-2">16.2%</span>
+                                <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 16.2%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">46,900</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Deformação</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Bridgestone</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">161</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">24</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-800 mr-2">14.7%</span>
+                                <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 14.7%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">45,600</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Desgaste Irregular</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+            <p class="text-sm text-gray-600">Mostrando 5 de 5 marcas</p>
+            <div class="flex items-center space-x-2">
+                <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50" disabled>
+                    Anterior
+                </button>
+                <button class="px-3 py-1 bg-primary-700 text-white rounded text-sm">1</button>
+                <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50" disabled>
+                    Próximo
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+window.addEventListener('load', function() {
+    try {
+        var brandAnalysisData = [{
+            type: 'bar',
+            x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
+            y: [28.4, 22.1, 18.6, 16.2, 14.7],
+            marker: {
+                color: ['#dc2626', '#ea580c', '#eab308', '#16a34a', '#0369a1']
+            },
+            text: ['28.4%', '22.1%', '18.6%', '16.2%', '14.7%'],
+            textposition: 'outside'
+        }];
+
+        var brandAnalysisLayout = {
+            margin: { t: 40, r: 20, b: 80, l: 60 },
+            xaxis: { title: 'Fabricante', tickangle: -45 },
+            yaxis: { title: 'Percentual de Sucateamento (%)', range: [0, 35] },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: false
+        };
+
+        var config = {responsive: true, displayModeBar: false, displaylogo: false};
+        Plotly.newPlot('chart-brand-analysis', brandAnalysisData, brandAnalysisLayout, config);
+
+        var damageDistData = [{
+            type: 'pie',
+            labels: ['Desgaste Irregular', 'Corte Lateral', 'Separação Banda', 'Deformação', 'Outros'],
+            values: [32, 24, 18, 15, 11],
+            marker: {
+                colors: ['#0369a1', '#0284c7', '#0ea5e9', '#38bdf8', '#7dd3fc']
+            },
+            textinfo: 'label+percent',
+            textposition: 'inside'
+        }];
+
+        var damageDistLayout = {
+            margin: { t: 20, r: 20, b: 20, l: 20 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: true,
+            legend: { orientation: 'v', x: 1, y: 0.5 }
+        };
+
+        Plotly.newPlot('chart-damage-distribution', damageDistData, damageDistLayout, config);
+
+        var lifespanData = [{
+            type: 'bar',
+            x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
+            y: [41250, 44800, 43100, 46900, 45600],
+            marker: {
+                color: '#0369a1'
+            },
+            text: ['41.3k', '44.8k', '43.1k', '46.9k', '45.6k'],
+            textposition: 'outside'
+        }];
+
+        var lifespanLayout = {
+            margin: { t: 40, r: 20, b: 80, l: 60 },
+            xaxis: { title: 'Fabricante', tickangle: -45 },
+            yaxis: { title: 'Quilometragem (km)', range: [0, 52000] },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: false
+        };
+
+        Plotly.newPlot('chart-lifespan', lifespanData, lifespanLayout, config);
+
+        var timelineData = [
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Michelin',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [26, 28, 27, 30, 29, 32, 31, 30, 28, 31, 29, 28],
+                line: { color: '#dc2626', width: 2 },
+                marker: { size: 6 }
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Goodyear',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [20, 22, 21, 24, 23, 25, 24, 23, 21, 23, 22, 22],
+                line: { color: '#ea580c', width: 2 },
+                marker: { size: 6 }
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Pirelli',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [17, 19, 18, 20, 19, 21, 20, 19, 18, 20, 19, 19],
+                line: { color: '#eab308', width: 2 },
+                marker: { size: 6 }
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Continental',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [14, 16, 15, 18, 17, 19, 18, 17, 15, 17, 16, 16],
+                line: { color: '#16a34a', width: 2 },
+                marker: { size: 6 }
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Bridgestone',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [13, 15, 14, 16, 15, 17, 16, 15, 14, 16, 15, 15],
+                line: { color: '#0369a1', width: 2 },
+                marker: { size: 6 }
+            }
+        ];
+
+        var timelineLayout = {
+            margin: { t: 40, r: 20, b: 60, l: 60 },
+            xaxis: { title: 'Mês' },
+            yaxis: { title: 'Percentual de Sucateamento (%)' },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: true,
+            legend: { orientation: 'h', x: 0, y: -0.2 }
+        };
+
+        Plotly.newPlot('chart-timeline', timelineData, timelineLayout, config);
+
+    } catch(e) {
+        console.error('Erro ao renderizar gráficos:', e);
+    }
+});
+</script>
+
+</body>
+</html>
