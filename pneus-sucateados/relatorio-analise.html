@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Análise de Sucata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            .report-page {
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        }
+        .vipal-logo {
+            width: 150px;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <div class="fixed top-4 left-4 z-50 no-print">
+        <a href="pedido-detalhe.html" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 flex items-center shadow-md">
+            <i class="fa-solid fa-arrow-left mr-2"></i>
+            Voltar para o Pedido
+        </a>
+    </div>
+
+    <div class="fixed top-4 right-4 z-50 no-print">
+        <button id="export-pdf" class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center font-medium shadow-md">
+            <i class="fa-solid fa-file-pdf mr-2"></i>
+            Exportar para PDF
+        </button>
+    </div>
+
+    <div id="report-container" class="w-[210mm] min-h-[297mm] mx-auto my-8 bg-white shadow-lg p-8">
+        <!-- Page 1: Cover -->
+        <div class="report-page h-[297mm] flex flex-col">
+            <header class="flex justify-between items-start mb-16">
+                <div>
+                    <h2 class="text-lg font-bold">T.R.P PÉROLA DISTRIBUIÇÃO</h2>
+                    <p class="text-sm">VALDEIR</p>
+                </div>
+                <div class="text-right">
+                    <img src="https://i.imgur.com/JAbB2z8.png" alt="Vipal Logo" class="vipal-logo ml-auto">
+                    <p class="text-sm mt-2">10/12/2025</p>
+                </div>
+            </header>
+            <main class="flex-grow flex flex-col justify-center items-center">
+                <h1 class="text-2xl font-bold mb-12">ANÁLISE DE SUCATA</h1>
+                <div class="text-sm text-gray-700 max-w-3xl space-y-4">
+                    <p><strong>Caro Cliente,</strong></p>
+                    <p>O Programa de Orientação ao Transportador (Protrans) é um conjunto de serviços exclusivos da Vipal para aprimorar o desempenho da sua frota. Por meio de visitas, palestras, treinamentos e implantação de softwares de gerenciamento, nossos consultores ajudam você e sua equipe a rodar com muito mais economia e segurança.</p>
+                    <p>O relatório que você verá a seguir apresenta os dados avaliados na ANÁLISE DE SUCATA, seguidos de orientação técnica recomendada por nossa equipe. Tudo isto para você obter ótimos resultados de seus pneus.</p>
+                    <p>Para que este trabalho tenha sucesso, é fundamental o envolvimento e comprometimento da sua empresa em todas as suas etapas. Nossa equipe de consultores de negócios e o seu Reformador Autorizado Vipal encontram-se a disposição para a plena realização deste projeto e elaboração de Plano de Ação das melhorias.</p>
+                </div>
+            </main>
+            <footer class="pt-16">
+                <div class="w-64">
+                    <p class="border-t border-black pt-2">Soni Anderson</p>
+                    <p class="text-xs">Consultor Técnico</p>
+                    <p class="text-xs">PNEU FORTE</p>
+                </div>
+                <div class="text-right text-sm text-gray-500 mt-8">1/6</div>
+            </footer>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Page 2: Summary Tables -->
+        <div class="report-page h-[297mm] flex flex-col p-8">
+            <header class="flex justify-end items-start mb-8">
+                <img src="https://i.imgur.com/JAbB2z8.png" alt="Vipal Logo" class="vipal-logo">
+            </header>
+            <main class="flex-grow">
+                <div class="grid grid-cols-2 gap-x-12 gap-y-8">
+                    <div>
+                        <h3 class="font-bold text-md mb-2">Pneus descartados por marca</h3>
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="p-2 text-left font-semibold">Marca</th>
+                                    <th class="p-2 text-right font-semibold">Quantidade</th>
+                                    <th class="p-2 text-right font-semibold">Participação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr><td class="p-2">Bridgestone</td><td class="p-2 text-right">26</td><td class="p-2 text-right">39,4%</td></tr>
+                                <tr><td class="p-2">Continental</td><td class="p-2 text-right">2</td><td class="p-2 text-right">3,0%</td></tr>
+                                <tr><td class="p-2">Dunlop</td><td class="p-2 text-right">1</td><td class="p-2 text-right">1,5%</td></tr>
+                                <tr><td class="p-2">FIRESTONE</td><td class="p-2 text-right">15</td><td class="p-2 text-right">22,7%</td></tr>
+                                <tr><td class="p-2">Goodyear</td><td class="p-2 text-right">5</td><td class="p-2 text-right">7,6%</td></tr>
+                                <tr><td class="p-2">IMPORTADO</td><td class="p-2 text-right">8</td><td class="p-2 text-right">12,1%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-md mb-2">Pneus descartados por medida</h3>
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="p-2 text-left font-semibold">Medida</th>
+                                    <th class="p-2 text-right font-semibold">Quantidade</th>
+                                    <th class="p-2 text-right font-semibold">Participação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr><td class="p-2">215/75R17.5</td><td class="p-2 text-right">3</td><td class="p-2 text-right">4,5%</td></tr>
+                                <tr><td class="p-2">275/80R22.5</td><td class="p-2 text-right">32</td><td class="p-2 text-right">48,5%</td></tr>
+                                <tr><td class="p-2">295/80R22.5</td><td class="p-2 text-right">31</td><td class="p-2 text-right">47,0%</td></tr>
+                                <tr class="bg-gray-100 font-bold"><td class="p-2">Total Geral</td><td class="p-2 text-right">66</td><td class="p-2 text-right">100,0%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-md mb-2">Pneus descartados por modelo</h3>
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="p-2 text-left font-semibold">Modelo</th>
+                                    <th class="p-2 text-right font-semibold">Vida</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- Data for this table is missing in the screenshot -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-md mb-2">Pneus descartados por vida</h3>
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="p-2 text-left font-semibold">Vida</th>
+                                    <th class="p-2 text-right font-semibold">Quantidade</th>
+                                    <th class="p-2 text-right font-semibold">Participação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr><td class="p-2">N</td><td class="p-2 text-right">20</td><td class="p-2 text-right">30,3%</td></tr>
+                                <tr><td class="p-2">R1</td><td class="p-2 text-right">25</td><td class="p-2 text-right">37,9%</td></tr>
+                                <tr><td class="p-2">R2</td><td class="p-2 text-right">19</td><td class="p-2 text-right">28,8%</td></tr>
+                                <tr><td class="p-2">R3</td><td class="p-2 text-right">2</td><td class="p-2 text-right">3,0%</td></tr>
+                                <tr class="bg-gray-100 font-bold"><td class="p-2">Total Geral</td><td class="p-2 text-right">66</td><td class="p-2 text-right">100,0%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            <footer class="text-right text-sm text-gray-500 mt-8">2/6</footer>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Page 3: Causes -->
+        <div class="report-page h-[297mm] flex flex-col p-8">
+            <header class="flex justify-end items-start mb-8">
+                <img src="https://i.imgur.com/JAbB2z8.png" alt="Vipal Logo" class="vipal-logo">
+            </header>
+            <main class="flex-grow">
+                <h3 class="font-bold text-lg mb-4">Causas principais de descarte de pneus</h3>
+                <p class="text-sm mb-4">As causas principais de descarte de pneus, representam uma perca em milímetros não rodados no valor de R$ 14.413,33, e permitiria realizar a compra de 6,55 pneus novos, ou 20,02 recapagens.</p>
+                <table class="w-full text-xs">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="p-2 text-left font-semibold">Causas principais de descarte de pneus</th>
+                            <th class="p-2 text-right font-semibold">Qtde</th>
+                            <th class="p-2 text-right font-semibold">Participação</th>
+                            <th class="p-2 text-right font-semibold">mm Útil Perdido</th>
+                            <th class="p-2 text-right font-semibold">R$ CPK mm Perdido</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr><td class="p-1.5">Aquecimento no talão</td><td class="p-1.5 text-right">2</td><td class="p-1.5 text-right">3,0%</td><td class="p-1.5 text-right">10,00</td><td class="p-1.5 text-right">R$ 600,00</td></tr>
+                        <tr><td class="p-1.5">Bolha no liner (51)</td><td class="p-1.5 text-right">1</td><td class="p-1.5 text-right">1,5%</td><td class="p-1.5 text-right">9,00</td><td class="p-1.5 text-right">R$ 540,00</td></tr>
+                        <tr><td class="p-1.5">Dano acidental no flanco (66)</td><td class="p-1.5 text-right">9</td><td class="p-1.5 text-right">13,6%</td><td class="p-1.5 text-right">25,00</td><td class="p-1.5 text-right">R$ 2.453,33</td></tr>
+                        <tr><td class="p-1.5">Dano localizado (33)</td><td class="p-1.5 text-right">1</td><td class="p-1.5 text-right">1,5%</td><td class="p-1.5 text-right">-</td><td class="p-1.5 text-right">R$ -</td></tr>
+                        <tr><td class="p-1.5">Dano no ombro (68)</td><td class="p-1.5 text-right">3</td><td class="p-1.5 text-right">4,5%</td><td class="p-1.5 text-right">7,00</td><td class="p-1.5 text-right">R$ 420,00</td></tr>
+                        <tr><td class="p-1.5">Danos no talão (71)</td><td class="p-1.5 text-right">2</td><td class="p-1.5 text-right">3,0%</td><td class="p-1.5 text-right">-</td><td class="p-1.5 text-right">R$ -</td></tr>
+                        <tr><td class="p-1.5">Deformação (saliência) no flanco do pneu radial (63)</td><td class="p-1.5 text-right">1</td><td class="p-1.5 text-right">1,5%</td><td class="p-1.5 text-right">1,00</td><td class="p-1.5 text-right">R$ 146,67</td></tr>
+                        <tr><td class="p-1.5">Desagregação da banda de rodagem (24)</td><td class="p-1.5 text-right">1</td><td class="p-1.5 text-right">1,5%</td><td class="p-1.5 text-right">-</td><td class="p-1.5 text-right">R$ -</td></tr>
+                        <tr><td class="p-1.5">Penetração de objeto durante o percurso (46)</td><td class="p-1.5 text-right">2</td><td class="p-1.5 text-right">3,0%</td><td class="p-1.5 text-right">2,00</td><td class="p-1.5 text-right">R$ 293,33</td></tr>
+                        <tr><td class="p-1.5">Rachadura circunferencial nos talões dos pneus radiais (70)</td><td class="p-1.5 text-right">8</td><td class="p-1.5 text-right">12,1%</td><td class="p-1.5 text-right">32,00</td><td class="p-1.5 text-right">R$ 1.920,00</td></tr>
+                        <tr><td class="p-1.5">Rachadura radial no flanco (65)</td><td class="p-1.5 text-right">5</td><td class="p-1.5 text-right">7,6%</td><td class="p-1.5 text-right">14,00</td><td class="p-1.5 text-right">R$ 1.793,33</td></tr>
+                        <tr><td class="p-1.5">RODAGEM COM BAIXA PRESSÃO.</td><td class="p-1.5 text-right">3</td><td class="p-1.5 text-right">4,5%</td><td class="p-1.5 text-right">11,00</td><td class="p-1.5 text-right">R$ 1.526,67</td></tr>
+                        <tr><td class="p-1.5">Ruptura lateral em pneus radiais (47)</td><td class="p-1.5 text-right">2</td><td class="p-1.5 text-right">3,0%</td><td class="p-1.5 text-right">10,00</td><td class="p-1.5 text-right">R$ 600,00</td></tr>
+                        <tr><td class="p-1.5">Ruptura radial do pneu (50)</td><td class="p-1.5 text-right">14</td><td class="p-1.5 text-right">21,2%</td><td class="p-1.5 text-right">17,00</td><td class="p-1.5 text-right">R$ 1.626,67</td></tr>
+                        <tr><td class="p-1.5">Separação das cintas na banda de rodagem (22)</td><td class="p-1.5 text-right">11</td><td class="p-1.5 text-right">16,7%</td><td class="p-1.5 text-right">27,00</td><td class="p-1.5 text-right">R$ 2.313,33</td></tr>
+                        <tr><td class="p-1.5">Soltura da banda de rodagem (42)</td><td class="p-1.5 text-right">1</td><td class="p-1.5 text-right">1,5%</td><td class="p-1.5 text-right">3,00</td><td class="p-1.5 text-right">R$ 180,00</td></tr>
+                    </tbody>
+                </table>
+            </main>
+            <footer class="text-right text-sm text-gray-500 mt-8">3/6</footer>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Page 4: Observations -->
+        <div class="report-page h-[297mm] flex flex-col p-8">
+            <header class="flex justify-end items-start mb-8">
+                <img src="https://i.imgur.com/JAbB2z8.png" alt="Vipal Logo" class="vipal-logo">
+            </header>
+            <main class="flex-grow">
+                <h3 class="font-bold text-lg mb-4">Observações</h3>
+                <div class="space-y-4 text-sm">
+                    <p>Conforme analise de sucata realizada, segue levantamento. Dúvidas em relação as ações a serem feitas, para minimizar as percas, podem ser consultadas no Guia de Danos e Desgastes da Vipal, ou com a equipe da Pneu Forte.</p>
+                    <div class="text-red-600 text-xs space-y-2 pt-8">
+                        <p>*A idade média dos pneus analisados, é de 4,7 ano(s), e 17,86% tem mais de 5 anos de fabricação. Do total de pneus analisados, 37,10% é do ano de 2021, 17,74% é do ano de 2022 e 11,29% é do ano de 2020.</p>
+                        <p>*Com base nos pneus desta analise de sucata, foi possível observar que o índice de recapabilidade da empresa esta em 1,05.</p>
+                    </div>
+                </div>
+            </main>
+            <footer class="text-right text-sm text-gray-500 mt-8">4/6</footer>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Page 5: Charts -->
+        <div class="report-page h-[297mm] flex flex-col p-8">
+            <header class="flex justify-end items-start mb-8">
+                <img src="https://i.imgur.com/JAbB2z8.png" alt="Vipal Logo" class="vipal-logo">
+            </header>
+            <main class="flex-grow">
+                <h3 class="font-bold text-lg mb-4">Gráficos analíticos</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div id="chart-brand" class="w-full h-48 border rounded-lg p-2"></div>
+                    <div id="chart-measure" class="w-full h-48 border rounded-lg p-2"></div>
+                    <div id="chart-life" class="w-full h-48 border rounded-lg p-2"></div>
+                    <div id="chart-model" class="w-full h-48 border rounded-lg p-2"></div>
+                    <div id="chart-cause" class="w-full h-48 border rounded-lg p-2 col-span-2"></div>
+                </div>
+            </main>
+            <footer class="text-right text-sm text-gray-500 mt-8">5/6</footer>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Page 6: Tire List -->
+        <div class="report-page h-[297mm] flex flex-col p-8">
+            <header class="flex justify-end items-start mb-8">
+                <img src="https://i.imgur.com/JAbB2z8.png" alt="Vipal Logo" class="vipal-logo">
+            </header>
+            <main class="flex-grow">
+                <h3 class="font-bold text-lg mb-4">Relação de pneus analisados</h3>
+                <table class="w-full text-xs">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="p-1.5 text-left font-semibold">FOGO</th>
+                            <th class="p-1.5 text-left font-semibold">DOT</th>
+                            <th class="p-1.5 text-left font-semibold">Vida</th>
+                            <th class="p-1.5 text-left font-semibold">Sulco</th>
+                            <th class="p-1.5 text-left font-semibold">Marca</th>
+                            <th class="p-1.5 text-left font-semibold">Modelo</th>
+                            <th class="p-1.5 text-left font-semibold">Causa Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr><td class="p-1">000024593</td><td class="p-1">0718</td><td class="p-1">R2</td><td class="p-1">07 mm</td><td class="p-1">Bridgestone</td><td class="p-1">M814</td><td class="p-1">Rachadura circunferencial nos talões dos pneus radiais (70)</td></tr>
+                        <tr><td class="p-1">000025165</td><td class="p-1">3918</td><td class="p-1">R1</td><td class="p-1">02 mm</td><td class="p-1">Bridgestone</td><td class="p-1">M736</td><td class="p-1">Danos no talão (71)</td></tr>
+                        <tr><td class="p-1">000025451</td><td class="p-1">4718</td><td class="p-1">R2</td><td class="p-1">03 mm</td><td class="p-1">FIRESTONE</td><td class="p-1">FS440</td><td class="p-1">Ruptura radial do pneu (50)</td></tr>
+                        <tr><td class="p-1">000025523</td><td class="p-1">3918</td><td class="p-1">R2</td><td class="p-1">05 mm</td><td class="p-1">Bridgestone</td><td class="p-1">M736</td><td class="p-1">Dano acidental no flanco (66)</td></tr>
+                        <tr><td class="p-1">000025955</td><td class="p-1">5118</td><td class="p-1">R1</td><td class="p-1">02 mm</td><td class="p-1">Michelin</td><td class="p-1">XMULTI</td><td class="p-1">Rachadura circunferencial nos talões dos pneus radiais (70)</td></tr>
+                        <tr><td class="p-1">000026113</td><td class="p-1">0816</td><td class="p-1">R1</td><td class="p-1">04 mm</td><td class="p-1">Michelin</td><td class="p-1">XMULTI</td><td class="p-1">Rachadura circunferencial nos talões dos pneus radiais (70)</td></tr>
+                        <tr><td class="p-1">000026393</td><td class="p-1">4818</td><td class="p-1">R1</td><td class="p-1">10 mm</td><td class="p-1">Goodyear</td><td class="p-1">RHS</td><td class="p-1">Separação das cintas na banda de rodagem (22)</td></tr>
+                        <tr><td class="p-1">000026929</td><td class="p-1">3419</td><td class="p-1">R1</td><td class="p-1">04 mm</td><td class="p-1">Bridgestone</td><td class="p-1">R152</td><td class="p-1">Separação das cintas na banda de rodagem (22)</td></tr>
+                    </tbody>
+                </table>
+            </main>
+            <footer class="text-right text-sm text-gray-500 mt-8">6/6</footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('export-pdf').addEventListener('click', function () {
+            const element = document.getElementById('report-container');
+            const opt = {
+                margin:       0,
+                filename:     'relatorio-analise-sucata.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        });
+
+        window.addEventListener('load', function() {
+            const pieChartOptions = {
+                showlegend: true,
+                legend: { x: 1, xanchor: 'right', y: 0.5 },
+                margin: { t: 20, r: 20, b: 20, l: 20 },
+                height: 180,
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)'
+            };
+            const config = {responsive: true, displayModeBar: false, displaylogo: false};
+
+            // Chart Data
+            const brandData = [{ values: [39.4, 3.0, 1.5, 22.7, 7.6, 12.1], labels: ['Bridgestone', 'Continental', 'Dunlop', 'Firestone', 'Goodyear', 'Importado'], type: 'pie' }];
+            const measureData = [{ values: [4.5, 48.5, 47.0], labels: ['215/75R17.5', '275/80R22.5', '295/80R22.5'], type: 'pie' }];
+            const lifeData = [{ values: [30.3, 37.9, 28.8, 3.0], labels: ['N', 'R1', 'R2', 'R3'], type: 'pie' }];
+            const modelData = [{ values: [21, 18, 9, 6, 6, 2, 2, 2], labels: ['FR01', 'FR88', 'FS440', 'G658', 'HS3', 'HTR1'], type: 'pie' }];
+            const causeData = [{ values: [21, 17, 14, 12, 5, 3, 3, 3, 2, 2], labels: ['Ruptura radial', 'Separação cintas', 'Dano acidental', 'Rachadura', 'Rodagem baixa pressão', 'Dano no ombro', 'Aquecimento talão', 'Penetração objeto', 'Ruptura lateral', 'Outros'], type: 'pie' }];
+
+            // Create Charts
+            Plotly.newPlot('chart-brand', brandData, { ...pieChartOptions, title: 'Sucateados Por Marca' }, config);
+            Plotly.newPlot('chart-measure', measureData, { ...pieChartOptions, title: 'Sucateamento por Medida' }, config);
+            Plotly.newPlot('chart-life', lifeData, { ...pieChartOptions, title: 'Sucateamento Por Vida' }, config);
+            Plotly.newPlot('chart-model', modelData, { ...pieChartOptions, title: 'Sucateados Por Modelo' }, config);
+            Plotly.newPlot('chart-cause', causeData, { ...pieChartOptions, title: 'Principais Motivos', legend: { orientation: 'v' } }, config);
+        });
+    </script>
+</body>
+</html>
