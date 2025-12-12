@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Pneu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+    <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
+                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="relative">
+                <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="relative p-2 text-gray-600 hover:text-gray-800">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right">
+                    <p class="text-sm font-medium text-gray-800">Carlos Silva</p>
+                    <p class="text-xs text-gray-500">Analista</p>
+                </div>
+                <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 overflow-y-auto">
+    <nav class="p-4">
+        <div class="space-y-1">
+            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
+                Dashboard
+            </a>
+            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-primary-700 rounded-lg">
+                <i class="fa-solid fa-list mr-3 text-base"></i>
+                Pedidos de Análise
+            </a>
+            <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
+                Relatórios
+            </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
+            <div class="space-y-1">
+                 <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Clientes
+                </a>
+                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
+                    Marcas
+                </a>
+                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-car mr-3 text-gray-500"></i>
+                    Modelos
+                </a>
+                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
+                    Tipos de Dano
+                </a>
+            </div>
+        </div>
+    </nav>
+</aside>
+
+<main id="main-content" class="ml-64 mt-[61px] p-6">
+    <div class="mb-6">
+         <a href="pedido-detalhe.html" class="text-sm text-primary-700 hover:text-primary-800 flex items-center mb-2">
+            <i class="fa-solid fa-arrow-left mr-2"></i>
+            Voltar para o Pedido
+        </a>
+        <h2 class="text-2xl font-bold text-gray-800">Análise de Pneu</h2>
+        <p class="text-sm text-gray-600 mt-1">Pedido: PED-00127 | Cliente: Transportadora Veloz</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-gray-200 p-8">
+        <form>
+            <!-- Seção 1: Identificação do Pneu -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2 flex items-center">
+                    <span class="bg-primary-700 text-white rounded-full h-6 w-6 text-sm flex items-center justify-center mr-3">1</span>
+                    Identificação do Pneu
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Marca <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option>Michelin</option>
+                            <option>Goodyear</option>
+                            <option>Pirelli</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Modelo <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option>X One</option>
+                            <option>KMAX S</option>
+                            <option>FR88</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Medida <span class="text-red-500">*</span></label>
+                        <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 295/80 R22.5">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nº de Fogo / Matrícula</label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 12345">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 2: Análise do Dano -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2 flex items-center">
+                    <span class="bg-primary-700 text-white rounded-full h-6 w-6 text-sm flex items-center justify-center mr-3">2</span>
+                    Análise do Dano
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Dano <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option>Desgaste Irregular</option>
+                            <option>Corte Lateral</option>
+                            <option>Separação da Banda</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Profundidade do Sulco (mm)</label>
+                        <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 5">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">DOT</label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 2318">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Fotos do Dano</label>
+                    <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <i class="fa-solid fa-camera mx-auto h-10 w-10 text-gray-400"></i>
+                            <div class="flex text-sm text-gray-600">
+                                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                                    <span>Carregar arquivos</span>
+                                    <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple>
+                                </label>
+                                <p class="pl-1">ou arraste e solte</p>
+                            </div>
+                            <p class="text-xs text-gray-500">PNG, JPG, GIF até 10MB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 3: Conclusão -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2 flex items-center">
+                    <span class="bg-primary-700 text-white rounded-full h-6 w-6 text-sm flex items-center justify-center mr-3">3</span>
+                    Conclusão da Análise
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Data da Análise <span class="text-red-500">*</span></label>
+                        <input type="date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Status da Análise <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option>Aprovado para reforma</option>
+                            <option>Sucateado</option>
+                            <option>Reparo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Observações / Laudo Técnico</label>
+                    <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Descreva os detalhes da análise, danos encontrados e a recomendação final..."></textarea>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-end space-x-3">
+                <a href="pedido-detalhe.html" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Cancelar</a>
+                <button type="submit" class="px-6 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 font-medium">
+                    <i class="fa-solid fa-save mr-2"></i>
+                    Salvar Análise
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+
+</body>
+</html>

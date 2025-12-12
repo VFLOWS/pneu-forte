@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Análise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+    <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
+                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="relative">
+                <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="relative p-2 text-gray-600 hover:text-gray-800">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right">
+                    <p class="text-sm font-medium text-gray-800">Carlos Silva</p>
+                    <p class="text-xs text-gray-500">Analista</p>
+                </div>
+                <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 overflow-y-auto">
+    <nav class="p-4">
+        <div class="space-y-1">
+            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
+                Dashboard
+            </a>
+            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-primary-700 rounded-lg">
+                <i class="fa-solid fa-list mr-3 text-base"></i>
+                Pedidos de Análise
+            </a>
+            <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
+                Relatórios
+            </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
+            <div class="space-y-1">
+                 <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Clientes
+                </a>
+                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
+                    Marcas
+                </a>
+                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-car mr-3 text-gray-500"></i>
+                    Modelos
+                </a>
+                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
+                    Tipos de Dano
+                </a>
+            </div>
+        </div>
+    </nav>
+</aside>
+
+<main id="main-content" class="ml-64 mt-[61px] p-6">
+    <div class="mb-6 flex items-center justify-between">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">Pedidos de Análise</h2>
+            <p class="text-sm text-gray-600 mt-1">Gerencie os lotes de pneus enviados para análise</p>
+        </div>
+        <a href="novo-pedido.html" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
+            <i class="fa-solid fa-plus mr-2"></i>
+            Novo Pedido
+        </a>
+    </div>
+
+    <div id="filter-section" class="bg-white rounded-lg border border-gray-200 p-4 mb-6">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4 flex-1">
+                <div class="relative flex-1 max-w-md">
+                    <input type="text" id="searchInput" placeholder="Buscar por código do pedido ou cliente..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option>Todos os Status</option>
+                    <option>Em Aberto</option>
+                    <option>Em Análise</option>
+                    <option>Concluído</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="pedidos-table-section" class="bg-white rounded-lg border border-gray-200">
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cód. Pedido</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cliente</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Data de Entrada</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Qtd. Pneus</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">PED-00125</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">10/12/2025</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">15</td>
+                        <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">Concluído</span></td>
+                        <td class="px-6 py-4 text-sm">
+                            <a href="pedido-detalhe.html" class="text-primary-700 hover:text-primary-800"><i class="fa-solid fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">PED-00126</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Agro Cargas Brasil</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">11/12/2025</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">8</td>
+                        <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-yellow-100 text-yellow-700 rounded-full">Em Análise</span></td>
+                        <td class="px-6 py-4 text-sm">
+                            <a href="pedido-detalhe.html" class="text-primary-700 hover:text-primary-800"><i class="fa-solid fa-eye"></i></a>
+                        </td>
+                    </tr>
+                     <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">PED-00127</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">12/12/2025</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">22</td>
+                        <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">Em Aberto</span></td>
+                        <td class="px-6 py-4 text-sm">
+                            <a href="pedido-detalhe.html" class="text-primary-700 hover:text-primary-800"><i class="fa-solid fa-eye"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
