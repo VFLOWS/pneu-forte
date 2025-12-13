@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -72,12 +72,16 @@
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 overflow-y-auto">
     <nav class="p-4">
         <div class="space-y-1">
-            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-primary-700 rounded-lg">
                 <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
                 Dashboard
             </a>
-            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-primary-700 rounded-lg">
-                <i class="fa-solid fa-list mr-3 text-base"></i>
+            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
+                Novo Pedido de Análise
+            </a>
+            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium bg-primary-700 text-white rounded-lg">
+                <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
                 Pedidos de Análise
             </a>
             <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -89,7 +93,7 @@
         <div class="mt-8 pt-6 border-t border-gray-200">
             <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
             <div class="space-y-1">
-                 <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
                     Clientes
                 </a>
@@ -107,14 +111,38 @@
                 </a>
             </div>
         </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
+            <div class="space-y-1">
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Usuários
+                </a>
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
+                    Configurações
+                </a>
+            </div>
+        </div>
     </nav>
+
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+        <div class="flex items-center justify-between text-white">
+            <div>
+                <p class="text-xs font-medium opacity-90">Parceiro</p>
+                <p class="text-sm font-bold">Grupo Vipal</p>
+            </div>
+            <i class="fa-solid fa-handshake text-2xl opacity-80"></i>
+        </div>
+    </div>
 </aside>
 
 <main id="main-content" class="ml-64 mt-[61px] p-6">
     <div class="mb-6 flex items-center justify-between">
         <div>
             <h2 class="text-2xl font-bold text-gray-800">Pedidos de Análise</h2>
-            <p class="text-sm text-gray-600 mt-1">Gerencie os lotes de pneus enviados para análise</p>
+            <p class="text-sm text-gray-600 mt-1">Gerencie os lotes de pneus enviados para Análise</p>
         </div>
         <a href="novo-pedido.html" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
@@ -126,7 +154,7 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4 flex-1">
                 <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchInput" placeholder="Buscar por código do pedido ou cliente..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="text" id="searchInput" placeholder="Buscar por Código do pedido ou cliente..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary-500">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
                 <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
@@ -144,7 +172,7 @@
             <table class="w-full">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cód. Pedido</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">CÃ³d. Pedido</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cliente</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Data de Entrada</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Qtd. Pneus</th>
@@ -200,3 +228,4 @@
 
 </body>
 </html>
+

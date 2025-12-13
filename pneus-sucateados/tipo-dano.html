@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -50,7 +50,7 @@
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-gray-600 hover:text-gray-800">
@@ -72,9 +72,13 @@
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 overflow-y-auto">
     <nav class="p-4">
         <div class="space-y-1">
-            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-primary-700 rounded-lg">
                 <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
                 Dashboard
+            </a>
+            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
+                Novo Pedido de Análise
             </a>
             <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
@@ -101,8 +105,8 @@
                     <i class="fa-solid fa-car mr-3 text-gray-500"></i>
                     Modelos
                 </a>
-                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm font-medium text-white bg-primary-700 rounded-lg">
-                    <i class="fa-solid fa-triangle-exclamation mr-3"></i>
+                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm bg-primary-700 text-white rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
                     Tipos de Dano
                 </a>
             </div>
@@ -138,7 +142,7 @@
     <div class="mb-6 flex items-center justify-between">
         <div>
             <h2 class="text-2xl font-bold text-gray-800">Tipos de Dano</h2>
-            <p class="text-sm text-gray-600 mt-1">Gerencie os tipos de danos identificados nas análises de pneus</p>
+            <p class="text-sm text-gray-600 mt-1">Gerencie os tipos de danos identificados nas Análises de pneus</p>
         </div>
         <button onclick="openAddModal()" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
@@ -226,7 +230,7 @@
                             <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Ocorrências
+                            OcorrÃªncias
                             <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -367,7 +371,7 @@
                                 <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center mr-3">
                                     <i class="fa-solid fa-circle-dot text-indigo-600 text-sm"></i>
                                 </div>
-                                <span class="text-sm font-medium text-gray-800">Perfuração</span>
+                                <span class="text-sm font-medium text-gray-800">PerfuraÃ§Ã£o</span>
                             </div>
                         </td>
                         <td class="px-6 py-4">
@@ -498,7 +502,7 @@
                 </button>
                 <button type="submit" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 font-medium">
                     <i class="fa-solid fa-save mr-2"></i>
-                    Salvar Alterações
+                    Salvar AlterAções
                 </button>
             </div>
         </form>
@@ -508,7 +512,7 @@
 <div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
     <div class="bg-white rounded-lg w-full max-w-md mx-4">
         <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h3 class="text-xl font-bold text-gray-800">Confirmar Exclusão</h3>
+            <h3 class="text-xl font-bold text-gray-800">Confirmar ExclusÃ£o</h3>
             <button onclick="closeDeleteModal()" class="text-gray-400 hover:text-gray-600">
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
@@ -520,7 +524,7 @@
                 </div>
                 <div>
                     <p class="text-gray-800 font-medium mb-2">Tem certeza que deseja excluir este tipo de dano?</p>
-                    <p class="text-sm text-gray-600">Esta ação não pode ser desfeita. O tipo de dano será removido permanentemente do sistema.</p>
+                    <p class="text-sm text-gray-600">Esta aÃ§Ã£o Não pode ser desfeita. O tipo de dano serÃ¡ removido permanentemente do sistema.</p>
                 </div>
             </div>
             <div class="flex justify-end space-x-3">
@@ -574,3 +578,4 @@
 
 </body>
 </html>
+
