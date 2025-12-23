@@ -1,0 +1,52 @@
+:root {
+  --vermelho: #C1272D;
+  --azul-01: #43479A;
+  --azul-02: #031590;
+  --azul-03: #2D44BD;
+  --azul-04: #1226A2;
+  --preto-90: #1A1A1A;
+  --preto-70: #4D4D4D;
+  --azul-05: #6699FF;
+}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            .report-page {
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        }
+        .vipal-logo {
+            width: 150px;
+        }
+    
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
+::-webkit-scrollbar { display: none;}
