@@ -13,28 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="tailwind.config.js"></script>
 </head>
 <body class="bg-gray-50 font-sans">
 
@@ -42,7 +21,7 @@
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
                     <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
@@ -51,7 +30,7 @@
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar usuários..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <input type="text" placeholder="Buscar usuários..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-gray-600 hover:text-gray-800">
@@ -116,7 +95,7 @@
         <div class="mt-8 pt-6 border-t border-gray-200">
             <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
             <div class="space-y-1">
-                <a href="usuarios.html" class="flex items-center px-4 py-2.5 text-sm text-white bg-primary-700 rounded-lg">
+                <a href="usuarios.html" class="flex items-center px-4 py-2.5 text-sm text-white bg-azul-02 rounded-lg">
                     <i class="fa-solid fa-users mr-3"></i>
                     Usuários
                 </a>
@@ -128,7 +107,7 @@
         </div>
     </nav>
 
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
         <div class="flex items-center justify-between text-white">
             <div>
                 <p class="text-xs font-medium opacity-90">Parceiro</p>
@@ -145,7 +124,7 @@
             <h2 class="text-2xl font-bold text-gray-800">Usuários</h2>
             <p class="text-sm text-gray-600 mt-1">Gerencie os usuários do sistema</p>
         </div>
-        <button onclick="openAddModal()" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
+        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
             Novo Usuário
         </button>
@@ -172,7 +151,7 @@
                             <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Ativo</span>
                         </td>
                         <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('USR-001')" class="text-primary-700 hover:text-primary-800 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="openEditModal('USR-001')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('USR-001')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
@@ -184,7 +163,7 @@
                             <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Ativo</span>
                         </td>
                         <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('USR-002')" class="text-primary-700 hover:text-primary-800 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="openEditModal('USR-002')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('USR-002')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
@@ -196,7 +175,7 @@
                             <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">Inativo</span>
                         </td>
                         <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('USR-003')" class="text-primary-700 hover:text-primary-800 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="openEditModal('USR-003')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('USR-003')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>

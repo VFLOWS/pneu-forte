@@ -12,15 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="tailwind.config.js"></script>
-</head>
-<body class="bg-gray-50 font-sans">
+    <body class="bg-gray-50 font-sans">
 
 <header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
                     <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
@@ -29,7 +27,7 @@
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-gray-600 hover:text-gray-800">
@@ -55,8 +53,8 @@
                 <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
                 Dashboard
             </a>
-            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium bg-primary-700 text-white rounded-lg">
-                <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
+            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium bg-azul-02 text-white rounded-lg">
+                <i class="fa-solid fa-plus-circle mr-3 text-base text-white"></i>
                 Novo Pedido de Análise
             </a>
             <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -106,7 +104,7 @@
         </div>
     </nav>
 
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
         <div class="flex items-center justify-between text-white">
             <div>
                 <p class="text-xs font-medium opacity-90">Parceiro</p>
@@ -128,7 +126,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="cliente" class="block text-sm font-medium text-gray-700 mb-2">Cliente *</label>
-                    <select id="cliente" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <select id="cliente" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Selecione um cliente</option>
                         <option>Transportadora Veloz</option>
                         <option>Agro Cargas Brasil</option>
@@ -136,16 +134,16 @@
                 </div>
                 <div>
                     <label for="data-entrada" class="block text-sm font-medium text-gray-700 mb-2">Data de Entrada *</label>
-                    <input type="date" id="data-entrada" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="date" id="data-entrada" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
                 </div>
             </div>
             <div class="mt-6">
                 <label for="observacoes" class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
-                <textarea id="observacoes" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Adicione qualquer observação relevante sobre este pedido..."></textarea>
+                <textarea id="observacoes" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Adicione qualquer observação relevante sobre este pedido..."></textarea>
             </div>
             <div class="mt-8 flex justify-end space-x-3">
                 <a href="pedidos-analise.html" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">Cancelar</a>
-                <a href="pedido-detalhe.html" class="px-6 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800">Criar Pedido e Adicionar Pneus</a>
+                <a href="pedido-detalhe.html" class="px-6 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04">Criar Pedido e Adicionar Pneus</a>
             </div>
         </form>
     </div>

@@ -13,28 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="tailwind.config.js"></script>
 </head>
 <body class="bg-gray-50 font-sans">
 
@@ -42,16 +21,16 @@
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
-                    <p class="text-xs text-gray-500">Sistema de An�lise de Pneus</p>
+                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
                 </div>
             </div>
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar An�lises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-gray-600 hover:text-gray-800">
@@ -79,15 +58,15 @@
             </a>
             <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
-                Novo Pedido de An�lise
+                Novo Pedido de Análise
             </a>
             <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Pedidos de An�lise
+                Pedidos de Análise
             </a>
             <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
-                Relat�rios
+                Relatórios
             </a>
         </div>
 
@@ -98,8 +77,8 @@
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
                     Clientes
                 </a>
-                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm bg-primary-700 text-white rounded-lg">
-                    <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
+                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
+                    <i class="fa-solid fa-copyright mr-3 text-white"></i>
                     Marcas
                 </a>
                 <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -114,21 +93,21 @@
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administra��o</p>
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
             <div class="space-y-1">
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
-                    Usu�rios
+                    Usuários
                 </a>
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
-                    Configura��es
+                    Configurações
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
         <div class="flex items-center justify-between text-white">
             <div>
                 <p class="text-xs font-medium opacity-90">Parceiro</p>
@@ -145,7 +124,7 @@
             <h2 class="text-2xl font-bold text-gray-800">Marcas</h2>
             <p class="text-sm text-gray-600 mt-1">Gerencie as marcas de pneus utilizadas no sistema</p>
         </div>
-        <button onclick="openAddModal()" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
+        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
             Nova Marca
         </button>
@@ -158,8 +137,8 @@
                     <p class="text-sm font-medium text-gray-600">Total de Marcas</p>
                     <p class="text-3xl font-bold text-gray-800 mt-2">18</p>
                 </div>
-                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-primary-700 text-xl"></i>
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-azul-02 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -205,10 +184,10 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4 flex-1">
                 <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchInput" placeholder="Buscar marca..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="text" id="searchInput" placeholder="Buscar marca..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
-                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <option>Todas as Origens</option>
                     <option>Nacional</option>
                     <option>Internacional</option>
@@ -232,7 +211,7 @@
                     <i class="fa-solid fa-copyright text-blue-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('michelin')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('michelin')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('michelin')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -247,7 +226,7 @@
                     <span class="font-medium text-gray-800">24</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">1.247</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -263,7 +242,7 @@
                     <i class="fa-solid fa-copyright text-green-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('bridgestone')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('bridgestone')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('bridgestone')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -278,7 +257,7 @@
                     <span class="font-medium text-gray-800">32</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">1.156</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -294,7 +273,7 @@
                     <i class="fa-solid fa-copyright text-yellow-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('continental')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('continental')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('continental')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -309,7 +288,7 @@
                     <span class="font-medium text-gray-800">18</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">892</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -325,7 +304,7 @@
                     <i class="fa-solid fa-copyright text-purple-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('goodyear')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('goodyear')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('goodyear')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -340,7 +319,7 @@
                     <span class="font-medium text-gray-800">22</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">734</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -356,7 +335,7 @@
                     <i class="fa-solid fa-copyright text-red-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('pirelli')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('pirelli')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('pirelli')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -371,7 +350,7 @@
                     <span class="font-medium text-gray-800">16</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">623</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -387,7 +366,7 @@
                     <i class="fa-solid fa-copyright text-indigo-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('dunlop')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('dunlop')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('dunlop')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -402,7 +381,7 @@
                     <span class="font-medium text-gray-800">14</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">487</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -418,7 +397,7 @@
                     <i class="fa-solid fa-copyright text-pink-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('yokohama')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('yokohama')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('yokohama')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -433,7 +412,7 @@
                     <span class="font-medium text-gray-800">11</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">342</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -449,7 +428,7 @@
                     <i class="fa-solid fa-copyright text-teal-600 text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('hankook')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('hankook')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button onclick="event.stopPropagation(); openDeleteModal('hankook')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
@@ -464,7 +443,7 @@
                     <span class="font-medium text-gray-800">8</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span>An�lises:</span>
+                    <span>Análises:</span>
                     <span class="font-medium text-gray-800">124</span>
                 </div>
                 <div class="flex items-center justify-between">
@@ -480,7 +459,7 @@
             <button class="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button class="px-4 py-2 bg-primary-700 text-white rounded-lg text-sm">1</button>
+            <button class="px-4 py-2 bg-azul-02 text-white rounded-lg text-sm">1</button>
             <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">2</button>
             <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">3</button>
             <button class="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
@@ -563,7 +542,7 @@
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
-        <p class="text-gray-600 mb-6">Tem certeza que deseja excluir esta marca? Esta ação N�o pode ser desfeita.</p>
+        <p class="text-gray-600 mb-6">Tem certeza que deseja excluir esta marca? Esta ação N�o pode ser desfeita.</p>
         <div class="flex space-x-3">
             <button type="button" onclick="closeDeleteModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
                 Cancelar

@@ -21,16 +21,16 @@
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
-                    <p class="text-xs text-gray-500">Sistema de An�lise de Pneus</p>
+                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
                 </div>
             </div>
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar An�lises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-gray-600 hover:text-gray-800">
@@ -58,23 +58,23 @@
             </a>
             <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
-                Novo Pedido de An�lise
+                Novo Pedido de Análise
             </a>
             <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Pedidos de An�lise
+                Pedidos de Análise
             </a>
             <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
-                Relat�rios
+                Relatórios
             </a>
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
             <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
             <div class="space-y-1">           
-                <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm bg-primary-700 text-white rounded-lg">
-                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-white"></i>
                     Clientes
                 </a>
                 <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -93,21 +93,21 @@
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administra��o</p>
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
             <div class="space-y-1">
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
-                    Usu�rios
+                    Usuários
                 </a>
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
-                    Configura��es
+                    Configurações
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
         <div class="flex items-center justify-between text-white">
             <div>
                 <p class="text-xs font-medium opacity-90">Parceiro</p>
@@ -124,7 +124,7 @@
             <h2 class="text-2xl font-bold text-gray-800">Clientes</h2>
             <p class="text-sm text-gray-600 mt-1">Gerencie os clientes do sistema</p>
         </div>
-        <button onclick="openAddModal()" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
+        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
             Novo Cliente
         </button>
@@ -134,7 +134,7 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4 flex-1">
                 <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchInput" placeholder="Buscar cliente por nome ou c�digo..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="text" id="searchInput" placeholder="Buscar cliente por nome ou código..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
             </div>
@@ -151,21 +151,21 @@
             <table class="w-full">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">C�digo</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Código</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nome do Cliente</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Contato</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Telefone</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">A��es</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 text-sm font-medium text-gray-800">CLI-001</td>
                         <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Jo�o Almeida</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">João Almeida</td>
                         <td class="px-6 py-4 text-sm text-gray-700">(11) 98765-4321</td>
                         <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('CLI-001')" class="text-primary-700 hover:text-primary-800 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="openEditModal('CLI-001')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('CLI-001')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
@@ -175,7 +175,7 @@
                         <td class="px-6 py-4 text-sm text-gray-700">Maria Souza</td>
                         <td class="px-6 py-4 text-sm text-gray-700">(65) 91234-5678</td>
                         <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('CLI-002')" class="text-primary-700 hover:text-primary-800 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="openEditModal('CLI-002')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('CLI-002')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
@@ -198,50 +198,50 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Cliente / Razão Social <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: Transportadora Veloz">
+                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Transportadora Veloz">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">CPF/CNPJ <span class="text-red-500">*</span></label>
-                    <input type="text" id="add-cpf-cnpj" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="00.000.000/0000-00">
+                    <input type="text" id="add-cpf-cnpj" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="00.000.000/0000-00">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
-                    <input type="text" id="add-cep" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="00000-000">
+                    <input type="text" id="add-cep" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="00000-000">
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Endereço Completo</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Rua, Avenida, etc.">
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Rua, Avenida, etc.">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Cidade</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: São Paulo">
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: São Paulo">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">UF</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: SP">
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: SP">
                 </div>
 
                 <div class="md:col-span-2 pt-4 border-t border-gray-200 mt-2">
-                    <p class="text-base font-medium text-gray-800">Informa��es de Contato</p>
+                    <p class="text-base font-medium text-gray-800">Informações de Contato</p>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Pessoa de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: Jo�o Almeida">
+                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: João Almeida">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Telefone de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" id="add-telefone" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="(00) 00000-0000">
+                    <input type="text" id="add-telefone" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="(00) 00000-0000">
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Email de Contato <span class="text-red-500">*</span></label>
-                    <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="contato@empresa.com">
+                    <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="contato@empresa.com">
                 </div>
             </div>
             <div class="flex justify-end space-x-3 mt-8">
                 <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
                     Cancelar
                 </button>
-                <button type="submit" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 font-medium">
+                <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
                     <i class="fa-solid fa-plus mr-2"></i>
                     Adicionar Cliente
                 </button>
@@ -262,52 +262,52 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Cliente / Razão Social <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="Transportadora Veloz">
+                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Transportadora Veloz">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">CPF/CNPJ <span class="text-red-500">*</span></label>
-                    <input type="text" id="edit-cpf-cnpj" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="12.345.678/0001-99">
+                    <input type="text" id="edit-cpf-cnpj" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="12.345.678/0001-99">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
-                    <input type="text" id="edit-cep" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="01000-000">
+                    <input type="text" id="edit-cep" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="01000-000">
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Endereço Completo</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="Avenida Paulista, 1000">
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Avenida Paulista, 1000">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Cidade</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="São Paulo">
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="São Paulo">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">UF</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="SP">
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="SP">
                 </div>
 
                 <div class="md:col-span-2 pt-4 border-t border-gray-200 mt-2">
-                    <p class="text-base font-medium text-gray-800">Informa��es de Contato</p>
+                    <p class="text-base font-medium text-gray-800">Informações de Contato</p>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Pessoa de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="Jo�o Almeida">
+                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="João Almeida">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Telefone de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" id="edit-telefone" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="(11) 98765-4321">
+                    <input type="text" id="edit-telefone" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="(11) 98765-4321">
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Email de Contato <span class="text-red-500">*</span></label>
-                    <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" value="contato@transportadoraveloz.com.br">
+                    <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="contato@transportadoraveloz.com.br">
                 </div>
             </div>
             <div class="flex justify-end space-x-3 mt-8">
                 <button type="button" onclick="closeEditModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
                     Cancelar
                 </button>
-                <button type="submit" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 font-medium">
+                <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
                     <i class="fa-solid fa-save mr-2"></i>
-                    Salvar AlterA��es
+                    Salvar Alterações
                 </button>
             </div>
         </form>

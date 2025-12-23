@@ -21,16 +21,16 @@
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-primary-700 text-2xl mr-3"></i>
+                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
-                    <p class="text-xs text-gray-500">Sistema de An�lise de Pneus</p>
+                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
                 </div>
             </div>
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar An�lises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-gray-600 hover:text-gray-800">
@@ -58,15 +58,15 @@
             </a>
             <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
-                Novo Pedido de An�lise
+                Novo Pedido de Análise
             </a>
             <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Pedidos de An�lise
+                Pedidos de Análise
             </a>
             <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
-                Relat�rios
+                Relatórios
             </a>
         </div>
 
@@ -81,8 +81,8 @@
                     <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
                     Marcas
                 </a>
-                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm bg-primary-700 text-white rounded-lg">
-                    <i class="fa-solid fa-car mr-3 text-gray-500"></i>
+                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
+                    <i class="fa-solid fa-car mr-3 text-white"></i>
                     Modelos
                 </a>
                 <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -93,21 +93,21 @@
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administra��o</p>
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
             <div class="space-y-1">
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
-                    Usu�rios
+                    Usuários
                 </a>
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
-                    Configura��es
+                    Configurações
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
         <div class="flex items-center justify-between text-white">
             <div>
                 <p class="text-xs font-medium opacity-90">Parceiro</p>
@@ -121,7 +121,7 @@
 <main id="main-content" class="ml-64 mt-[61px] p-6">
     <div id="breadcrumb-section" class="mb-4">
         <div class="flex items-center text-sm text-gray-600">
-            <a href="#" onclick="goBackToBrands()" class="hover:text-primary-700 flex items-center">
+            <a href="#" onclick="goBackToBrands()" class="hover:text-azul-02 flex items-center">
                 <i class="fa-solid fa-copyright mr-2"></i>
                 Marcas
             </a>
@@ -140,7 +140,7 @@
                 <p class="text-sm text-gray-600 mt-1">Gerencie os modelos de pneus desta marca</p>
             </div>
         </div>
-        <button onclick="openAddModelModal()" class="px-5 py-2.5 bg-primary-700 text-white rounded-lg hover:bg-primary-800 flex items-center font-medium">
+        <button onclick="openAddModelModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
             Novo Modelo
         </button>
@@ -162,7 +162,7 @@
         <div class="bg-white rounded-lg border border-gray-200 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Total de An�lises</p>
+                    <p class="text-sm font-medium text-gray-600">Total de Análises</p>
                     <p class="text-3xl font-bold text-gray-800 mt-2">1.247</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -200,10 +200,10 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4 flex-1">
                 <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchModelInput" placeholder="Buscar modelo..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <input type="text" id="searchModelInput" placeholder="Buscar modelo..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
-                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <option>Todos os Modelos</option>
                     <option>Mais Analisados</option>
                     <option>Menos Analisados</option>
@@ -232,11 +232,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">X One</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">295/80 R22.5</span>  |  342 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">295/80 R22.5</span>  |  342 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('X One')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('X One')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('X One')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -252,11 +252,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">Pilot Sport 4</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">275/80 R22.5</span>  |  287 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">275/80 R22.5</span>  |  287 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('Pilot Sport 4')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('Pilot Sport 4')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('Pilot Sport 4')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -272,11 +272,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">Primacy 4</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">10.00R20</span>  |  234 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">10.00R20</span>  |  234 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('Primacy 4')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('Primacy 4')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('Primacy 4')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -292,11 +292,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">Energy XM2</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">215/75 R17.5</span>  |  198 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">215/75 R17.5</span>  |  198 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('Energy XM2')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('Energy XM2')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('Energy XM2')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -312,11 +312,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">Latitude Sport 3</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">235/75 R17.5</span>  |  176 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">235/75 R17.5</span>  |  176 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('Latitude Sport 3')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('Latitude Sport 3')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('Latitude Sport 3')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -332,11 +332,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">CrossClimate 2</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">11.00R22</span>  |  143 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">11.00R22</span>  |  143 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('CrossClimate 2')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('CrossClimate 2')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('CrossClimate 2')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -352,11 +352,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">Defender LTX</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">12.5/80-18</span>  |  112 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">12.5/80-18</span>  |  112 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('Defender LTX')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('Defender LTX')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('Defender LTX')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -372,11 +372,11 @@
                         </div>
                         <div class="flex-1">
                             <p class="font-semibold text-gray-800">Alpin 6</p>
-                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">10.5/80-18</span>  |  89 An�lises realizadas</p>
+                            <p class="text-sm text-gray-500"><span class="font-medium text-gray-600">10.5/80-18</span>  |  89 Análises realizadas</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="openEditModelModal('Alpin 6')" class="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-lg">
+                        <button onclick="openEditModelModal('Alpin 6')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onclick="openDeleteModelModal('Alpin 6')" class="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">
@@ -393,7 +393,7 @@
             <button class="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button class="px-4 py-2 bg-primary-700 text-white rounded-lg text-sm">1</button>
+            <button class="px-4 py-2 bg-azul-02 text-white rounded-lg text-sm">1</button>
             <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">2</button>
             <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">3</button>
             <button class="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
@@ -403,118 +403,84 @@
     </div>
 </main>
 
-<div id="addModelModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg w-full max-w-md p-6">
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-gray-800">Novo Modelo</h3>
-            <button onclick="closeAddModelModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
-            </button>
+<div id="addModelModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-md">
+        <div class="p-6 border-b border-gray-200">
+            <h3 class="text-xl font-bold text-gray-800">Adicionar Novo Modelo</h3>
         </div>
-        <form>
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Marca</label>
-                <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    <option>Michelin</option>
-                    <option>Bridgestone</option>
-                    <option>Continental</option>
-                    <option>Goodyear</option>
-                    <option>Pirelli</option>
-                    <option>Dunlop</option>
-                    <option>Yokohama</option>
-                    <option>Hankook</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Modelo *</label>
-                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: Pilot Sport 5">
-            </div>
-            <div class="grid grid-cols-3 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Largura</label>
-                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 295">
+        <div class="p-6">
+            <form>
+                <div class="space-y-6">
+                    <div>
+                        <label for="modelName" class="block text-sm font-medium text-gray-700 mb-1">Nome do Modelo</label>
+                        <input type="text" id="modelName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: X One">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="largura" class="block text-sm font-medium text-gray-700 mb-1">Largura</label>
+                            <input type="number" id="largura" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 295">
+                        </div>
+                        <div>
+                            <label for="perfil" class="block text-sm font-medium text-gray-700 mb-1">Perfil</label>
+                            <input type="number" id="perfil" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 80">
+                        </div>
+                        <div>
+                            <label for="aro" class="block text-sm font-medium text-gray-700 mb-1">Aro</label>
+                            <input type="number" id="aro" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 22.5">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Perfil</label>
-                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 80">
+                <div class="mt-8 flex justify-end space-x-4">
+                    <button type="button" onclick="closeAddModelModal()" class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="px-6 py-2 text-white bg-azul-02 rounded-lg hover:bg-azul-04 focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        Adicionar Modelo
+                    </button>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Aro</label>
-                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 22.5">
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Índice de Carga</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 152">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Índice de Velocidade</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: L">
-                </div>
-            </div>
-            <div class="flex space-x-3">
-                <button type="button" onclick="closeAddModelModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
-                    Cancelar
-                </button>
-                <button type="submit" class="flex-1 px-4 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800">
-                    Adicionar
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
-<div id="editModelModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg w-full max-w-md p-6">
-        <div class="flex items-center justify-between mb-4">
+<!-- Modal para Editar Modelo -->
+<div id="editModelModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-md">
+        <div class="p-6 border-b border-gray-200">
             <h3 class="text-xl font-bold text-gray-800">Editar Modelo</h3>
-            <button onclick="closeEditModelModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
-            </button>
         </div>
-        <form>
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Marca</label>
-                <input type="text" value="Michelin" disabled class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Modelo *</label>
-                <input type="text" id="editModelInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-            </div>
-            <div class="grid grid-cols-3 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Largura</label>
-                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 295" value="295">
+        <div class="p-6">
+            <form>
+                <div class="space-y-6">
+                    <div>
+                        <label for="editModelName" class="block text-sm font-medium text-gray-700 mb-1">Nome do Modelo</label>
+                        <input type="text" id="editModelName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="X One">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="editLargura" class="block text-sm font-medium text-gray-700 mb-1">Largura</label>
+                            <input type="number" id="editLargura" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="295">
+                        </div>
+                        <div>
+                            <label for="editPerfil" class="block text-sm font-medium text-gray-700 mb-1">Perfil</label>
+                            <input type="number" id="editPerfil" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="80">
+                        </div>
+                        <div>
+                            <label for="editAro" class="block text-sm font-medium text-gray-700 mb-1">Aro</label>
+                            <input type="number" id="editAro" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="22.5">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Perfil</label>
-                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 80" value="80">
+                <div class="mt-8 flex justify-end space-x-4">
+                    <button type="button" onclick="closeEditModelModal()" class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="px-6 py-2 text-white bg-azul-02 rounded-lg hover:bg-azul-04 focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        Salvar Alterações
+                    </button>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Aro</label>
-                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 22.5" value="22.5">
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Índice de Carga</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 152" value="152">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Índice de Velocidade</label>
-                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: L" value="L">
-                </div>
-            </div>
-            <div class="flex space-x-3">
-                <button type="button" onclick="closeEditModelModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
-                    Cancelar
-                </button>
-                <button type="submit" class="flex-1 px-4 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800">
-                    Salvar AlterA��es
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
