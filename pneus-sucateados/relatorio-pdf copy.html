@@ -233,137 +233,39 @@
 
         <div class="page-break"></div>
 
-        <!-- Page 6 onwards: Individual Tire Analysis -->
+        <!-- Page 6: Tire List -->
         <div class="report-page h-[297mm] flex flex-col p-8">
-            <header class="flex justify-between items-start mb-6">
-                <h3 class="font-bold text-lg">Análise Individual do Pneu</h3>
+            <header class="flex justify-end items-start mb-8">
                 <img src="pneu-forte-logo.jpeg" alt="Vipal Logo" class="vipal-logo">
             </header>
             <main class="flex-grow">
-                <div class="grid grid-cols-2 gap-x-8">
-                    <!-- Tire Info -->
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Nº Fogo:</span>
-                            <span class="font-bold">000024593</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Marca:</span>
-                            <span>Bridgestone</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Modelo:</span>
-                            <span>M814</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">DOT:</span>
-                            <span>0718</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Vida:</span>
-                            <span>R2</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Sulco Restante:</span>
-                            <span>07 mm</span>
-                        </div>
-                        <div class="pt-2">
-                            <p class="font-semibold text-gray-600 mb-1">Causa Principal do Descarte:</p>
-                            <p class="text-red-600 font-semibold">Rachadura circunferencial nos talões dos pneus radiais (70)</p>
-                        </div>
-                    </div>
-                    <!-- Tire Images -->
-                    <div class="grid grid-cols-2 grid-rows-2 gap-4">
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 1</span>
-                        </div>
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 2</span>
-                        </div>
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 3</span>
-                        </div>
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 4</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-6">
-                    <h4 class="font-semibold text-gray-600 mb-2">Observações sobre o pneu:</h4>
-                    <div class="border rounded-lg p-3 text-sm bg-gray-50 h-32">
-                        <!-- Espaço para observações específicas -->
-                    </div>
-                </div>
+                <h3 class="font-bold text-lg mb-4">Relação de pneus analisados</h3>
+                <table class="w-full text-xs">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="p-1.5 text-left font-semibold">FOGO</th>
+                            <th class="p-1.5 text-left font-semibold">DOT</th>
+                            <th class="p-1.5 text-left font-semibold">Vida</th>
+                            <th class="p-1.5 text-left font-semibold">Sulco</th>
+                            <th class="p-1.5 text-left font-semibold">Marca</th>
+                            <th class="p-1.5 text-left font-semibold">Modelo</th>
+                            <th class="p-1.5 text-left font-semibold">Causa Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr><td class="p-1">000024593</td><td class="p-1">0718</td><td class="p-1">R2</td><td class="p-1">07 mm</td><td class="p-1">Bridgestone</td><td class="p-1">M814</td><td class="p-1">Rachadura circunferencial nos talões dos pneus radiais (70)</td></tr>
+                        <tr><td class="p-1">000025165</td><td class="p-1">3918</td><td class="p-1">R1</td><td class="p-1">02 mm</td><td class="p-1">Bridgestone</td><td class="p-1">M736</td><td class="p-1">Danos no talão (71)</td></tr>
+                        <tr><td class="p-1">000025451</td><td class="p-1">4718</td><td class="p-1">R2</td><td class="p-1">03 mm</td><td class="p-1">FIRESTONE</td><td class="p-1">FS440</td><td class="p-1">Ruptura radial do pneu (50)</td></tr>
+                        <tr><td class="p-1">000025523</td><td class="p-1">3918</td><td class="p-1">R2</td><td class="p-1">05 mm</td><td class="p-1">Bridgestone</td><td class="p-1">M736</td><td class="p-1">Dano acidental no flanco (66)</td></tr>
+                        <tr><td class="p-1">000025955</td><td class="p-1">5118</td><td class="p-1">R1</td><td class="p-1">02 mm</td><td class="p-1">Michelin</td><td class="p-1">XMULTI</td><td class="p-1">Rachadura circunferencial nos talões dos pneus radiais (70)</td></tr>
+                        <tr><td class="p-1">000026113</td><td class="p-1">0816</td><td class="p-1">R1</td><td class="p-1">04 mm</td><td class="p-1">Michelin</td><td class="p-1">XMULTI</td><td class="p-1">Rachadura circunferencial nos talões dos pneus radiais (70)</td></tr>
+                        <tr><td class="p-1">000026393</td><td class="p-1">4818</td><td class="p-1">R1</td><td class="p-1">10 mm</td><td class="p-1">Goodyear</td><td class="p-1">RHS</td><td class="p-1">Separação das cintas na banda de rodagem (22)</td></tr>
+                        <tr><td class="p-1">000026929</td><td class="p-1">3419</td><td class="p-1">R1</td><td class="p-1">04 mm</td><td class="p-1">Bridgestone</td><td class="p-1">R152</td><td class="p-1">Separação das cintas na banda de rodagem (22)</td></tr>
+                    </tbody>
+                </table>
             </main>
-            <footer class="text-right text-sm text-gray-500 mt-8">6/X</footer>
+            <footer class="text-right text-sm text-gray-500 mt-8">6/6</footer>
         </div>
-
-        <div class="page-break"></div>
-
-        <div class="report-page h-[297mm] flex flex-col p-8">
-            <header class="flex justify-between items-start mb-6">
-                <h3 class="font-bold text-lg">Análise Individual do Pneu</h3>
-                <img src="pneu-forte-logo.jpeg" alt="Vipal Logo" class="vipal-logo">
-            </header>
-            <main class="flex-grow">
-                <div class="grid grid-cols-2 gap-x-8">
-                    <!-- Tire Info -->
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Nº Fogo:</span>
-                            <span class="font-bold">000025165</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Marca:</span>
-                            <span>Bridgestone</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Modelo:</span>
-                            <span>M736</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">DOT:</span>
-                            <span>3918</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Vida:</span>
-                            <span>R1</span>
-                        </div>
-                        <div class="flex justify-between border-b pb-1">
-                            <span class="font-semibold text-gray-600">Sulco Restante:</span>
-                            <span>02 mm</span>
-                        </div>
-                        <div class="pt-2">
-                            <p class="font-semibold text-gray-600 mb-1">Causa Principal do Descarte:</p>
-                            <p class="text-red-600 font-semibold">Danos no talão (71)</p>
-                        </div>
-                    </div>
-                    <!-- Tire Images -->
-                    <div class="grid grid-cols-2 grid-rows-2 gap-4">
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 1</span>
-                        </div>
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 2</span>
-                        </div>
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 3</span>
-                        </div>
-                        <div class="bg-gray-200 border rounded-lg flex items-center justify-center">
-                            <span class="text-gray-500 text-sm">Imagem 4</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-6">
-                    <h4 class="font-semibold text-gray-600 mb-2">Observações sobre o pneu:</h4>
-                    <div class="border rounded-lg p-3 text-sm bg-gray-50 h-32">
-                        <!-- Espaço para observações específicas -->
-                    </div>
-                </div>
-            </main>
-            <footer class="text-right text-sm text-gray-500 mt-8">7/X</footer>
-        </div>
-
     </div>
 
     <script>
