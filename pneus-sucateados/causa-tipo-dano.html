@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="pneu-forte-colors.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorias de Tipo de Dano</title>
+    <title>Causa por Tipo de Dano</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -84,12 +84,12 @@
                     <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
                     Tipos de Dano
                 </a>
-                <a href="categoria-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
-                    <i class="fa-solid fa-layer-group mr-3 text-white"></i>
+                <a href="categoria-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-layer-group mr-3 text-gray-500"></i>
                     Ctg. de Tipo de Dano
                 </a>
-                <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
-                    <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
+                <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
+                    <i class="fa-solid fa-clipboard-list mr-3 text-white"></i>
                     Causa por Tipo de Dano
                 </a>
             </div>
@@ -124,12 +124,12 @@
 <main id="main-content" class="ml-64 mt-[61px] p-6">
     <div class="mb-6 flex items-center justify-between">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">Categorias de Tipo de Dano</h2>
-            <p class="text-sm text-gray-600 mt-1">Gerencie as categorias de danos identificados nas Análises de pneus</p>
+            <h2 class="text-2xl font-bold text-gray-800">Causa por Tipo de Dano</h2>
+            <p class="text-sm text-gray-600 mt-1">Gerencie as causas associadas aos tipos de danos</p>
         </div>
         <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
-            Nova Categoria
+            Nova Causa
         </button>
     </div>
 
@@ -137,11 +137,11 @@
         <div class="bg-white rounded-lg border border-gray-200 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Total de Categorias</p>
-                    <p class="text-3xl font-bold text-gray-800 mt-2">3</p>
+                    <p class="text-sm font-medium text-gray-600">Total de Causas</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-2">16</p>
                 </div>
                 <div class="w-12 h-12 bg-azul-05 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-layer-group text-azul-02 text-xl"></i>
+                    <i class="fa-solid fa-clipboard-list text-azul-02 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -149,8 +149,8 @@
         <div class="bg-white rounded-lg border border-gray-200 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Mais Utilizada</p>
-                    <p class="text-lg font-bold text-gray-800 mt-2">Estrutural</p>
+                    <p class="text-sm font-medium text-gray-600">Mais Frequente</p>
+                    <p class="text-lg font-bold text-gray-800 mt-2">Ruptura Radial</p>
                 </div>
                 <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                     <i class="fa-solid fa-chart-line text-orange-600 text-xl"></i>
@@ -161,8 +161,8 @@
         <div class="bg-white rounded-lg border border-gray-200 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Adicionada Recentemente</p>
-                    <p class="text-lg font-bold text-gray-800 mt-2">Operacional</p>
+                    <p class="text-sm font-medium text-gray-600">Adicionado Recentemente</p>
+                    <p class="text-lg font-bold text-gray-800 mt-2">Fadiga de Material</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                     <i class="fa-solid fa-clock text-green-600 text-xl"></i>
@@ -175,7 +175,7 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4 flex-1">
                 <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchInput" placeholder="Buscar categoria..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <input type="text" id="searchInput" placeholder="Buscar causa..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
             </div>
@@ -190,7 +190,7 @@
         </div>
     </div>
 
-    <div id="damage-types-table" class="bg-white rounded-lg border border-gray-200">
+    <div id="causes-table" class="bg-white rounded-lg border border-gray-200">
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead class="bg-gray-50 border-b border-gray-200">
@@ -199,11 +199,7 @@
                             <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Nome da Categoria
-                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Descrição
+                            Causa
                             <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -228,17 +224,9 @@
                             <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-layer-group text-blue-600 text-sm"></i>
-                                </div>
-                                <span class="text-sm font-medium text-gray-800">Estrutural</span>
-                            </div>
+                            <span class="text-sm font-medium text-gray-800">Ruptura Radial</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">
-                            Danos que afetam a estrutura interna do pneu
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">1250</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">14</td>
                         <td class="px-6 py-4 text-sm text-gray-700">10/01/2024</td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Ativo</span>
@@ -257,17 +245,9 @@
                             <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-layer-group text-purple-600 text-sm"></i>
-                                </div>
-                                <span class="text-sm font-medium text-gray-800">Superficial</span>
-                            </div>
+                            <span class="text-sm font-medium text-gray-800">Impacto Violento</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">
-                            Danos externos na borracha sem afetar a estrutura
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">850</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">8</td>
                         <td class="px-6 py-4 text-sm text-gray-700">12/01/2024</td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Ativo</span>
@@ -286,17 +266,9 @@
                             <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-layer-group text-orange-600 text-sm"></i>
-                                </div>
-                                <span class="text-sm font-medium text-gray-800">Operacional</span>
-                            </div>
+                            <span class="text-sm font-medium text-gray-800">Falha na Vulcanização</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">
-                            Danos causados por mau uso ou condições de operação
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">430</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">5</td>
                         <td class="px-6 py-4 text-sm text-gray-700">15/01/2024</td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Ativo</span>
@@ -310,17 +282,39 @@
                             </button>
                         </td>
                     </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="text-sm font-medium text-gray-800">Sobrecarga</span>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">12</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">20/01/2024</td>
+                        <td class="px-6 py-4">
+                            <span class="px-2.5 py-1 bg-red-100 text-red-700 text-xs font-medium rounded-full">Inativo</span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button onclick="openEditModal(4)" class="text-azul-02 hover:text-azul-04 mr-3">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button onclick="openDeleteModal(4)" class="text-red-600 hover:text-red-700">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
         <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-            <p class="text-sm text-gray-600">Mostrando 3 de 3 categorias</p>
+            <p class="text-sm text-gray-600">Mostrando 4 de 16 causas</p>
             <div class="flex items-center space-x-2">
-                <button class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50" disabled>
+                <button class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50">
                     Anterior
                 </button>
                 <button class="px-3 py-1.5 bg-azul-02 text-white rounded text-sm">1</button>
-                <button class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50" disabled>
+                <button class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50">2</button>
+                <button class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50">
                     Próximo
                 </button>
             </div>
@@ -331,19 +325,22 @@
 <div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
     <div class="bg-white rounded-lg w-full max-w-lg mx-4">
         <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h3 class="text-xl font-bold text-gray-800">Nova Categoria</h3>
+            <h3 class="text-xl font-bold text-gray-800">Nova Causa</h3>
             <button onclick="closeAddModal()" class="text-gray-400 hover:text-gray-600">
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
         <form class="p-6">
             <div class="mb-5">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Categoria <span class="text-red-500">*</span></label>
-                <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Estrutural">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Causa <span class="text-red-500">*</span></label>
+                <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Ruptura Radial">
             </div>
             <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
-                <textarea class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" rows="3" placeholder="Descreva a categoria..."></textarea>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                </select>
             </div>
             <div class="flex justify-end space-x-3">
                 <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
@@ -361,19 +358,22 @@
 <div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
     <div class="bg-white rounded-lg w-full max-w-lg mx-4">
         <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h3 class="text-xl font-bold text-gray-800">Editar Categoria</h3>
+            <h3 class="text-xl font-bold text-gray-800">Editar Causa</h3>
             <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
         <form class="p-6">
             <div class="mb-5">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Categoria <span class="text-red-500">*</span></label>
-                <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Estrutural">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Causa <span class="text-red-500">*</span></label>
+                <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Ruptura Radial">
             </div>
             <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
-                <textarea class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" rows="3">Danos que afetam a estrutura interna do pneu</textarea>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <option value="ativo" selected>Ativo</option>
+                    <option value="inativo">Inativo</option>
+                </select>
             </div>
             <div class="flex justify-end space-x-3">
                 <button type="button" onclick="closeEditModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
@@ -402,8 +402,8 @@
                     <i class="fa-solid fa-exclamation-triangle text-red-600 text-xl"></i>
                 </div>
                 <div>
-                    <p class="text-gray-800 font-medium mb-2">Tem certeza que deseja excluir esta categoria?</p>
-                    <p class="text-sm text-gray-600">Esta ação não pode ser desfeita. A categoria será removida permanentemente do sistema.</p>
+                    <p class="text-gray-800 font-medium mb-2">Tem certeza que deseja excluir esta causa?</p>
+                    <p class="text-sm text-gray-600">Esta ação não pode ser desfeita. A causa será removida permanentemente do sistema.</p>
                 </div>
             </div>
             <div class="flex justify-end space-x-3">
@@ -446,7 +446,7 @@
 
     document.getElementById('searchInput').addEventListener('input', function(e) {
         const searchTerm = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('#damage-types-table tbody tr');
+        const rows = document.querySelectorAll('#causes-table tbody tr');
         
         rows.forEach(row => {
             const text = row.textContent.toLowerCase();

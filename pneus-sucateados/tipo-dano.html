@@ -99,6 +99,10 @@
                     <i class="fa-solid fa-layer-group mr-3 text-gray-500"></i>
                     Ctg. de Tipo de Dano
                 </a>
+                <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
+                    Causa por Tipo de Dano
+                </a>
             </div>
         </div>
 
@@ -451,6 +455,30 @@
                     <option value="operacional">Operacional</option>
                 </select>
             </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Causas Principais</label>
+                <div class="border border-gray-300 rounded-lg p-4 max-h-48 overflow-y-auto bg-gray-50">
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                            <span class="text-sm text-gray-700">Ruptura Radial</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                            <span class="text-sm text-gray-700">Impacto Violento</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                            <span class="text-sm text-gray-700">Falha na Vulcanização</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                            <span class="text-sm text-gray-700">Sobrecarga</span>
+                        </label>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Selecione as causas associadas a este tipo de dano.</p>
+            </div>
             <div class="flex justify-end space-x-3">
                 <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
                     Cancelar
@@ -485,6 +513,30 @@
                     <option value="superficial">Superficial</option>
                     <option value="operacional">Operacional</option>
                 </select>
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Causas Principais</label>
+                <div class="border border-gray-300 rounded-lg p-4 max-h-48 overflow-y-auto bg-gray-50">
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02" checked>
+                            <span class="text-sm text-gray-700">Ruptura Radial</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                            <span class="text-sm text-gray-700">Impacto Violento</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
+                            <span class="text-sm text-gray-700">Falha na Vulcanização</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 hover:bg-white rounded-lg transition-colors cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02" checked>
+                            <span class="text-sm text-gray-700">Sobrecarga</span>
+                        </label>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Selecione as causas associadas a este tipo de dano.</p>
             </div>
             <div class="flex justify-end space-x-3">
                 <button type="button" onclick="closeEditModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
