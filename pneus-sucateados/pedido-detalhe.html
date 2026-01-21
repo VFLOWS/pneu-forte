@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhe da Solicitação</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -100,7 +98,7 @@
                 </a>
                 <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
-                    Causa por Tipo de Dano
+                    Principais Causas (Tipo de Dano)
                 </a>
             </div>
         </div>
@@ -151,16 +149,16 @@
                     <p><strong class="font-medium text-gray-800">Total de Pneus:</strong> 22</p>
                 </div>
             </div>
-            <div class="flex flex-col space-y-2">
-                 <a href="detalhe-analise.html" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+            <div class="flex flex-row space-x-2">
+                 <a href="detalhe-analise.html" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
                     <i class="fa-solid fa-chart-simple mr-2"></i>
                     Ver Resultado
                 </a>
-                 <button type="button" class="w-full px-4 py-2 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors">
+                 <button type="button" class="w-full px-4 py-1 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors">
                     <i class="fa-regular fa-floppy-disk mr-2"></i>
                     Salvar Análise
                 </button>
-                <button type="button" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                <button type="button" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
                     <i class="fa-solid fa-check mr-2"></i>
                     Concluir Análise
                 </button>
@@ -172,113 +170,116 @@
         <div>
             <h3 class="text-xl font-bold text-gray-800">Pneus da Solicitação</h3>
         </div>
-        <button onclick="toggleForm()" id="btn-toggle-form" class="px-4 py-2 bg-azul-02 text-white rounded-lg hover:bg-blue-800 flex items-center font-medium">
+        <button onclick="toggleForm()" id="btn-toggle-form" class="px-4 py-2 bg-azul-02 text-white rounded-lg hover:bg-blue-800 flex items-center font-medium transition-colors duration-200">
             <i class="fa-solid fa-plus mr-2"></i>
             Adicionar Pneu
         </button>
     </div>
 
-    <div id="form-container" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white rounded-lg border border-gray-200 opacity-0">
-        <div class="p-6">
-            <div class="flex justify-between items-center pb-3 border-b mb-4">
-                <h3 class="text-lg font-medium text-gray-900" id="form-title">Adicionar Pneu</h3>
-                <button onclick="closeForm()" class="text-gray-400 hover:text-gray-500">
-                    <i class="fa-solid fa-times"></i>
-                </button>
-            </div>
-            
-            <form id="form-pneu">
-                <input type="hidden" id="pneu-index" value="">
+    <!-- Formulário de Adição/Edição (Estilo Gaveta/Excel) -->
+    <div id="form-container" class="hidden mb-6 bg-gray-50 border border-gray-200 rounded-lg shadow-inner overflow-hidden transition-all duration-300">
+        <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-100">
+            <h4 id="form-title" class="text-sm font-bold text-gray-700 uppercase tracking-wider flex items-center">
+                <i class="fa-solid fa-pen-to-square mr-2 text-azul-02"></i>
+                Novo Pneu
+            </h4>
+            <button onclick="toggleForm()" class="text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-5">
+            <input type="hidden" id="input-index">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                 
-                <!-- Seção 1: Identificação do Pneu -->
-                <div class="mb-6">
-                    <h4 class="text-md font-semibold text-gray-800 mb-3 border-b pb-2 flex items-center">
-                        <span class="bg-azul-02 text-white rounded-full h-5 w-5 text-xs flex items-center justify-center mr-2 font-medium">1</span>
-                        Identificação do Pneu
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Marca <span class="text-red-500">*</span></label>
-                            <select id="marca" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                <option>Michelin</option>
-                                <option>Goodyear</option>
-                                <option>Pirelli</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Modelo <span class="text-red-500">*</span></label>
-                            <select id="modelo" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                <option>X One</option>
-                                <option>KMAX S</option>
-                                <option>FR88</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Medida <span class="text-red-500">*</span></label>
-                            <select id="medida" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                <option>295/80 R22.5</option>
-                                <option>275/80 R22.5</option>
-                                <option>1100 R22</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Nr de Fogo / Matrícula</label>
-                            <input type="text" id="fogo" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 12345">
-                        </div>
-                    </div>
+                <!-- Marca (2 cols) -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Marca</label>
+                    <select id="input-marca" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10">
+                        <option value="">Selecione</option>
+                        <option value="Michelin">Michelin</option>
+                        <option value="Goodyear">Goodyear</option>
+                        <option value="Pirelli">Pirelli</option>
+                        <option value="Bridgestone">Bridgestone</option>
+                        <option value="Continental">Continental</option>
+                    </select>
                 </div>
 
-                <!-- Seção 2: Análise do Dano -->
-                <div class="mb-6">
-                        <h4 class="text-md font-semibold text-gray-800 mb-3 border-b pb-2 flex items-center">
-                            <span class="bg-azul-02 text-white rounded-full h-5 w-5 text-xs flex items-center justify-center mr-2">2</span>
-                            Análise do Dano
-                        </h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Dano <span class="text-red-500">*</span></label>
-                            <select id="tipo-dano" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                <option>Desgaste Irregular</option>
-                                <option>Corte Lateral</option>
-                                <option>Separação da Banda</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Profundidade (mm)</label>
-                            <input type="number" id="profundidade" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 5">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">DOT</label>
-                            <input type="text" id="dot" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Ex: 2318">
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Fotos do Dano</label>
-                        <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:bg-gray-50 transition-colors" id="drop-zone">
-                            <div class="space-y-1 text-center">
-                                <i class="fa-solid fa-camera mx-auto h-12 w-12 text-gray-400"></i>
-                                <div class="flex text-sm text-gray-600 justify-center">
-                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-azul-02 hover:text-blue-800 focus-within:outline-none">
-                                        <span>Carregar arquivos</span>
-                                        <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple accept="image/*" onchange="handleFileSelect(event)">
-                                    </label>
-                                    <p class="pl-1">ou arraste e solte</p>
-                                </div>
-                                <p class="text-xs text-gray-500">PNG, JPG, GIF até 10MB</p>
-                            </div>
-                        </div>
-                        <!-- Container para preview das fotos -->
-                        <div id="preview-container" class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 hidden">
-                        </div>
-                    </div>
+                <!-- Modelo (2 cols) -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Modelo</label>
+                    <select id="input-modelo" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10">
+                        <option value="">Selecione</option>
+                        <option value="X One">X One</option>
+                        <option value="KMAX S">KMAX S</option>
+                        <option value="FR88">FR88</option>
+                        <option value="R268">R268</option>
+                        <option value="HSR2">HSR2</option>
+                    </select>
                 </div>
-                
-                <div class="flex justify-end pt-3 border-t space-x-3">
-                    <button type="button" onclick="closeForm()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400">Cancelar</button>
-                    <button type="button" onclick="savePneu()" class="px-4 py-2 bg-azul-02 text-white rounded-lg hover:bg-blue-800">Salvar</button>
+
+                <!-- Medida (2 cols) -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Medida</label>
+                    <select id="input-medida" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10">
+                        <option value="">Selecione</option>
+                        <option value="295/80 R22.5">295/80 R22.5</option>
+                        <option value="275/80 R22.5">275/80 R22.5</option>
+                        <option value="1100 R22">1100 R22</option>
+                        <option value="12 R22.5">12 R22.5</option>
+                    </select>
                 </div>
-            </form>
+
+                <!-- Matrícula (1 col) -->
+                <div class="md:col-span-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Matrícula</label>
+                    <input type="text" id="input-matricula" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10" placeholder="0000">
+                </div>
+
+                <!-- Tipo de Dano (2 cols) -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Tipo de Dano</label>
+                    <select id="input-tipoDano" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10">
+                        <option value="">Selecione</option>
+                        <option value="Desgaste Irregular">Desgaste Irregular</option>
+                        <option value="Corte Lateral">Corte Lateral</option>
+                        <option value="Separação da Banda">Separação da Banda</option>
+                        <option value="Bolha no Flanco">Bolha no Flanco</option>
+                        <option value="Arrancamento">Arrancamento</option>
+                    </select>
+                </div>
+
+                <!-- Profundidade (1 col) -->
+                <div class="md:col-span-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Profund. (mm)</label>
+                    <input type="number" id="input-profundidade" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10" placeholder="0">
+                </div>
+
+                <!-- DOT (1 col) -->
+                <div class="md:col-span-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">DOT</label>
+                    <input type="text" id="input-dot" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10" placeholder="0000">
+                </div>
+
+                <!-- Foto (1 col) -->
+                <div class="md:col-span-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Foto</label>
+                    <label for="input-foto" class="flex items-center justify-center w-full h-10 border border-gray-300 border-dashed rounded-md cursor-pointer hover:bg-gray-50 hover:border-azul-02 text-gray-500 hover:text-azul-02 transition-colors">
+                        <i class="fa-solid fa-camera"></i>
+                        <input type="file" id="input-foto" class="hidden" accept="image/*" onchange="previewFoto(this)">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="flex justify-end mt-4 pt-4 border-t border-gray-200 space-x-3">
+                <button onclick="toggleForm()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-02">
+                    Cancelar
+                </button>
+                <button onclick="savePneu()" class="px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center">
+                    <i class="fa-solid fa-check mr-2"></i>
+                    Salvar Pneu
+                </button>
+            </div>
         </div>
     </div>
 
@@ -287,24 +288,20 @@
             <table class="w-full">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cód. Análise</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Marca/Modelo</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">DOT</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cód. Análise</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-48">Marca/Modelo</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Medida</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Matrícula</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tipo de Dano</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-20">Profund.</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-20">DOT</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Fotos</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Status</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Ações</th>
                     </tr>
                 </thead>
                 <tbody id="lista-pneus" class="bg-white divide-y divide-gray-200">
                     <!-- Pneus serão listados aqui -->
-                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">ANALISE-00345</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Michelin / X One</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">2318</td>
-                        <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full">Não Iniciada</span></td>
-                        <td class="px-6 py-4 text-sm">
-                            <a href="nova-analise-pneu.html" class="text-primary-700 hover:text-primary-800"><i class="fa-solid fa-edit"></i></a>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -312,205 +309,208 @@
 </main>
 
 <script>
-    // Armazenar pneus em memória para edição
+    // Armazenar pneus em memória
     let pneusData = [];
-    let selectedFiles = []; // Array para armazenar arquivos selecionados
     
-    function toggleForm(index = null) {
-        const formContainer = document.getElementById('form-container');
-        const tbody = document.getElementById('lista-pneus');
-        const mainContent = document.getElementById('main-content');
-        const title = document.getElementById('form-title');
-        const indexInput = document.getElementById('pneu-index');
-        
-        // Limpar linhas de formulário antigas
-        document.querySelectorAll('.form-row').forEach(row => row.remove());
-
-        // Criar linha da tabela para o formulário
-        const tr = document.createElement('tr');
-        tr.className = 'form-row bg-gray-50 border-t border-b border-gray-200';
-        const td = document.createElement('td');
-        td.colSpan = 5;
-        td.className = 'p-0'; 
-        tr.appendChild(td);
-        td.appendChild(formContainer);
-
-        if (index !== null) {
-            // Modo Edição - Inserir após a linha
-            const targetRow = tbody.children[index];
-            if (targetRow) {
-                targetRow.after(tr);
-            } else {
-                tbody.appendChild(tr);
-            }
-            
-            // Preencher dados
-            title.textContent = 'Editar Pneu';
-            indexInput.value = index;
-            const pneu = pneusData[index];
-            
-            document.getElementById('marca').value = pneu.marca;
-            document.getElementById('modelo').value = pneu.modelo;
-            document.getElementById('medida').value = pneu.medida || '';
-            document.getElementById('fogo').value = pneu.fogo || '';
-            document.getElementById('tipo-dano').value = pneu.tipoDano || '';
-            document.getElementById('profundidade').value = pneu.profundidade || '';
-            document.getElementById('dot').value = pneu.dot;
-        } else {
-            // Modo Adicionar - Inserir no final
-            tbody.appendChild(tr);
-            
-            title.textContent = 'Adicionar Pneu';
-            indexInput.value = '';
-            document.getElementById('form-pneu').reset();
-            
-            document.getElementById('preview-container').innerHTML = '';
-            document.getElementById('preview-container').classList.add('hidden');
-            selectedFiles = [];
-        }
-
-        // Animação de entrada
-        setTimeout(() => {
-            formContainer.classList.remove('max-h-0', 'opacity-0');
-            formContainer.classList.add('max-h-[800px]', 'opacity-100');
-            formContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 10);
+    // Dados iniciais de exemplo (opcional)
+    if (pneusData.length === 0) {
+        pneusData.push({
+            id: 'ANALISE-00345',
+            marca: 'Michelin',
+            modelo: 'X One',
+            medida: '295/80 R22.5',
+            matricula: 'ABC-1234',
+            tipoDano: 'Desgaste Irregular',
+            profundidade: '12',
+            dot: '4521',
+            foto: true,
+            status: 'Não Iniciada'
+        });
     }
 
-    function closeForm() {
-        const formContainer = document.getElementById('form-container');
-        
-        formContainer.classList.remove('max-h-[800px]', 'opacity-100');
-        formContainer.classList.add('max-h-0', 'opacity-0');
-        
-        setTimeout(() => {
-            if (formContainer.closest('.form-row')) {
-                document.getElementById('main-content').appendChild(formContainer);
-                document.querySelectorAll('.form-row').forEach(row => row.remove());
-            }
-        }, 500);
-    }
-
-    function handleFileSelect(event) {
-        const files = event.target.files;
-        const previewContainer = document.getElementById('preview-container');
-        
-        if (files.length > 0) {
-            previewContainer.classList.remove('hidden');
-            
-            Array.from(files).forEach(file => {
-                selectedFiles.push(file);
-
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const div = document.createElement('div');
-                    div.className = 'relative group';
-                    div.innerHTML = `
-                        <img src="${e.target.result}" class="h-24 w-full object-cover rounded-lg border border-gray-200">
-                        <button type="button" class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity" onclick="removeFile(this)">
-                            <i class="fa-solid fa-times"></i>
-                        </button>
-                    `;
-                    previewContainer.appendChild(div);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
-
-    function removeFile(button) {
-        button.parentElement.remove();
-        const previewContainer = document.getElementById('preview-container');
-        if (previewContainer.children.length === 0) {
-            previewContainer.classList.add('hidden');
-        }
-    }
-
-    function savePneu() {
-        const marca = document.getElementById('marca').value;
-        const modelo = document.getElementById('modelo').value;
-        const medida = document.getElementById('medida').value;
-        const fogo = document.getElementById('fogo').value;
-        const tipoDano = document.getElementById('tipo-dano').value;
-        const profundidade = document.getElementById('profundidade').value;
-        const dot = document.getElementById('dot').value;
-        const index = document.getElementById('pneu-index').value;
-
-        if (!marca || !modelo || !tipoDano) {
-            alert('Por favor, preencha os campos obrigatórios.');
-            return;
-        }
-
-        const pneu = {
-            marca,
-            modelo,
-            medida,
-            fogo,
-            tipoDano,
-            profundidade,
-            dot,
-            status: 'Não Iniciada',
-            id: index !== '' ? pneusData[index].id : 'ANALISE-' + Math.floor(Math.random() * 10000).toString().padStart(5, '0')
-        };
-
-        if (index !== '') {
-            pneusData[index] = pneu;
-        } else {
-            pneusData.push(pneu);
-        }
-
-        const formContainer = document.getElementById('form-container');
-        document.getElementById('main-content').appendChild(formContainer);
-        formContainer.classList.add('max-h-0', 'opacity-0');
-        formContainer.classList.remove('max-h-[800px]', 'opacity-100');
-        document.querySelectorAll('.form-row').forEach(row => row.remove());
-
-        renderTable();
-    }
+    // Renderizar tabela inicial
+    document.addEventListener('DOMContentLoaded', renderTable);
 
     function renderTable() {
         const tbody = document.getElementById('lista-pneus');
-        const formContainer = document.getElementById('form-container');
-
-        if (tbody.contains(formContainer)) {
-             document.getElementById('main-content').appendChild(formContainer);
-        }
-
-        tbody.innerHTML = '<!-- Pneus serão listados aqui -->';
+        tbody.innerHTML = '';
 
         pneusData.forEach((pneu, index) => {
             const tr = document.createElement('tr');
-            tr.className = 'hover:bg-gray-50';
+            tr.className = 'hover:bg-gray-50 transition-colors duration-150';
+            
             tr.innerHTML = `
-                <td class="px-6 py-4 text-sm font-medium text-gray-800">${pneu.id}</td>
-                <td class="px-6 py-4 text-sm text-gray-700">${pneu.marca} / ${pneu.modelo}</td>
-                <td class="px-6 py-4 text-sm text-gray-700">${pneu.dot}</td>
-                <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full">${pneu.status}</span></td>
-                <td class="px-6 py-4 text-sm">
-                    <button onclick="toggleForm(${index})" class="text-primary-700 hover:text-primary-800"><i class="fa-solid fa-edit"></i></button>
+                <td class="px-4 py-4 text-sm font-medium text-gray-800">${pneu.id}</td>
+                <td class="px-4 py-4 text-sm text-gray-700 font-medium">${pneu.marca} / <span class="text-gray-500 font-normal">${pneu.modelo}</span></td>
+                <td class="px-4 py-4 text-sm text-gray-700">${pneu.medida || '-'}</td>
+                <td class="px-4 py-4 text-sm text-gray-700">${pneu.matricula || '-'}</td>
+                <td class="px-4 py-4 text-sm text-gray-700">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700">
+                        ${pneu.tipoDano}
+                    </span>
+                </td>
+                <td class="px-4 py-4 text-sm text-gray-700">${pneu.profundidade ? pneu.profundidade + ' mm' : '-'}</td>
+                <td class="px-4 py-4 text-sm text-gray-700">${pneu.dot || '-'}</td>
+                <td class="px-4 py-4 text-sm text-center">
+                    ${pneu.foto ? '<button class="text-azul-02 hover:text-blue-800"><i class="fa-solid fa-camera"></i></button>' : '<span class="text-gray-400">-</span>'}
+                </td>
+                <td class="px-4 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full">${pneu.status}</span></td>
+                <td class="px-4 py-4 text-sm flex space-x-2">
+                    <button onclick="editRow(${index})" class="text-azul-02 hover:text-blue-800 p-1 rounded-md hover:bg-blue-50 transition-colors" title="Editar">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button onclick="deleteRow(${index})" class="text-red-600 hover:text-red-800 p-1 rounded-md hover:bg-red-50 transition-colors" title="Excluir">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                 </td>
             `;
             tbody.appendChild(tr);
         });
     }
+
+    function toggleForm() {
+        const formContainer = document.getElementById('form-container');
+        const btnToggle = document.getElementById('btn-toggle-form');
+        const isHidden = formContainer.classList.contains('hidden');
+        
+        if (isHidden) {
+            // Abrindo o formulário
+            formContainer.classList.remove('hidden');
+            btnToggle.innerHTML = '<i class="fa-solid fa-minus mr-2"></i> Fechar Formulário';
+            btnToggle.classList.replace('bg-azul-02', 'bg-gray-500');
+            btnToggle.classList.replace('hover:bg-blue-800', 'hover:bg-gray-600');
+            
+            // Se não estiver editando (input-index vazio), limpa o formulário
+            if (document.getElementById('input-index').value === '') {
+                clearForm();
+                document.getElementById('form-title').innerHTML = '<i class="fa-solid fa-plus mr-2 text-azul-02"></i> Novo Pneu';
+            }
+            
+            // Focar no primeiro campo
+            setTimeout(() => document.getElementById('input-marca').focus(), 100);
+        } else {
+            // Fechando o formulário
+            formContainer.classList.add('hidden');
+            btnToggle.innerHTML = '<i class="fa-solid fa-plus mr-2"></i> Adicionar Pneu';
+            btnToggle.classList.replace('bg-gray-500', 'bg-azul-02');
+            btnToggle.classList.replace('hover:bg-gray-600', 'hover:bg-blue-800');
+            clearForm();
+        }
+    }
+
+    function clearForm() {
+        document.getElementById('input-index').value = '';
+        document.getElementById('input-marca').value = '';
+        document.getElementById('input-modelo').value = '';
+        document.getElementById('input-medida').value = '';
+        document.getElementById('input-matricula').value = '';
+        document.getElementById('input-tipoDano').value = '';
+        document.getElementById('input-profundidade').value = '';
+        document.getElementById('input-dot').value = '';
+        document.getElementById('input-foto').value = ''; // Limpa input file
+        resetFotoPreview();
+    }
     
-    window.onload = function() {
-        const existingRows = document.querySelectorAll('#lista-pneus tr');
-        existingRows.forEach(row => {
-            pneusData.push({
-                id: 'ANALISE-00345',
-                marca: 'Michelin',
-                modelo: 'X One',
-                medida: '295/80 R22.5', 
-                fogo: '',
-                tipoDano: 'Desgaste Irregular', 
-                profundidade: '',
-                dot: '2318',
-                status: 'Não Iniciada'
-            });
-        });
+    function previewFoto(input) {
+        const label = input.parentElement;
+        if (input.files && input.files[0]) {
+            label.classList.add('bg-blue-50', 'border-azul-02', 'text-azul-02');
+            label.querySelector('i').className = 'fa-solid fa-check';
+        } else {
+            resetFotoPreview();
+        }
+    }
+    
+    function resetFotoPreview() {
+        const input = document.getElementById('input-foto');
+        const label = input.parentElement;
+        label.classList.remove('bg-blue-50', 'border-azul-02', 'text-azul-02');
+        label.querySelector('i').className = 'fa-solid fa-camera';
+    }
+
+    function savePneu() {
+        const index = document.getElementById('input-index').value;
+        const marca = document.getElementById('input-marca').value;
+        const modelo = document.getElementById('input-modelo').value;
+        const medida = document.getElementById('input-medida').value;
+        const matricula = document.getElementById('input-matricula').value;
+        const tipoDano = document.getElementById('input-tipoDano').value;
+        const profundidade = document.getElementById('input-profundidade').value;
+        const dot = document.getElementById('input-dot').value;
+        const fotoInput = document.getElementById('input-foto');
+        const temFoto = fotoInput.files && fotoInput.files.length > 0;
+
+        // Validação simples
+        if (!marca || !modelo || !tipoDano) {
+            alert('Por favor, preencha pelo menos Marca, Modelo e Tipo de Dano.');
+            return;
+        }
+
+        const pneu = {
+            id: index !== '' ? pneusData[index].id : 'ANALISE-' + Math.floor(Math.random() * 10000).toString().padStart(5, '0'),
+            marca,
+            modelo,
+            medida,
+            matricula,
+            tipoDano,
+            profundidade,
+            dot,
+            foto: index !== '' ? (temFoto ? true : pneusData[index].foto) : temFoto,
+            status: index !== '' ? pneusData[index].status : 'Não Iniciada'
+        };
+
+        if (index !== '') {
+            // Editando
+            pneusData[index] = pneu;
+        } else {
+            // Criando novo
+            pneusData.push(pneu);
+        }
+
         renderTable();
-    };
+        toggleForm(); // Fecha o formulário e reseta o botão
+    }
+
+    function editRow(index) {
+        const pneu = pneusData[index];
+        
+        // Preencher formulário
+        document.getElementById('input-index').value = index;
+        document.getElementById('input-marca').value = pneu.marca;
+        document.getElementById('input-modelo').value = pneu.modelo;
+        document.getElementById('input-medida').value = pneu.medida;
+        document.getElementById('input-matricula').value = pneu.matricula;
+        document.getElementById('input-tipoDano').value = pneu.tipoDano;
+        document.getElementById('input-profundidade').value = pneu.profundidade;
+        document.getElementById('input-dot').value = pneu.dot;
+        
+        // Resetar preview de foto (não carregamos a foto real na edição simulada)
+        resetFotoPreview();
+        if(pneu.foto) {
+             const label = document.getElementById('input-foto').parentElement;
+             label.classList.add('text-azul-02');
+             label.querySelector('i').className = 'fa-solid fa-camera'; // Mantém camera mas azul para indicar que já tem
+        }
+
+        // Mudar título
+        document.getElementById('form-title').innerHTML = '<i class="fa-solid fa-pen-to-square mr-2 text-azul-02"></i> Editar Pneu ' + pneu.id;
+
+        // Abrir formulário se estiver fechado
+        const formContainer = document.getElementById('form-container');
+        if (formContainer.classList.contains('hidden')) {
+            toggleForm();
+        }
+        
+        // Rolar até o formulário
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function deleteRow(index) {
+        if (confirm('Tem certeza que deseja remover este pneu da lista?')) {
+            pneusData.splice(index, 1);
+            renderTable();
+        }
+    }
 </script>
 
 </body>

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="pneu-forte-colors.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Causa por Tipo de Dano</title>
+    <title>Principais Causas (Tipo de Dano)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -90,7 +90,7 @@
                 </a>
                 <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
                     <i class="fa-solid fa-clipboard-list mr-3 text-white"></i>
-                    Causa por Tipo de Dano
+                    Principais Causas (Tipo de Dano)
                 </a>
             </div>
         </div>
@@ -124,7 +124,7 @@
 <main id="main-content" class="ml-64 mt-[61px] p-6">
     <div class="mb-6 flex items-center justify-between">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">Causa por Tipo de Dano</h2>
+            <h2 class="text-2xl font-bold text-gray-800">Principais Causas (Tipo de Dano)</h2>
             <p class="text-sm text-gray-600 mt-1">Gerencie as causas associadas aos tipos de danos</p>
         </div>
         <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
@@ -198,22 +198,18 @@
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-12">
                             <input type="checkbox" class="w-4 h-4 text-azul-02 border-gray-300 rounded focus:ring-azul-02">
                         </th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Causa
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/4">
+                            Título
                             <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Ocorrências
+                            Descrição
                             <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                         </th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Data de Cadastro
-                            <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
                             Status
                         </th>
-                        <th class="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th class="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
                             Ações
                         </th>
                     </tr>
@@ -226,8 +222,9 @@
                         <td class="px-6 py-4">
                             <span class="text-sm font-medium text-gray-800">Ruptura Radial</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">14</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">10/01/2024</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">
+                            Rompimento da estrutura radial do pneu devido a impacto ou fadiga.
+                        </td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Ativo</span>
                         </td>
@@ -247,8 +244,9 @@
                         <td class="px-6 py-4">
                             <span class="text-sm font-medium text-gray-800">Impacto Violento</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">8</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">12/01/2024</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">
+                            Danos causados por choque contra objetos, buracos ou meio-fio.
+                        </td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Ativo</span>
                         </td>
@@ -268,8 +266,9 @@
                         <td class="px-6 py-4">
                             <span class="text-sm font-medium text-gray-800">Falha na Vulcanização</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">5</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">15/01/2024</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">
+                            Defeitos no processo de vulcanização durante a reforma.
+                        </td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">Ativo</span>
                         </td>
@@ -289,8 +288,9 @@
                         <td class="px-6 py-4">
                             <span class="text-sm font-medium text-gray-800">Sobrecarga</span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-700">12</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">20/01/2024</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">
+                            Excesso de peso suportado pelo pneu acima do especificado.
+                        </td>
                         <td class="px-6 py-4">
                             <span class="px-2.5 py-1 bg-red-100 text-red-700 text-xs font-medium rounded-full">Inativo</span>
                         </td>
@@ -332,8 +332,12 @@
         </div>
         <form class="p-6">
             <div class="mb-5">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Causa <span class="text-red-500">*</span></label>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Título <span class="text-red-500">*</span></label>
                 <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Ruptura Radial">
+            </div>
+            <div class="mb-5">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
+                <textarea rows="3" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Descreva a causa..."></textarea>
             </div>
             <div class="mb-6">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
@@ -346,7 +350,7 @@
                 <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
                     Cancelar
                 </button>
-                <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
+                <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
                     <i class="fa-solid fa-plus mr-2"></i>
                     Adicionar
                 </button>
@@ -365,8 +369,12 @@
         </div>
         <form class="p-6">
             <div class="mb-5">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Causa <span class="text-red-500">*</span></label>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Título <span class="text-red-500">*</span></label>
                 <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Ruptura Radial">
+            </div>
+            <div class="mb-5">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
+                <textarea rows="3" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">Rompimento da estrutura radial do pneu devido a impacto ou fadiga.</textarea>
             </div>
             <div class="mb-6">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
@@ -379,7 +387,7 @@
                 <button type="button" onclick="closeEditModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
                     Cancelar
                 </button>
-                <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
+                <button type="button" onclick="closeEditModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
                     <i class="fa-solid fa-save mr-2"></i>
                     Salvar Alterações
                 </button>

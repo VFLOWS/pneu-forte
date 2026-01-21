@@ -115,7 +115,7 @@
                 </a>
                 <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
-                    Causa por Tipo de Dano
+                    Principais Causas (Tipo de Dano)
                 </a>
             </div>
             </div>
@@ -509,8 +509,7 @@
                                     placeholder="Ex: R$ 130,43">
                             </div>
                             <div>
-                                <label for="largura" class="block text-sm font-medium text-gray-700 mb-1">Valor
-                                    Recapagem</label>
+                                <label for="largura" class="block text-sm font-medium text-gray-700 mb-1">Valor Recapagem (CPK)</label>
                                 <input type="text" id="val-recapagem"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02"
                                     placeholder="Ex: R$ 85,13">
@@ -539,14 +538,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex justify-end space-x-4">
-                        <button type="button" onclick="closeAddModelModal()"
-                            class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                     <div class="mt-8 flex w-full justify-between space-x-4">
+                        <button type="button" onclick="closeEditModelModal()"
+                            class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg w-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
                             Cancelar
                         </button>
                         <button type="submit"
-                            class="px-6 py-2 text-white bg-azul-02 rounded-lg hover:bg-azul-04 focus:outline-none focus:ring-2 focus:ring-azul-02">
-                            Adicionar Modelo
+                            class="px-6 py-2 text-white bg-azul-02 rounded-lg hover:bg-azul-04 w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
+                            Salvar Alterações
                         </button>
                     </div>
                 </form>
@@ -681,6 +680,31 @@
                     item.style.display = 'none';
                 }
             });
+        });
+
+        function formatarMoeda(elemento) {
+            let valor = elemento.value.replace(/\D/g, '');
+            
+            if (valor === '') {
+                elemento.value = '';
+                return;
+            }
+            
+            valor = (valor / 100).toFixed(2) + '';
+            valor = valor.replace('.', ',');
+            valor = valor.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+            elemento.value = 'R$ ' + valor;
+        }
+
+        const camposMoeda = ['val-pneu-novo', 'val-recapagem'];
+        
+        camposMoeda.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', function() {
+                    formatarMoeda(this);
+                });
+            }
         });
     </script>
 
