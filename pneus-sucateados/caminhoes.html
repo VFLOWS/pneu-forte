@@ -172,15 +172,23 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">ABC-1234</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">
-                            <p class="font-medium">Scania R450</p>
-                            <p class="text-xs text-gray-500">Motor 13L 450cv</p>
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">
+                            <div>ABC-1234</div>
+                            <div class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-trailer mr-1"></i>XYZ-9988</div>
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-700">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                Cavalo Mecânico 6x2
-                            </span>
+                            <p class="font-medium">Scania R450</p>
+                            <p class="text-xs text-gray-500">Sider 3 Eixos</p>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">
+                            <div class="space-y-1">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    Cavalo 6x2
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    Carreta 3 Eixos
+                                </span>
+                            </div>
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
                         <td class="px-6 py-4 text-sm">
@@ -189,15 +197,23 @@
                         </td>
                     </tr>
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">XYZ-9876</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">
-                            <p class="font-medium">Volvo FH 540</p>
-                            <p class="text-xs text-gray-500">Motor D13K 540cv</p>
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">
+                            <div>XYZ-9876</div>
+                            <div class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-trailer mr-1"></i>BIT-9000</div>
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-700">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                Bitrem 9 Eixos
-                            </span>
+                            <p class="font-medium">Volvo FH 540</p>
+                            <p class="text-xs text-gray-500">Bitrem Graneleiro</p>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-700">
+                            <div class="space-y-1">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    Cavalo 6x4
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    Bitrem 2+2 Eixos
+                                </span>
+                            </div>
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-700">Agro Cargas Brasil</td>
                         <td class="px-6 py-4 text-sm">
@@ -229,21 +245,31 @@
 </main>
 
 <!-- Add/Edit/Delete Modals -->
-<div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center overflow-y-auto py-10">
-    <div class="bg-white rounded-lg w-full max-w-3xl mx-4">
-        <div class="flex items-center justify-between p-6 border-b border-gray-200">
+<div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg w-full max-w-3xl flex flex-col max-h-[90vh]">
+        <div class="flex items-center justify-between p-6 border-b border-gray-200 shrink-0">
             <h3 class="text-xl font-bold text-gray-800">Novo Caminhão</h3>
             <button onclick="closeAddModal()" class="text-gray-400 hover:text-gray-600">
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
-        <form class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Placa <span class="text-red-500">*</span></label>
-                    <input type="text" id="add-placa" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="ABC-1234">
+        <form class="p-6 overflow-y-auto flex-1">
+            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <label class="block text-sm font-medium text-gray-700 mb-3">Tipo de Veículo</label>
+                <div class="flex items-center space-x-6">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="tipo_veiculo_add" value="rigido" class="form-radio text-azul-02 w-4 h-4" onclick="toggleCarretaFields('add', false)">
+                        <span class="ml-2 text-sm text-gray-700">Caminhão Rígido / Cavalo Solto</span>
+                    </label>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="tipo_veiculo_add" value="articulado" class="form-radio text-azul-02 w-4 h-4" checked onclick="toggleCarretaFields('add', true)">
+                        <span class="ml-2 text-sm text-gray-700 font-medium">Conjunto Articulado (Cavalo + Carreta)</span>
+                    </label>
                 </div>
-                <div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Cliente Vinculado <span class="text-red-500">*</span></label>
                     <select required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
                         <option value="">Selecione um cliente...</option>
@@ -253,33 +279,69 @@
                         <option value="4">Logística Rápida</option>
                     </select>
                 </div>
+
+                <!-- Section: Cavalo / Trator -->
+                <div class="md:col-span-2 border-b border-gray-200 pb-2 mt-2 mb-2">
+                    <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider flex items-center">
+                        Dados do Cavalo / Trator
+                    </h4>
+                </div>
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Modelo do Caminhão</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Placa do Cavalo <span class="text-red-500">*</span></label>
+                    <input type="text" id="add-placa" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="ABC-1234">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Modelo / Marca</label>
                     <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Scania R450">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Motorização</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 13L 450cv">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos (Cavalo)</label>
                     <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
-                        <option value="toco">Toco (2 eixos)</option>
-                        <option value="truck">Truck (3 eixos)</option>
-                        <option value="bitruck">Bitruck (4 eixos)</option>
-                        <option value="cavalo-2">Cavalo Mecânico (2 eixos)</option>
-                        <option value="cavalo-3">Cavalo Mecânico (3 eixos)</option>
-                        <option value="bitrem">Bitrem</option>
-                        <option value="rodotrem">Rodotrem</option>
-                        <option value="outro">Outro / Especial</option>
+                        <option value="4x2">4x2 (Toco) - 2 Eixos</option>
+                        <option value="6x2">6x2 (Trucado) - 3 Eixos</option>
+                        <option value="6x4">6x4 (Traçado) - 3 Eixos</option>
+                        <option value="8x2">8x2 (Bitruck) - 4 Eixos</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Ano Fabricação</label>
                     <input type="number" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 2023">
                 </div>
+
+                <!-- Section: Carreta -->
+                <div id="add-carreta-header" class="md:col-span-2 border-b border-gray-200 pb-2 mt-2 mb-2">
+                    <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider flex items-center">
+                        Dados da Carreta / Implemento
+                    </h4>
+                </div>
+
+                <div id="add-carreta-placa">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Placa da Carreta</label>
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="XYZ-5678">
+                </div>
+                <div id="add-carreta-tipo">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Carroceria</label>
+                    <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                        <option value="bau">Baú</option>
+                        <option value="sider">Sider</option>
+                        <option value="graneleiro">Graneleiro</option>
+                        <option value="cacamba">Caçamba</option>
+                        <option value="tanque">Tanque</option>
+                        <option value="prancha">Prancha</option>
+                    </select>
+                </div>
+                <div id="add-carreta-eixos" class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos (Carreta)</label>
+                    <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                        <option value="1">1 Eixo (4 pneus)</option>
+                        <option value="2">2 Eixos (8 pneus)</option>
+                        <option value="3" selected>3 Eixos (12 pneus) - Padrão</option>
+                        <option value="4">4 Eixos (16 pneus)</option>
+                    </select>
+                </div>
                 
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 border-t border-gray-200 pt-4 mt-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Foto do Caminhão</label>
                     <input type="file" accept="image/*" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-azul-02 file:text-white hover:file:bg-azul-04">
                 </div>
@@ -301,61 +363,111 @@
     </div>
 </div>
 
-<div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center overflow-y-auto py-10">
-    <div class="bg-white rounded-lg w-full max-w-3xl mx-4">
-        <div class="flex items-center justify-between p-6 border-b border-gray-200">
+<div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg w-full max-w-3xl flex flex-col max-h-[90vh]">
+        <div class="flex items-center justify-between p-6 border-b border-gray-200 shrink-0">
             <h3 class="text-xl font-bold text-gray-800">Editar Caminhão</h3>
             <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
-        <form class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Placa <span class="text-red-500">*</span></label>
-                    <input type="text" id="edit-placa" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" value="ABC-1234">
+        <form class="p-6 overflow-y-auto flex-1">
+            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <label class="block text-sm font-medium text-gray-700 mb-3">Tipo de Veículo</label>
+                <div class="flex items-center space-x-6">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="tipo_veiculo_edit" value="rigido" class="form-radio text-azul-02 w-4 h-4" onclick="toggleCarretaFields('edit', false)">
+                        <span class="ml-2 text-sm text-gray-700">Caminhão Rígido / Cavalo Solto</span>
+                    </label>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="tipo_veiculo_edit" value="articulado" class="form-radio text-azul-02 w-4 h-4" checked onclick="toggleCarretaFields('edit', true)">
+                        <span class="ml-2 text-sm text-gray-700 font-medium">Conjunto Articulado (Cavalo + Carreta)</span>
+                    </label>
                 </div>
-                <div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Cliente Vinculado <span class="text-red-500">*</span></label>
                     <select required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                        <option value="">Selecione um cliente...</option>
                         <option value="1" selected>Transportadora Veloz</option>
                         <option value="2">Agro Cargas Brasil</option>
                         <option value="3">Inovação Logística</option>
+                        <option value="4">Logística Rápida</option>
                     </select>
                 </div>
+
+                <!-- Section: Cavalo / Trator -->
+                <div class="md:col-span-2 border-b border-gray-200 pb-2 mt-2 mb-2">
+                    <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-truck-front mr-2 text-azul-02"></i>
+                        Dados do Cavalo / Trator
+                    </h4>
+                </div>
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Modelo do Caminhão</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Placa do Cavalo <span class="text-red-500">*</span></label>
+                    <input type="text" id="edit-placa" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" value="ABC-1234">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Modelo / Marca</label>
                     <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Scania R450">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Motorização</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="13L 450cv">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos (Cavalo)</label>
                     <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
-                        <option value="toco">Toco (2 eixos)</option>
-                        <option value="truck">Truck (3 eixos)</option>
-                        <option value="bitruck">Bitruck (4 eixos)</option>
-                        <option value="cavalo-2" selected>Cavalo Mecânico (2 eixos)</option>
-                        <option value="cavalo-3">Cavalo Mecânico (3 eixos)</option>
-                        <option value="bitrem">Bitrem</option>
-                        <option value="rodotrem">Rodotrem</option>
-                        <option value="outro">Outro / Especial</option>
+                        <option value="4x2">4x2 (Toco) - 2 Eixos</option>
+                        <option value="6x2" selected>6x2 (Trucado) - 3 Eixos</option>
+                        <option value="6x4">6x4 (Traçado) - 3 Eixos</option>
+                        <option value="8x2">8x2 (Bitruck) - 4 Eixos</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Ano Fabricação</label>
-                    <input type="number" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="2022">
+                    <input type="number" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="2023">
+                </div>
+
+                <!-- Section: Carreta -->
+                <div id="edit-carreta-header" class="md:col-span-2 border-b border-gray-200 pb-2 mt-2 mb-2">
+                    <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-trailer mr-2 text-azul-02"></i>
+                        Dados da Carreta / Implemento
+                    </h4>
+                </div>
+
+                <div id="edit-carreta-placa">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Placa da Carreta</label>
+                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" value="XYZ-5678">
+                </div>
+                <div id="edit-carreta-tipo">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Carroceria</label>
+                    <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                        <option value="bau">Baú</option>
+                        <option value="sider" selected>Sider</option>
+                        <option value="graneleiro">Graneleiro</option>
+                        <option value="cacamba">Caçamba</option>
+                        <option value="tanque">Tanque</option>
+                        <option value="prancha">Prancha</option>
+                    </select>
+                </div>
+                <div id="edit-carreta-eixos" class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos (Carreta)</label>
+                    <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                        <option value="1">1 Eixo (4 pneus)</option>
+                        <option value="2">2 Eixos (8 pneus)</option>
+                        <option value="3" selected>3 Eixos (12 pneus) - Padrão</option>
+                        <option value="4">4 Eixos (16 pneus)</option>
+                    </select>
                 </div>
                 
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 border-t border-gray-200 pt-4 mt-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Foto do Caminhão</label>
                     <input type="file" accept="image/*" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-azul-02 file:text-white hover:file:bg-azul-04">
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Detalhes Adicionais / Observações</label>
-                    <textarea class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" rows="3">Veículo utilizado para rotas longas. Manutenção em dia.</textarea>
+                    <textarea class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" rows="3" placeholder="Informações extras sobre a configuração, adaptações, implementos, etc."></textarea>
                 </div>
             </div>
             <div class="flex justify-end space-x-3 mt-8">
@@ -391,6 +503,27 @@
 </div>
 
 <script>
+    function toggleCarretaFields(modalType, isArticulated) {
+        const header = document.getElementById(modalType + '-carreta-header');
+        const placa = document.getElementById(modalType + '-carreta-placa');
+        const tipo = document.getElementById(modalType + '-carreta-tipo');
+        const eixos = document.getElementById(modalType + '-carreta-eixos');
+
+        if (header && placa && tipo) {
+             if (isArticulated) {
+                header.style.display = 'block';
+                placa.style.display = 'block';
+                tipo.style.display = 'block';
+                if(eixos) eixos.style.display = 'block';
+            } else {
+                header.style.display = 'none';
+                placa.style.display = 'none';
+                tipo.style.display = 'none';
+                if(eixos) eixos.style.display = 'none';
+            }
+        }
+    }
+
     function openAddModal() {
         document.getElementById('addModal').classList.remove('hidden');
     }
