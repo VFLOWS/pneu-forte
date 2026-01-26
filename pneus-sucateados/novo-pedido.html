@@ -141,10 +141,38 @@
 
     <div class="bg-white rounded-lg border border-gray-200 p-6">
         <form>
+            <!-- Tipo de Análise Selection -->
+            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <label class="block text-sm font-medium text-gray-700 mb-3">Tipo de Análise</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label class="relative flex items-center p-4 border rounded-lg cursor-pointer bg-white hover:bg-blue-50 transition-colors" id="label-avulso">
+                        <input type="radio" name="tipo_analise" value="avulso" class="h-4 w-4 text-azul-02 focus:ring-azul-02 border-gray-300" checked onclick="toggleAnalysisType('avulso')">
+                        <div class="ml-3 block">
+                            <span class="block text-sm font-bold text-gray-800">Análise de Pneus (Avulso/Sucata)</span>
+                            <span class="block text-xs text-gray-500 mt-1">Cadastro de pneus individuais ou lotes de sucata para análise técnica.</span>
+                        </div>
+                        <div class="absolute top-4 right-4 text-azul-02">
+                            <i class="fa-solid fa-bullseye text-xl"></i>
+                        </div>
+                    </label>
+
+                    <label class="relative flex items-center p-4 border rounded-lg cursor-pointer bg-white hover:bg-blue-50 transition-colors" id="label-frota">
+                        <input type="radio" name="tipo_analise" value="frota" class="h-4 w-4 text-azul-02 focus:ring-azul-02 border-gray-300" onclick="toggleAnalysisType('frota')">
+                        <div class="ml-3 block">
+                            <span class="block text-sm font-bold text-gray-800">Inspeção de Frota</span>
+                            <span class="block text-xs text-gray-500 mt-1">Análise completa de veículos e pneus montados na frota do cliente.</span>
+                        </div>
+                        <div class="absolute top-4 right-4 text-gray-400" id="icon-frota">
+                            <i class="fa-solid fa-truck-fast text-xl"></i>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="cliente" class="block text-sm font-medium text-gray-700 mb-2">Cliente *</label>
-                    <select id="cliente" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <select id="cliente" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
                         <option>Selecione um cliente</option>
                         <option>Transportadora Veloz</option>
                         <option>Agro Cargas Brasil</option>
@@ -160,11 +188,52 @@
                 <textarea id="observacoes" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Adicione qualquer observação relevante sobre este pedido..."></textarea>
             </div>
             <div class="mt-8 flex justify-end space-x-3">
-                <a href="pedidos-analise.html" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">Cancelar</a>
-                <a href="pedido-detalhe.html" class="px-6 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04">Criar Pedido e Adicionar Pneus</a>
+                <a href="pedidos-analise.html" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Cancelar</a>
+                <a href="pedido-detalhe.html" id="btn-submit" class="px-6 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium transition-colors">
+                    <i class="fa-solid fa-plus mr-2"></i>
+                    Criar Pedido e Adicionar Pneus
+                </a>
             </div>
         </form>
     </div>
+
+    <script>
+        function toggleAnalysisType(type) {
+            const btnSubmit = document.getElementById('btn-submit');
+            const labelAvulso = document.getElementById('label-avulso');
+            const labelFrota = document.getElementById('label-frota');
+            const iconFrota = document.getElementById('icon-frota');
+
+            // Reset styles
+            labelAvulso.classList.remove('border-azul-02', 'bg-blue-50');
+            labelFrota.classList.remove('border-azul-02', 'bg-blue-50');
+            labelAvulso.classList.add('border-gray-200');
+            labelFrota.classList.add('border-gray-200');
+            iconFrota.classList.remove('text-azul-02');
+            iconFrota.classList.add('text-gray-400');
+
+            if (type === 'avulso') {
+                btnSubmit.innerHTML = '<i class="fa-solid fa-plus mr-2"></i> Criar Pedido e Adicionar Pneus';
+                btnSubmit.href = 'pedido-detalhe.html';
+                
+                labelAvulso.classList.add('border-azul-02', 'bg-blue-50');
+                labelAvulso.classList.remove('border-gray-200');
+            } else {
+                btnSubmit.innerHTML = '<i class="fa-solid fa-truck mr-2"></i> Iniciar Inspeção de Frota';
+                btnSubmit.href = 'inspecao-frota.html'; 
+                
+                labelFrota.classList.add('border-azul-02', 'bg-blue-50');
+                labelFrota.classList.remove('border-gray-200');
+                iconFrota.classList.add('text-azul-02');
+                iconFrota.classList.remove('text-gray-400');
+            }
+        }
+        
+        // Initialize default state styling
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleAnalysisType('avulso');
+        });
+    </script>
 </main>
 
 </body>

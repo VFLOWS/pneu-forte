@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="pneu-forte-colors.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspeção de Frota</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="tailwind.config.js"></script>
+    <style>
+        /* Custom scrollbar for horizontal scrolling if needed */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
+    <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
+            <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
+        </div> 
+        <div class="flex items-center space-x-6">
+            <div class="relative">
+                <input type="text" placeholder="Buscar inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="relative p-2 text-white hover:text-gray-300">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right">
+                    <p class="text-sm font-medium text-white">Carlos Silva</p>
+                    <p class="text-xs text-white">Analista</p>
+                </div>
+                <i class="fa-solid fa-chevron-down text-white text-xs"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 overflow-y-auto">
+    <nav class="p-4">
+        <div class="space-y-1">
+            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
+                Dashboard
+            </a>
+            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
+                Nova Solicitação de Análise
+            </a>
+            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
+                Solicitações de Análise
+            </a>
+            <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
+                Relatórios
+            </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
+            <div class="space-y-1">
+                <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Clientes
+                </a>
+                <a href="caminhoes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-truck mr-3 text-gray-500"></i>
+                    Caminhões
+                </a>
+                <a href="motoristas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-id-card mr-3 text-gray-500"></i>
+                    Motoristas
+                </a>
+                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
+                    Marcas
+                </a>
+                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-car mr-3 text-gray-500"></i>
+                    Modelos
+                </a>
+                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
+                    Tipos de Dano
+                </a>
+                <a href="categoria-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-layer-group mr-3 text-gray-500"></i>
+                    Ctg. de Tipo de Dano
+                </a>
+                <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
+                    Principais Causas (Tipo de Dano)
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
+            <div class="space-y-1">
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Usuários
+                </a>
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
+                    Configurações
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-primary-700 to-primary-800 m-4 rounded-lg">
+        <div class="flex items-center justify-between text-white">
+            <div>
+                <p class="text-xs font-medium opacity-90">Parceiro</p>
+                <p class="text-sm font-bold">Grupo Vipal</p>
+            </div>
+            <i class="fa-solid fa-handshake text-2xl opacity-80"></i>
+        </div>
+    </div>
+</aside>
+
+<main id="main-content" class="ml-64 mt-[61px] p-6">
+    <div class="mb-6">
+        <a href="novo-pedido.html" class="text-sm text-primary-700 hover:text-primary-800 flex items-center mb-2">
+            <i class="fa-solid fa-arrow-left mr-2"></i>
+            Voltar para Nova Solicitação
+        </a>
+        <h2 class="text-2xl font-bold text-gray-800">Inspeção de Frota #FROTA-2026-001</h2>
+        <p class="text-sm text-gray-600 mt-1">Cliente: <span class="font-bold text-gray-800">Transportadora Veloz</span></p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800">Informações da Inspeção</h3>
+                <div class="mt-4 space-y-2 text-sm text-gray-600">
+                    <p><strong class="font-medium text-gray-800">Data Início:</strong> 26/01/2026</p>
+                    <p><strong class="font-medium text-gray-800">Status:</strong> <span class="px-2.5 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">Em Andamento</span></p>
+                    <p><strong class="font-medium text-gray-800">Veículos Inspecionados:</strong> <span id="total-veiculos">0</span></p>
+                </div>
+            </div>
+            <div class="flex flex-row space-x-2">
+                 <a href="detalhe-analise.html" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                    <i class="fa-solid fa-chart-simple mr-2"></i>
+                    Ver Resultado
+                </a>
+                 <button type="button" class="w-full px-4 py-1 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors">
+                    <i class="fa-regular fa-floppy-disk mr-2"></i>
+                    Salvar Análise
+                </button>
+                <button type="button" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                    <i class="fa-solid fa-check mr-2"></i>
+                    Concluir Inspeção
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-6 flex items-center justify-between">
+        <div>
+            <h3 class="text-xl font-bold text-gray-800">Veículos da Frota</h3>
+            <p class="text-sm text-gray-500">Adicione os veículos para iniciar a coleta de dados dos pneus.</p>
+        </div>
+        <button onclick="toggleVehicleForm()" id="btn-add-vehicle" class="px-4 py-2 bg-azul-02 text-white rounded-lg hover:bg-blue-800 flex items-center font-medium transition-colors duration-200">
+            <i class="fa-solid fa-truck-medical mr-2"></i>
+            Adicionar Veículo
+        </button>
+    </div>
+
+    <!-- Formulário de Adição de Veículo -->
+    <div id="vehicle-form-container" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg w-full max-w-3xl shadow-xl transform transition-all max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200 shrink-0">
+                <h3 class="text-xl font-bold text-gray-800">Adicionar Veículo à Inspeção</h3>
+                <button onclick="toggleVehicleForm()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fa-solid fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Selecionar Veículo</label>
+                        <select id="select-veiculo" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10" onchange="checkNewVehicle(this)">
+                            <option value="">Selecione...</option>
+                            <option value="new">+ Cadastrar Novo Veículo</option>
+                            <option value="ABC-1234">ABC-1234 - Volvo FH 540 (Cavalo 6x2)</option>
+                            <option value="XYZ-9876">XYZ-9876 - Scania R450 (Cavalo 6x4)</option>
+                            <option value="DEF-5678">DEF-5678 - Carreta LS (3 Eixos)</option>
+                        </select>
+                    </div>
+
+                    <div id="new-vehicle-fields" class="hidden space-y-4 border-t border-gray-100 pt-4 mt-2">
+                        <!-- Copiado de caminhoes.html -->
+                        <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Tipo de Veículo</label>
+                            <div class="flex items-center space-x-6">
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input type="radio" name="tipo_veiculo_add" value="rigido" class="form-radio text-azul-02 w-4 h-4" onclick="toggleCarretaFields('add', false)">
+                                    <span class="ml-2 text-sm text-gray-700">Caminhão Rígido / Cavalo Solto</span>
+                                </label>
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input type="radio" name="tipo_veiculo_add" value="articulado" class="form-radio text-azul-02 w-4 h-4" checked onclick="toggleCarretaFields('add', true)">
+                                    <span class="ml-2 text-sm text-gray-700 font-medium">Conjunto Articulado (Cavalo + Carreta)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                            <!-- Section: Cavalo / Trator -->
+                            <div class="md:col-span-2 border-b border-gray-200 pb-2 mt-2 mb-2">
+                                <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider flex items-center">
+                                    Dados do Cavalo / Trator
+                                </h4>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Placa do Cavalo <span class="text-red-500">*</span></label>
+                                <input type="text" id="add-placa" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="ABC-1234">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Modelo / Marca</label>
+                                <input type="text" id="add-modelo" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Scania R450">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos (Cavalo)</label>
+                                <select id="add-eixos-cavalo" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                                    <option value="4x2">4x2 (Toco) - 2 Eixos</option>
+                                    <option value="6x2">6x2 (Trucado) - 3 Eixos</option>
+                                    <option value="6x4">6x4 (Traçado) - 3 Eixos</option>
+                                    <option value="8x2">8x2 (Bitruck) - 4 Eixos</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Ano Fabricação</label>
+                                <input type="number" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: 2023">
+                            </div>
+
+                            <!-- Section: Carreta -->
+                            <div id="add-carreta-header" class="md:col-span-2 border-b border-gray-200 pb-2 mt-2 mb-2">
+                                <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider flex items-center">
+                                    Dados da Carreta / Implemento
+                                </h4>
+                            </div>
+
+                            <div id="add-carreta-placa">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Placa da Carreta</label>
+                                <input type="text" id="input-carreta-placa" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="XYZ-5678">
+                            </div>
+                            <div id="add-carreta-tipo">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Carroceria</label>
+                                <select class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                                    <option value="bau">Baú</option>
+                                    <option value="sider">Sider</option>
+                                    <option value="graneleiro">Graneleiro</option>
+                                    <option value="cacamba">Caçamba</option>
+                                    <option value="tanque">Tanque</option>
+                                    <option value="prancha">Prancha</option>
+                                </select>
+                            </div>
+                            <div id="add-carreta-eixos" class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos (Carreta)</label>
+                                <select id="input-carreta-eixos" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                                    <option value="1">1 Eixo (4 pneus)</option>
+                                    <option value="2">2 Eixos (8 pneus)</option>
+                                    <option value="3" selected>3 Eixos (12 pneus) - Padrão</option>
+                                    <option value="4">4 Eixos (16 pneus)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="md:col-span-2 border-t border-gray-200 pt-4 mt-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Foto do Caminhão</label>
+                                <input type="file" id="add-foto" accept="image/*" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-azul-02 file:text-white hover:file:bg-azul-04">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Detalhes Adicionais / Observações</label>
+                                <textarea id="add-detalhes" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" rows="3" placeholder="Informações extras sobre a configuração, adaptações, implementos, etc."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">KM Atual / Horímetro</label>
+                        <input type="number" id="input-km" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 h-10" placeholder="Ex: 150000">
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 border-t border-gray-200 flex justify-end space-x-3 shrink-0">
+                <button onclick="toggleVehicleForm()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Cancelar</button>
+                <button onclick="addVehicle()" class="px-4 py-2 text-sm font-medium text-white bg-azul-02 rounded-md hover:bg-blue-800">Adicionar Veículo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Veículos -->
+    <div id="vehicles-list" class="space-y-6">
+        <!-- Cards de veículos serão inseridos aqui via JS -->
+    </div>
+
+</main>
+
+<script>
+    let vehiclesData = [];
+
+    // Template para pneus baseados na configuração (simplificado)
+    const tirePositions = {
+        '4x2': ['1E', '1D', '2EE', '2EI', '2DI', '2DD'],
+        '6x2': ['1E', '1D', '2EE', '2EI', '2DI', '2DD', '3EE', '3EI', '3DI', '3DD'], // Eixo de apoio
+        '6x4': ['1E', '1D', '2EE', '2EI', '2DI', '2DD', '3EE', '3EI', '3DI', '3DD'],
+        '8x2': ['1E', '1D', '2E', '2D', '3EE', '3EI', '3DI', '3DD', '4EE', '4EI', '4DI', '4DD'], // Exemplo 8x2
+        // Trailer axles
+        'carreta-1': ['1EE', '1EI', '1DI', '1DD'],
+        'carreta-2': ['1EE', '1EI', '1DI', '1DD', '2EE', '2EI', '2DI', '2DD'],
+        'carreta-3': ['1EE', '1EI', '1DI', '1DD', '2EE', '2EI', '2DI', '2DD', '3EE', '3EI', '3DI', '3DD'],
+        'carreta-4': ['1EE', '1EI', '1DI', '1DD', '2EE', '2EI', '2DI', '2DD', '3EE', '3EI', '3DI', '3DD', '4EE', '4EI', '4DI', '4DD']
+    };
+
+    const tireBrands = ['Michelin', 'Bridgestone', 'Goodyear', 'Pirelli', 'Continental', 'Dunlop', 'Firestone', 'Hankook', 'Outra'];
+
+    function toggleVehicleForm() {
+        const modal = document.getElementById('vehicle-form-container');
+        modal.classList.toggle('hidden');
+    }
+
+    function checkNewVehicle(select) {
+        const newFields = document.getElementById('new-vehicle-fields');
+        if (select.value === 'new') {
+            newFields.classList.remove('hidden');
+            // Default trigger for layout
+            toggleCarretaFields('add', true);
+        } else {
+            newFields.classList.add('hidden');
+        }
+    }
+
+    function toggleCarretaFields(modalType, isArticulated) {
+        const header = document.getElementById(modalType + '-carreta-header');
+        const placa = document.getElementById(modalType + '-carreta-placa');
+        const tipo = document.getElementById(modalType + '-carreta-tipo');
+        const eixos = document.getElementById(modalType + '-carreta-eixos');
+
+        if (header && placa && tipo) {
+             if (isArticulated) {
+                header.style.display = 'block';
+                placa.style.display = 'block';
+                tipo.style.display = 'block';
+                if(eixos) eixos.style.display = 'block';
+            } else {
+                header.style.display = 'none';
+                placa.style.display = 'none';
+                tipo.style.display = 'none';
+                if(eixos) eixos.style.display = 'none';
+            }
+        }
+    }
+
+    function addVehicle() {
+        const select = document.getElementById('select-veiculo');
+        const km = document.getElementById('input-km').value;
+        let vehicle = {};
+
+        if (select.value === 'new') {
+            const placaCavalo = document.getElementById('add-placa').value;
+            const modelo = document.getElementById('add-modelo').value;
+            const configCavalo = document.getElementById('add-eixos-cavalo').value;
+            const ano = document.getElementById('add-ano').value;
+            const detalhes = document.getElementById('add-detalhes').value;
+            const fotoInput = document.getElementById('add-foto');
+            const foto = fotoInput.files.length > 0 ? fotoInput.files[0].name : null;
+
+            // Check articulation
+            const isArticulated = document.querySelector('input[name="tipo_veiculo_add"]:checked').value === 'articulado';
+
+            if (!placaCavalo) { alert('Digite a placa do cavalo'); return; }
+
+            let fullConfig = configCavalo;
+            let fullPlaca = placaCavalo;
+            let tires = generateTires(configCavalo);
+            let tipoCarreta = null;
+
+            if (isArticulated) {
+                const placaCarreta = document.getElementById('input-carreta-placa').value;
+                const configCarreta = document.getElementById('input-carreta-eixos').value;
+                tipoCarreta = document.getElementById('input-carreta-tipo-body').value;
+                fullPlaca += ' / ' + (placaCarreta || 'S/ Placa');
+                fullConfig += ' + Carreta ' + configCarreta + ' Eixos';
+                
+                // Append trailer tires
+                const trailerTires = generateTires('carreta-' + configCarreta, true);
+                tires = tires.concat(trailerTires);
+            }
+
+            vehicle = {
+                id: Date.now(),
+                placa: fullPlaca,
+                modelo: modelo || 'Novo Veículo',
+                config: fullConfig,
+                km: km,
+                ano: ano,
+                detalhes: detalhes,
+                foto: foto,
+                tipoCarreta: tipoCarreta,
+                tires: tires
+            };
+        } else if (select.value) {
+            const text = select.options[select.selectedIndex].text;
+            // Parse mocked data
+            const parts = text.split(' - ');
+            const placa = parts[0];
+            const modelo = parts[1];
+            // Mock config based on description
+            let config = '6x2';
+            let tires = generateTires('6x2');
+
+            if (modelo.includes('6x4')) { config = '6x4'; tires = generateTires('6x4'); }
+            if (modelo.includes('Carreta')) { 
+                config = '3eixos'; // Simplified mock for existing item
+                tires = generateTires('carreta-3'); 
+            }
+
+            vehicle = {
+                id: Date.now(),
+                placa: placa,
+                modelo: modelo,
+                config: config,
+                km: km,
+                tires: tires
+            };
+        } else {
+            alert('Selecione um veículo');
+            return;
+        }
+
+        vehiclesData.push(vehicle);
+        renderVehicles(vehicle.id);
+        toggleVehicleForm();
+        
+        // Reset form
+        select.value = '';
+        document.getElementById('input-km').value = '';
+        document.getElementById('add-placa').value = '';
+        document.getElementById('input-carreta-placa').value = '';
+        document.getElementById('add-modelo').value = '';
+        document.getElementById('new-vehicle-fields').classList.add('hidden');
+    }
+
+    function generateTires(config, isTrailer = false) {
+        const positions = tirePositions[config] || tirePositions['4x2'];
+        return positions.map(pos => ({
+            pos: (isTrailer ? 'C-' : '') + pos,
+            brand: '',
+            psi: '',
+            mm: '',
+            status: 'ok', // ok, attention, remove
+            obs: ''
+        }));
+    }
+
+    function renderVehicles(expandId = null) {
+        const container = document.getElementById('vehicles-list');
+        const totalEl = document.getElementById('total-veiculos');
+        container.innerHTML = '';
+        totalEl.textContent = vehiclesData.length;
+
+        vehiclesData.forEach((v, vIndex) => {
+            const isExpanded = v.id === expandId;
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm';
+            
+            // Header do Veículo
+            let headerHtml = `
+                <div class="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center cursor-pointer" onclick="toggleDetails(${v.id})">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-blue-100 p-2 rounded-lg text-azul-02">
+                            <i class="fa-solid fa-truck text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-800">${v.placa}</h4>
+                            <p class="text-sm text-gray-500">${v.modelo} • KM: ${v.km || 'N/I'}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="text-right">
+                            <span class="block text-xs text-gray-500 uppercase">Pneus</span>
+                            <span class="block font-bold text-gray-800">${v.tires.length} Unidades</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-xs text-gray-500 uppercase">Status</span>
+                             <span class="block font-bold text-green-600">Em Análise</span>
+                        </div>
+                        <button onclick="event.stopPropagation(); removeVehicle(${v.id})" class="text-gray-400 hover:text-red-500 transition-colors p-2" title="Remover Veículo">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-200" id="icon-${v.id}" style="transform: ${isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}"></i>
+                    </div>
+                </div>
+            `;
+
+            // Build Brand Options
+            const brandOptions = tireBrands.map(b => `<option value="${b}">${b}</option>`).join('');
+
+            // Corpo (Tabela de Pneus)
+            let bodyHtml = `
+                <div id="details-${v.id}" class="${isExpanded ? '' : 'hidden'} border-t border-gray-100 bg-white">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-gray-50 p-4 rounded-lg">
+                            <div>
+                                <span class="block text-xs text-gray-500 uppercase">Configuração</span>
+                                <span class="font-medium text-gray-800">${v.config}</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-gray-500 uppercase">Ano / Detalhes</span>
+                                <span class="font-medium text-gray-800">${v.ano || '-'} ${v.detalhes ? ' - ' + v.detalhes : ''}</span>
+                            </div>
+                             <div>
+                                <span class="block text-xs text-gray-500 uppercase">Carroceria</span>
+                                <span class="font-medium text-gray-800 uppercase">${v.tipoCarreta || '-'}</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 flex items-center space-x-3 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                            <span class="text-sm font-medium text-blue-800">Aplicar Marca a Todos:</span>
+                            <select onchange="applyBrandToAll(${vIndex}, this.value)" class="px-3 py-1.5 border border-blue-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white text-gray-700">
+                                <option value="">Selecione...</option>
+                                ${brandOptions}
+                            </select>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-4 py-3 w-20">Posição</th>
+                                        <th scope="col" class="px-4 py-3 w-40">Marca/Modelo</th>
+                                        <th scope="col" class="px-4 py-3 w-24">Pressão (PSI)</th>
+                                        <th scope="col" class="px-4 py-3 w-24">Sulco (mm)</th>
+                                        <th scope="col" class="px-4 py-3">Condição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            `;
+
+            v.tires.forEach((tire, tIndex) => {
+                const currentBrandOptions = tireBrands.map(b => `<option value="${b}" ${tire.brand === b ? 'selected' : ''}>${b}</option>`).join('');
+                
+                bodyHtml += `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-4 py-3 font-bold text-gray-800">${tire.pos}</td>
+                        <td class="px-4 py-3">
+                            <select onchange="updateTire(${vIndex}, ${tIndex}, 'brand', this.value)" class="w-full px-2 py-1 border border-gray-300 rounded focus:outline-none focus:border-azul-02 bg-white">
+                                <option value="">Selecione...</option>
+                                ${currentBrandOptions}
+                            </select>
+                        </td>
+                        <td class="px-4 py-3">
+                            <input type="number" value="${tire.psi}" onchange="updateTire(${vIndex}, ${tIndex}, 'psi', this.value)" class="w-20 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:border-azul-02 text-center" placeholder="PSI">
+                        </td>
+                        <td class="px-4 py-3">
+                            <input type="number" step="0.1" value="${tire.mm}" onchange="updateTire(${vIndex}, ${tIndex}, 'mm', this.value)" class="w-20 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:border-azul-02 text-center" placeholder="mm">
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="flex space-x-2">
+                                <label class="inline-flex items-center cursor-pointer" title="Em condição de uso">
+                                    <input type="radio" name="status-${v.id}-${tIndex}" value="ok" ${tire.status === 'ok' ? 'checked' : ''} onchange="updateTire(${vIndex}, ${tIndex}, 'status', 'ok')" class="sr-only peer">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 peer-checked:bg-green-500 hover:bg-green-200 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-check text-white text-xs"></i>
+                                    </div>
+                                </label>
+                                <label class="inline-flex items-center cursor-pointer" title="Requer atenção">
+                                    <input type="radio" name="status-${v.id}-${tIndex}" value="attention" ${tire.status === 'attention' ? 'checked' : ''} onchange="updateTire(${vIndex}, ${tIndex}, 'status', 'attention')" class="sr-only peer">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 peer-checked:bg-yellow-400 hover:bg-yellow-200 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-exclamation text-white text-xs"></i>
+                                    </div>
+                                </label>
+                                <label class="inline-flex items-center cursor-pointer" title="Remover pneu">
+                                    <input type="radio" name="status-${v.id}-${tIndex}" value="remove" ${tire.status === 'remove' ? 'checked' : ''} onchange="updateTire(${vIndex}, ${tIndex}, 'status', 'remove')" class="sr-only peer">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 peer-checked:bg-red-500 hover:bg-red-200 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-xmark text-white text-xs"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            bodyHtml += `
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                             <label class="block text-sm font-medium text-gray-700 mb-2">Observações / Recomendações do Veículo</label>
+                             <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-azul-02 text-sm" rows="2" placeholder="Ex: Realizar rodízio dos pneus dianteiros..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            card.innerHTML = headerHtml + bodyHtml;
+            container.appendChild(card);
+        });
+    }
+
+    function toggleDetails(id) {
+        const details = document.getElementById(`details-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+        details.classList.toggle('hidden');
+        if (details.classList.contains('hidden')) {
+            icon.style.transform = 'rotate(0deg)';
+        } else {
+            icon.style.transform = 'rotate(180deg)';
+        }
+    }
+
+    function updateTire(vIndex, tIndex, field, value) {
+        vehiclesData[vIndex].tires[tIndex][field] = value;
+        console.log(`Updated Vehicle ${vIndex} Tire ${tIndex}: ${field} = ${value}`);
+    }
+
+    function removeVehicle(id) {
+        if(confirm('Tem certeza que deseja remover este veículo da inspeção?')) {
+            vehiclesData = vehiclesData.filter(v => v.id !== id);
+            renderVehicles();
+        }
+    }
+
+    function applyBrandToAll(vIndex, brand) {
+        if (!brand) return;
+        vehiclesData[vIndex].tires.forEach(t => t.brand = brand);
+        // Re-render to show changes, keeping this vehicle expanded
+        renderVehicles(vehiclesData[vIndex].id);
+    }
+</script>
+
+</body>
+</html>
