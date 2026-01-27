@@ -197,6 +197,12 @@
             <div id="chart-pressure" class="w-full h-72"></div>
         </div>
     </div>
+    <div class="grid grid-cols-1 gap-6 mb-6">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Gráfico de Pontos (Pressão x Sulco)</h3>
+            <div id="chart-scatter-indicators" class="w-full h-96"></div>
+        </div>
+    </div>
 
     <!-- Tire List -->
     <div id="pneus-table-section" class="bg-white rounded-lg border border-gray-200">
@@ -297,37 +303,66 @@
     window.addEventListener('load', function() {
         const chartPosition = document.getElementById('chart-position');
         const chartPressure = document.getElementById('chart-pressure');
+        const chartScatter = document.getElementById('chart-scatter-indicators');
 
-        if (chartPosition && chartPressure) {
-            const chartLayout = {
-                margin: { t: 20, r: 20, b: 40, l: 50 },
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                showlegend: false,
-                font: {
-                    family: 'Inter, sans-serif'
-                }
-            };
-            const config = {responsive: true, displayModeBar: false, displaylogo: false};
+        const chartLayout = {
+            margin: { t: 20, r: 20, b: 40, l: 50 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            showlegend: false,
+            font: {
+                family: 'Inter, sans-serif'
+            }
+        };
+        const config = {responsive: true, displayModeBar: false, displaylogo: false};
 
-            const positionData = [{ 
-                y: [8, 12, 10, 25], 
-                x: ['Direcional', 'Tração', 'Truck', 'Carreta'], 
-                type: 'bar',
-                marker: {
-                    color: ['#031590', '#2D44BD', '#4B63D1', '#6699FF']
-                }
-            }];
+        const positionData = [{ 
+            y: [8, 12, 10, 25], 
+            x: ['Direcional', 'Tração', 'Truck', 'Carreta'], 
+            type: 'bar',
+            marker: {
+                color: ['#031590', '#2D44BD', '#4B63D1', '#6699FF']
+            }
+        }];
+        if (chartPosition) {
             Plotly.newPlot('chart-position', positionData, { ...chartLayout, yaxis: {title: 'Ocorrências'} }, config);
+        }
 
-            const pressureData = [{
-                values: [12, 48, 6],
-                labels: ['Baixa Pressão', 'Pressão Correta', 'Alta Pressão'],
-                type: 'pie',
-                textinfo: 'label+percent',
-                marker: { colors: ['#031590', '#2D44BD', '#4B63D1'] }
-            }];
+        const pressureData = [{
+            values: [12, 48, 6],
+            labels: ['Baixa Pressão', 'Pressão Correta', 'Alta Pressão'],
+            type: 'pie',
+            textinfo: 'label+percent',
+            marker: { colors: ['#031590', '#2D44BD', '#4B63D1'] }
+        }];
+        if (chartPressure) {
             Plotly.newPlot('chart-pressure', pressureData, { ...chartLayout, showlegend: true, margin: { t: 20, r: 20, b: 20, l: 20 } }, config);
+        }
+
+        if (chartScatter) {
+            const x = [110, 100, 90, 110, 105];
+            const y = [3.5, 8.0, 7.2, 2.1, 9.5];
+            const labelsPos = ['Direcional', 'Tração', 'Truck', 'Direcional', 'Carreta'];
+            const colorMap = { 'Direcional': '#031590', 'Tração': '#2D44BD', 'Truck': '#4B63D1', 'Carreta': '#6699FF' };
+            const colors = labelsPos.map(p => colorMap[p]);
+            const text = [
+                'ABC-1234 • Direcional Esq.',
+                'ABC-1234 • Tração #1 Dir.',
+                'XYZ-9876 • Truck Esq.',
+                'XYZ-9876 • Direcional Dir.',
+                'DEF-5678 • Carreta #1 Esq.'
+            ];
+            const trace = {
+                x, y, text,
+                type: 'scatter',
+                mode: 'markers',
+                marker: { size: 8, color: colors, opacity: 0.9 }
+            };
+            Plotly.newPlot('chart-scatter-indicators', [trace], { 
+                ...chartLayout,
+                xaxis: { title: 'Pressão (PSI)' },
+                yaxis: { title: 'Sulco (mm)' }
+            }, config);
         }
 
         // Logic for WhatsApp and Email buttons
