@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="pneu-forte-colors.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Gestão de Frotas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="tailwind.config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
+    <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
+            <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="relative">
+                <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <button class="relative p-2 text-white hover:text-gray-300">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right">
+                    <p class="text-sm font-medium text-white">Carlos Silva</p>
+                    <p class="text-xs text-white">Analista</p>
+                </div>
+                <i class="fa-solid fa-chevron-down text-white text-xs"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col">
+    <nav class="p-4 flex-1 overflow-y-auto">
+        <div class="space-y-1">
+            <a href="dashboard-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
+                Dashboard
+            </a>
+            <a href="nova-solicitacao-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
+                Nova Solicitação de Análise
+            </a>
+            <a href="solicitacoes-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
+                Solicitações de Análise
+            </a>
+            <a href="relatorios-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-azul-02 rounded-lg">
+                <i class="fa-solid fa-file-chart-column mr-3 text-base"></i>
+                Relatórios
+            </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
+            <div class="space-y-1">
+                <a href="clientes-frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Clientes
+                </a>
+                <a href="caminhoes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-truck mr-3 text-gray-500"></i>
+                    Caminhões
+                </a>
+                <a href="motoristas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-id-card mr-3 text-gray-500"></i>
+                    Motoristas
+                </a>
+                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
+                    Marcas
+                </a>
+                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-car mr-3 text-gray-500"></i>
+                    Modelos
+                </a>
+                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
+                    Tipos de Dano
+                </a>
+                <a href="categoria-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-layer-group mr-3 text-gray-500"></i>
+                    Ctg. de Tipo de Dano
+                </a>
+                <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
+                    Principais Causas (Tipo de Dano)
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
+            <div class="space-y-1">
+                <a href="usuarios-frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-users mr-3 text-gray-500"></i>
+                    Usuários
+                </a>
+                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                    <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
+                    Configurações
+                </a>
+                <a href="selecao-modulo.html" class="flex items-center px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg mt-4">
+                    <i class="fa-solid fa-arrow-left mr-3"></i>
+                    Trocar Módulo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="shrink-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
+        <div class="flex items-center justify-between text-white">
+            <div>
+                <p class="text-xs font-medium opacity-90">Parceiro</p>
+                <p class="text-sm font-bold">Grupo Vipal</p>
+            </div>
+            <i class="fa-solid fa-handshake text-2xl opacity-80"></i>
+        </div>
+    </div>
+</aside>
+
+<main id="main-content" class="ml-64 mt-[61px] p-6">
+    <div class="mb-6 flex items-center justify-between">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">Relatórios Interativos da Frota</h2>
+            <p class="text-sm text-gray-600 mt-1">Visualize e exporte indicadores de performance da frota</p>
+        </div>
+        <div class="flex items-center space-x-3">
+            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center">
+                <i class="fa-solid fa-file-excel mr-2 text-green-600"></i>
+                Exportar Excel
+            </button>
+            <a href="relatorio-frota-pdf.html" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center">
+                <i class="fa-solid fa-file-pdf mr-2"></i>
+                Relatório Completo
+            </a>
+        </div>
+    </div>
+
+    <div id="filters-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+                <i class="fa-solid fa-filter mr-2 text-azul-02"></i>
+                Filtros
+            </h3>
+            <button class="text-sm text-azul-02 hover:text-azul-04 font-medium">Limpar filtros</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Clientes</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <option>Todos os clientes</option>
+                    <option>Transportadora Veloz</option>
+                    <option>Agro Cargas Brasil</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Período</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <option>Últimos 30 dias</option>
+                    <option>Últimos 3 meses</option>
+                    <option>Últimos 6 meses</option>
+                    <option>Último ano</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Veículo / Placa</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <option>Todos os veículos</option>
+                    <option>Caminhão Truck</option>
+                    <option>Carreta LS</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status do Pneu</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <option>Todos</option>
+                    <option>Em condição de uso</option>
+                    <option>Requer atenção</option>
+                    <option>Remover pneu</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="kpi-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Veículos Inspecionados</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-2">68</p>
+                    <div class="flex items-center mt-2">
+                        <span class="text-xs text-green-600 font-medium">+12</span>
+                        <span class="text-xs text-gray-500 ml-2">este mês</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-truck text-blue-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Alertas de Calibragem</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-2">15</p>
+                    <div class="flex items-center mt-2">
+                        <span class="text-xs text-red-600 font-medium">Crítico</span>
+                        <span class="text-xs text-gray-500 ml-2">pressão abaixo de 90psi</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-gauge-high text-red-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Pneus para Troca</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-2">8</p>
+                    <div class="flex items-center mt-2">
+                        <span class="text-xs text-yellow-600 font-medium">Atenção</span>
+                        <span class="text-xs text-gray-500 ml-2">sulco < 3mm</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-triangle-exclamation text-yellow-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="report-tabs" class="bg-white rounded-lg border border-gray-200 mb-6">
+        <div class="border-b border-gray-200">
+            <div class="flex overflow-x-auto">
+                <button onclick="switchTab('status')" id="btn-tab-status" class="tab-btn px-6 py-3 text-sm font-medium text-azul-02 border-b-2 border-azul-02 whitespace-nowrap">
+                    Status da Frota
+                </button>
+                <button onclick="switchTab('pressao')" id="btn-tab-pressao" class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 border-b-2 border-transparent whitespace-nowrap">
+                    Análise de Pressão
+                </button>
+                <button onclick="switchTab('sulco')" id="btn-tab-sulco" class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 border-b-2 border-transparent whitespace-nowrap">
+                    Análise de Sulco (mm)
+                </button>
+                <button onclick="switchTab('marcas')" id="btn-tab-marcas" class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 border-b-2 border-transparent whitespace-nowrap">
+                    Marcas e Modelos
+                </button>
+            </div>
+        </div>
+
+        <!-- Aba Status -->
+        <div id="content-status" class="tab-content p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Panorama Geral da Frota</h3>
+                    <p class="text-sm text-gray-600 mt-1">Distribuição dos pneus por condição de uso</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="p-2 text-gray-500 hover:text-gray-700 border border-gray-300 rounded">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="chart-status-fleet" style="height: 400px"></div>
+        </div>
+
+        <!-- Aba Pressão -->
+        <div id="content-pressao" class="tab-content p-6 hidden">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Conformidade de Pressão (PSI)</h3>
+                    <p class="text-sm text-gray-600 mt-1">Comparativo de pressão real vs recomendada</p>
+                </div>
+            </div>
+            <div id="chart-pressure-fleet" style="height: 400px"></div>
+        </div>
+
+        <!-- Aba Sulco -->
+        <div id="content-sulco" class="tab-content p-6 hidden">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Desgaste da Banda de Rodagem</h3>
+                    <p class="text-sm text-gray-600 mt-1">Distribuição de profundidade de sulco (mm)</p>
+                </div>
+            </div>
+            <div id="chart-tread-fleet" style="height: 400px"></div>
+        </div>
+
+        <!-- Aba Marcas -->
+        <div id="content-marcas" class="tab-content p-6 hidden">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Desempenho por Marca</h3>
+                    <p class="text-sm text-gray-600 mt-1">Marcas mais presentes e suas condições</p>
+                </div>
+            </div>
+            <div id="chart-brands-fleet" style="height: 400px"></div>
+        </div>
+    </div>
+
+    <!-- Novos Gráficos: Distribuição e Quilometragem -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div id="wear-types-card" class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Distribuição de Tipos de Desgaste</h3>
+                <button class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-expand"></i></button>
+            </div>
+            <div id="chart-wear-distribution" style="height: 380px"></div>
+        </div>
+        
+        <div id="mileage-card" class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Quilometragem Média por Marca</h3>
+                <button class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-expand"></i></button>
+            </div>
+            <div id="chart-mileage" style="height: 380px"></div>
+        </div>
+    </div>
+
+    <!-- Novo Gráfico: Timeline -->
+    <div id="timeline-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Evolução da Análise de Frotas</h3>
+            <button class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-expand"></i></button>
+        </div>
+        <div id="chart-timeline-fleet" style="height: 400px"></div>
+    </div>
+
+    <!-- Tabela Detalhada -->
+    <div id="detailed-table" class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-800">Dados Detalhados da Frota</h3>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <input type="text" placeholder="Buscar na tabela..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400 text-sm"></i>
+                    </div>
+                    <button class="text-gray-600 hover:text-gray-800">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Veículo / Placa</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Posição</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Marca/Modelo</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pressão (PSI)</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Sulco (mm)</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Caminhão Truck (ABC-1234)</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Dianteiro Esq.</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Michelin X Multi Z</td>
+                        <td class="px-6 py-4 text-sm text-green-600 font-medium">110</td>
+                        <td class="px-6 py-4 text-sm text-green-600 font-medium">12.5</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Em uso</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Carreta LS (XYZ-9876)</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Tração Dir. Ext.</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Goodyear KMAX</td>
+                        <td class="px-6 py-4 text-sm text-red-600 font-medium">85</td>
+                        <td class="px-6 py-4 text-sm text-yellow-600 font-medium">4.2</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Calibrar</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Caminhão Truck (ABC-1234)</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Tração Esq. Int.</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Pirelli FR:01</td>
+                        <td class="px-6 py-4 text-sm text-green-600 font-medium">108</td>
+                        <td class="px-6 py-4 text-sm text-red-600 font-medium">2.8</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Trocar</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm font-medium text-gray-800">Carreta LS (XYZ-9876)</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Truck Esq.</td>
+                        <td class="px-6 py-4 text-sm text-gray-700">Bridgestone R268</td>
+                        <td class="px-6 py-4 text-sm text-green-600 font-medium">112</td>
+                        <td class="px-6 py-4 text-sm text-green-600 font-medium">8.0</td>
+                        <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Em uso</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+            <p class="text-sm text-gray-600">Mostrando 4 de 68 registros</p>
+            <div class="flex items-center space-x-2">
+                <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50" disabled>Anterior</button>
+                <button class="px-3 py-1 bg-azul-02 text-white rounded text-sm">1</button>
+                <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50">Próximo</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+        // Hide all contents
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
+        });
+        // Show selected content
+        document.getElementById('content-' + tabId).classList.remove('hidden');
+
+        // Reset all buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('text-azul-02', 'border-azul-02');
+            btn.classList.add('text-gray-600', 'border-transparent');
+        });
+        // Highlight selected button
+        const activeBtn = document.getElementById('btn-tab-' + tabId);
+        activeBtn.classList.remove('text-gray-600', 'border-transparent');
+        activeBtn.classList.add('text-azul-02', 'border-azul-02');
+        
+        // Trigger Plotly resize to ensure charts fit correctly in hidden tabs
+        window.dispatchEvent(new Event('resize'));
+    }
+
+    // Charts Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+        const commonConfig = {responsive: true, displayModeBar: false};
+        const commonLayout = {
+            font: { family: 'Inter, sans-serif' },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            margin: { t: 30, r: 20, b: 40, l: 50 }
+        };
+
+        // 1. Chart Status (Pie)
+        const statusData = [{
+            values: [145, 15, 8],
+            labels: ['Em condição de uso', 'Requer atenção', 'Remover pneu'],
+            type: 'pie',
+            marker: {
+                colors: ['#031590', '#1E40AF', '#3B82F6']
+            },
+            hole: 0.4
+        }];
+        const statusLayout = { ...commonLayout, showlegend: true, legend: {orientation: 'h', y: -0.1} };
+        Plotly.newPlot('chart-status-fleet', statusData, statusLayout, commonConfig);
+
+        // 2. Chart Pressure (Bar)
+        const pressureData = [{
+            x: ['Correta', 'Alta', 'Baixa', 'Crítica'],
+            y: [120, 8, 30, 10],
+            type: 'bar',
+            marker: {
+                color: ['#031590', '#1E40AF', '#3B82F6', '#60A5FA']
+            }
+        }];
+        Plotly.newPlot('chart-pressure-fleet', pressureData, { ...commonLayout, yaxis: {title: 'Qtd Pneus'} }, commonConfig);
+
+        // 3. Chart Sulco (Histogram/Bar)
+        const treadData = [{
+            x: ['Remover pneu (<3mm)', 'Requer atenção (3-6mm)', 'Em condição de uso (>6mm)'],
+            y: [8, 45, 115],
+            type: 'bar',
+            marker: {
+                color: ['#031590', '#1E40AF', '#3B82F6']
+            }
+        }];
+        Plotly.newPlot('chart-tread-fleet', treadData, { ...commonLayout, yaxis: {title: 'Qtd Pneus'} }, commonConfig);
+
+        // 4. Chart Brands (Bar Grouped)
+        const brandsData = [
+            {
+                x: ['Michelin', 'Goodyear', 'Pirelli', 'Bridgestone'],
+                y: [50, 40, 30, 20],
+                name: 'Ok',
+                type: 'bar',
+                marker: { color: '#031590' }
+            },
+            {
+                x: ['Michelin', 'Goodyear', 'Pirelli', 'Bridgestone'],
+                y: [5, 8, 4, 3],
+                name: 'Atenção',
+                type: 'bar',
+                marker: { color: '#1226A2' }
+            }
+        ];
+        Plotly.newPlot('chart-brands-fleet', brandsData, { ...commonLayout, barmode: 'stack', yaxis: {title: 'Qtd Pneus'} }, commonConfig);
+
+        // 5. Chart Wear Distribution (Pie)
+        const wearData = [{
+            type: 'pie',
+            labels: ['Desgaste Irregular', 'Ombro', 'Centro', 'Escamado', 'Normal'],
+            values: [15, 10, 8, 5, 62],
+            marker: {
+                colors: ['#031590', '#1226A2', '#1A34B8', '#4D4D4D', '#60A5FA']
+            },
+            textinfo: 'label+percent',
+            textposition: 'inside',
+            hole: 0.4
+        }];
+        const wearLayout = {
+            ...commonLayout,
+            showlegend: true,
+            legend: { orientation: 'v', x: 1, y: 0.5 }
+        };
+        Plotly.newPlot('chart-wear-distribution', wearData, wearLayout, commonConfig);
+
+        // 6. Chart Mileage (Bar)
+        const mileageData = [{
+            type: 'bar',
+            x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
+            y: [120000, 115000, 110000, 118000, 112000],
+            marker: {
+                color: '#031590'
+            }
+        }];
+        const mileageLayout = {
+            ...commonLayout,
+            xaxis: { title: 'Marca', tickangle: -45 },
+            yaxis: { title: 'Km Médio' }
+        };
+        Plotly.newPlot('chart-mileage', mileageData, mileageLayout, commonConfig);
+
+        // 7. Chart Timeline (Line)
+        const timelineData = [
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Pressão Baixa',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [12, 15, 10, 8, 14, 11, 9, 7, 8, 10, 5, 4],
+                line: { color: '#1E40AF', width: 3 },
+                marker: { size: 6 }
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Sulco < 3mm',
+                x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                y: [5, 4, 6, 5, 7, 8, 6, 5, 4, 5, 3, 2],
+                line: { color: '#031590', width: 3 },
+                marker: { size: 6 }
+            }
+        ];
+        const timelineLayout = {
+            ...commonLayout,
+            xaxis: { title: 'Mês' },
+            yaxis: { title: 'Ocorrências' },
+            showlegend: true,
+            legend: { orientation: 'h', x: 0, y: -0.2 }
+        };
+        Plotly.newPlot('chart-timeline-fleet', timelineData, timelineLayout, commonConfig);
+
+    });
+</script>
+
+</body>
+</html>

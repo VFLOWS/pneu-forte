@@ -63,13 +63,13 @@
                 <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
                 Dashboard
             </a>
-            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="nova-solicitacao-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
                 Nova Solicitação de Análise
             </a>
-            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="solicitacoes-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Solicitação de Análise
+                Solicitações de Análise
             </a>
             <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
@@ -143,13 +143,13 @@
 
 <main id="main-content" class="ml-64 mt-[61px] p-6">
     <div class="mb-6">
-        <a href="pedidos-analise.html" class="text-sm text-azul-02 hover:text-azul-04 flex items-center mb-4">
+        <a href="solicitacoes-frota.html" class="text-sm text-azul-02 hover:text-azul-04 flex items-center mb-4">
             <i class="fa-solid fa-arrow-left mr-2"></i>
             Voltar para Solicitações de Análise
         </a>
         <div class="flex justify-between items-center">
             <div>
-                <h2 class="text-2xl font-bold text-gray-800">Análise da Inspeção de Frota <span class="text-azul-02">#FROTA-2026-001</span></h2>
+                <h2 class="text-2xl font-bold text-gray-800">Solicitação da Inspeção de Frota <span class="text-azul-02">#FROTA-2026-001</span></h2>
                 <p class="text-sm text-gray-600 mt-1">Cliente: <span class="font-medium">Transportadora Veloz</span> | Data: <span class="font-medium">15/12/2025</span></p>
             </div>
             <div class="flex items-center space-x-2">
@@ -180,12 +180,9 @@
             <p class="text-3xl font-bold text-gray-800 mt-2">66</p>
         </div>
         <div class="bg-white p-5 rounded-lg border border-gray-200">
-            <h3 class="text-sm font-medium text-gray-500">Causa Principal de Descarte</h3>
-            <p class="text-xl font-semibold text-gray-800 mt-2">Desgaste Irregular</p>
-        </div>
-        <div class="bg-white p-5 rounded-lg border border-gray-200">
-            <h3 class="text-sm font-medium text-gray-500">Valor Perdido Estimado</h3>
-            <p class="text-3xl font-bold text-red-600 mt-2">R$ 12.450</p>
+            <h3 class="text-sm font-medium text-gray-500">CAlta Pressão de Pneus</h3>
+                   <p class="text-3xl font-bold text-red-600  mt-2">6</p>
+
         </div>
     </div>
 
@@ -196,8 +193,8 @@
             <div id="chart-position" class="w-full h-72"></div>
         </div>
         <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Veículos com Mais Ocorrências</h3>
-            <div id="chart-vehicles" class="w-full h-72"></div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição de Pressão dos Pneus</h3>
+            <div id="chart-pressure" class="w-full h-72"></div>
         </div>
     </div>
 
@@ -299,9 +296,9 @@
 <script>
     window.addEventListener('load', function() {
         const chartPosition = document.getElementById('chart-position');
-        const chartVehicles = document.getElementById('chart-vehicles');
+        const chartPressure = document.getElementById('chart-pressure');
 
-        if (chartPosition && chartVehicles) {
+        if (chartPosition && chartPressure) {
             const chartLayout = {
                 margin: { t: 20, r: 20, b: 40, l: 50 },
                 paper_bgcolor: 'rgba(0,0,0,0)',
@@ -323,23 +320,21 @@
             }];
             Plotly.newPlot('chart-position', positionData, { ...chartLayout, yaxis: {title: 'Ocorrências'} }, config);
 
-            const vehicleData = [{
-                x: [12, 8, 5, 4, 2],
-                y: ['ABC-1234', 'XYZ-9876', 'DEF-5678', 'GHI-9012', 'JKL-3456'],
-                type: 'bar',
-                orientation: 'h',
-                marker: {
-                    color: '#031590'
-                }
+            const pressureData = [{
+                values: [12, 48, 6],
+                labels: ['Baixa Pressão', 'Pressão Correta', 'Alta Pressão'],
+                type: 'pie',
+                textinfo: 'label+percent',
+                marker: { colors: ['#031590', '#2D44BD', '#4B63D1'] }
             }];
-            Plotly.newPlot('chart-vehicles', vehicleData, { ...chartLayout, xaxis: {title: 'Qtd. Pneus Danificados'}, margin: { t: 20, r: 20, b: 40, l: 80 } }, config);
+            Plotly.newPlot('chart-pressure', pressureData, { ...chartLayout, showlegend: true, margin: { t: 20, r: 20, b: 20, l: 20 } }, config);
         }
 
         // Logic for WhatsApp and Email buttons
         const btnWhatsapp = document.getElementById('send-whatsapp');
         if (btnWhatsapp) {
             btnWhatsapp.addEventListener('click', () => {
-                const message = `Olá! Segue o relatório de Análise de Frota do pedido #FROTA-2026-001: ${window.location.href}`;
+                const message = `Olá! Segue o relatório da Solicitação da Inspeção de Frota #FROTA-2026-001: ${window.location.href}`;
                 const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
             });
@@ -348,8 +343,8 @@
         const btnEmail = document.getElementById('send-email');
         if (btnEmail) {
             btnEmail.addEventListener('click', () => {
-                const subject = 'Relatório de Análise de Frota - Pedido #FROTA-2026-001';
-                const body = `Olá,\n\nSegue o link para o relatório de Análise de Frota do pedido #FROTA-2026-001:\n${window.location.href}\n\nAtenciosamente,\nEquipe Pneu Forte`;
+                const subject = 'Relatório da Solicitação da Inspeção de Frota - Pedido #FROTA-2026-001';
+                const body = `Olá,\n\nSegue o link para o relatório da Solicitação da Inspeção de Frota do pedido #FROTA-2026-001:\n${window.location.href}\n\nAtenciosamente,\nEquipe Pneu Forte`;
                 const emailUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 window.location.href = emailUrl;
             });
