@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Inspeção de Frota</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pneu-forte-colors.css">
+    <script src="tailwind.config.js"></script>
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+            }
+
+            #report-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+            }
+
+            .report-page {
+                margin: 0;
+                page-break-after: always;
+                height: auto;
+                min-height: 297mm;
+            }
+        }
+
+        .report-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            padding: 20mm;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+
+        .tire-box {
+            width: 80px;
+            padding: 4px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background-color: #f9fafb;
+        }
+
+        .tire-value {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .tire-psi {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .axle-line {
+            height: 4px;
+            background-color: #d1d5db;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 font-sans">
+
+    <!-- Controls -->
+    <div class="fixed top-4 left-4 z-50 no-print">
+        <a href="frota-analise-detalhe.html"
+            class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 flex items-center shadow-md transition-colors">
+            <i class="fa-solid fa-arrow-left mr-2"></i>
+            Voltar
+        </a>
+    </div>
+
+    <div class="fixed top-4 right-4 z-50 no-print">
+        <button onclick="window.print()"
+            class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center font-medium shadow-md transition-colors">
+            <i class="fa-solid fa-print mr-2"></i>
+            Imprimir / Salvar PDF
+        </button>
+    </div>
+
+    <div id="report-container" class="mx-auto my-8">
+
+        <!-- Page 1: Cover / Intro -->
+        <div class="report-page shadow-lg flex flex-col">
+            <header class="flex justify-between items-start mb-16">
+                <div>
+                    <h2 class="text-lg font-bold">Cliente teste</h2>
+                    <p class="text-sm">Sr. X</p>
+                </div>
+                <div class="text-right">
+                    <img src="pneu-forte-logo.jpeg" alt="Pneu Forte Logo" class="vipal-logo ml-auto">
+                    <p class="text-sm mt-2">27/01/2026</p>
+                </div>
+            </header>
+
+            <main class="flex-grow flex flex-col justify-center items-center">
+                <h1 class="text-2xl font-bold mb-12">INSPEÇÃO DE FROTA</h1>
+                <div class="text-sm text-gray-700 max-w-3xl space-y-4 text-justify">
+                    <p><strong>Caro Cliente,</strong></p>
+                    <p>O Programa de Orientação ao Transportador (Protrans) é um conjunto de serviços exclusivos da
+                        Vipal para aprimorar o desempenho da sua frota. Por meio de visitas, palestras, treinamentos e
+                        implantação de softwares de gerenciamento, nossos consultores ajudam você e sua equipe a rodar
+                        com muito mais economia e segurança.</p>
+                    <p>O relatório que você verá a seguir apresenta os dados avaliados na <strong>INSPEÇÃO DE
+                            FROTA</strong>, seguidos de orientação técnica recomendada por nossa equipe. Tudo isto para
+                        você obter ótimos resultados de seus pneus.</p>
+                    <p>Para que este trabalho tenha sucesso, é fundamental o envolvimento e comprometimento da sua
+                        empresa em todas as suas etapas. Nossa equipe de consultores de negócios e o seu Reformador
+                        Autorizado Vipal encontram-se a disposição para a plena realização deste projeto e elaboração de
+                        Plano de Ação das melhorias.</p>
+                </div>
+            </main>
+
+            <footer class="pt-16 mt-auto">
+                <div class="flex items-end justify-between">
+                    <div class="w-64">
+                        <p class="border-t border-black pt-2 font-bold text-gray-800">Welington Pires do Nascimento</p>
+                        <p class="text-xs text-gray-600">Consultor de Frotas</p>
+                        <p class="text-xs font-bold mt-1 text-gray-800">Vipal Borrachas</p>
+                    </div>
+                    <div class="text-right text-xs text-gray-500 mb-4">1/8</div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Page 2: Vehicle 78191 -->
+        <div class="report-page shadow-lg flex flex-col">
+            <header class="flex justify-between items-center mb-6 border-b pb-4">
+                <span class="font-bold text-gray-700">Cliente teste</span>
+                <span class="text-sm text-gray-500">Inspeção de Frota</span>
+            </header>
+
+            <div class="flex-grow flex flex-col">
+                <!-- Image Placeholder -->
+                <div class="mb-4 flex justify-end">
+                    <div
+                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        <div class="text-center">
+                            <i class="fa-regular fa-image text-2xl mb-1 block"></i>
+                            <span>Foto do Veículo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle Diagram -->
+                <div class="relative h-80 mb-8 flex items-center justify-center">
+                    <!-- Chassis -->
+                    <div
+                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-0 rounded text-lg shadow-md">
+                        --- Veículo: 78191 ---
+                    </div>
+
+                    <!-- Axles Container -->
+                    <div class="relative z-10 w-full h-full flex justify-evenly items-center px-4">
+                        <!-- Axle 1 -->
+                        <div class="flex flex-col h-full relative group w-32 items-center">
+                            <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2">
+                            </div>
+
+                            <!-- Top -->
+                            <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
+                                <div class="flex items-center gap-2 mb-1 w-max">
+                                    <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    <span class="text-green-600 font-bold text-sm">11,0mm</span>
+                                </div>
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm text-lg relative z-10">
+                                    113 PSI</div>
+                            </div>
+
+                            <!-- Bottom -->
+                            <div class="z-10 mt-auto mb-2 flex flex-col-reverse gap-2 w-full items-center">
+                                <div class="flex items-center gap-2 mt-1 w-max">
+                                    <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    <span class="text-green-600 font-bold text-sm">11,0mm</span>
+                                </div>
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm text-lg relative z-10">
+                                    113 PSI</div>
+                            </div>
+                        </div>
+
+                        <!-- Axle 2 -->
+                        <div class="flex flex-col h-full relative group w-32 items-center">
+                            <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2">
+                            </div>
+
+                            <!-- Top Group -->
+                            <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
+                                <!-- Outer -->
+                                <div
+                                    class="w-28 bg-green-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    108 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">5,8mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <!-- Inner -->
+                                <div
+                                    class="w-28 bg-yellow-500 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    X
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-red-600 font-bold text-sm">X</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Group -->
+                            <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
+                                <!-- Inner -->
+                                <div
+                                    class="w-28 bg-yellow-500 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    X
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-red-600 font-bold text-sm">X</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <!-- Outer -->
+                                <div
+                                    class="w-28 bg-green-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    106 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-red-600 font-bold text-sm">4,2mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Axle 3 -->
+                        <div class="flex flex-col h-full relative group w-32 items-center">
+                            <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2">
+                            </div>
+
+                            <!-- Top Group -->
+                            <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
+                                <!-- Outer -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    114 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">17,0mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <!-- Inner -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    114 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">17,5mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Group -->
+                            <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
+                                <!-- Inner -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    114 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,2mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <!-- Outer -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    113 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,7mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations & Tables -->
+                <div class="mt-auto">
+                    <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
+                    <div class="border-b-2 border-black mb-2 pb-1">
+                        <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
+                    </div>
+                    <div class="border-b-2 border-black mb-6 pb-1">
+                        <p class="text-sm">Pneus 2EI e 2DI, estão com tampa na valvula e sem alongador, o que impede de
+                            realizar a conferencia.</p>
+                    </div>
+                    <div class="border-b-2 border-black mb-6 pb-1">
+                        <p class="text-sm">Pneu 38010, esta com um objeto perfurante na banda de rodagem.</p>
+                    </div>
+
+                    <div class="flex gap-8 items-stretch">
+                        <!-- Sulco Table -->
+                        <div class="w-1/2 flex flex-col">
+                            <div class="border-2 border-black rounded shadow-sm bg-white flex-grow flex flex-col">
+                                <h4
+                                    class="font-bold italic px-2 border-b border-black text-center bg-gray-50 h-8 flex items-center justify-center">
+                                    Sulco do pneu</h4>
+                                <div class="p-2 text-sm font-bold flex-grow flex flex-col justify-center gap-2">
+                                    <div class="flex justify-between items-center">
+                                        <span>Em condição de uso</span>
+                                        <div class="flex items-center gap-4">
+                                            <i class="fa-solid fa-flag text-green-600"></i>
+                                            <span class="text-lg">8</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Requer atenção</span>
+                                        <div class="flex items-center gap-4">
+                                            <i class="fa-solid fa-flag text-yellow-500"></i>
+                                            <span class="text-lg">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Remover pneu</span>
+                                        <div class="flex items-center gap-4">
+                                            <i class="fa-solid fa-flag text-red-600"></i>
+                                            <span class="text-lg">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pressure Table -->
+                        <div class="w-1/2 flex flex-col">
+                            <div class="border-2 border-black rounded shadow-sm bg-white flex-grow flex flex-col">
+                                <h4
+                                    class="font-bold italic px-2 border-b border-black text-center bg-gray-50 h-8 flex items-center justify-center">
+                                    Pressão</h4>
+                                <div class="p-2 text-sm font-bold flex-grow flex flex-col justify-center gap-2">
+                                    <div class="flex justify-between items-center">
+                                        <span>Correta</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-green-600 text-white px-6 py-0.5 text-center w-16 block">4</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Alta</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-blue-600 text-white px-6 py-0.5 text-center w-16 block">6</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Baixa</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-red-600 text-white px-6 py-0.5 text-center w-16 block">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-4 text-right text-xs text-gray-500">2/8</footer>
+        </div>
+
+        <!-- Page 3: Vehicle 78425 -->
+        <div class="report-page shadow-lg flex flex-col">
+            <header class="flex justify-between items-center mb-6 border-b pb-4">
+                <span class="font-bold text-gray-700">Cliente teste</span>
+                <span class="text-sm text-gray-500">Inspeção de Frota</span>
+            </header>
+
+            <div class="flex-grow flex flex-col">
+                <!-- Image Placeholder -->
+                <div class="mb-4 flex justify-end">
+                    <div
+                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        <div class="text-center">
+                            <i class="fa-regular fa-image text-2xl mb-1 block"></i>
+                            <span>Foto do Veículo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle Diagram -->
+                <div class="relative h-80 mb-8 flex items-center justify-center">
+                    <!-- Chassis -->
+                    <div
+                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-0 rounded text-lg shadow-md">
+                        --- Veículo: 78425 ---
+                    </div>
+
+                    <!-- Axles Container -->
+                    <div class="relative z-10 w-full h-full flex justify-evenly items-center px-4">
+                        <!-- Axle 1 -->
+                        <div class="flex flex-col h-full relative group w-32 items-center">
+                            <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2">
+                            </div>
+
+                            <!-- Top -->
+                            <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
+                                <div class="flex items-center gap-2 mb-1 w-max">
+                                    <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    <span class="text-green-600 font-bold text-sm">10,6mm</span>
+                                </div>
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm text-lg relative z-10">
+                                    118 PSI</div>
+                            </div>
+
+                            <!-- Bottom -->
+                            <div class="z-10 mt-auto mb-2 flex flex-col-reverse gap-2 w-full items-center">
+                                <div class="flex items-center gap-2 mt-1 w-max">
+                                    <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    <span class="text-green-600 font-bold text-sm">10,6mm</span>
+                                </div>
+                                <div
+                                    class="w-28 bg-green-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm text-lg relative z-10">
+                                    111 PSI</div>
+                            </div>
+                        </div>
+
+                        <!-- Axle 2 -->
+                        <div class="flex flex-col h-full relative group w-32 items-center">
+                            <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2">
+                            </div>
+
+                            <!-- Top Group -->
+                            <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
+                                <!-- Outer -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    125 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">8,7mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <!-- Inner -->
+                                <div
+                                    class="w-28 bg-red-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    99 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">13,4mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Group -->
+                            <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
+                                <!-- Inner -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    116 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">13,5mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <!-- Outer -->
+                                <div
+                                    class="w-28 bg-blue-600 text-white font-bold text-center py-1.5 border-2 border-black rounded shadow-sm relative text-lg z-10">
+                                    125 PSI
+                                    <div
+                                        class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">8,7mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations & Tables -->
+                <div class="mt-auto">
+                    <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
+                    <div class="border-b-2 border-black mb-6 pb-1">
+                        <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
+                    </div>
+
+                    <div class="flex gap-8 items-stretch">
+                        <!-- Sulco Table -->
+                        <div class="w-1/2 flex flex-col">
+                            <div class="border-2 border-black rounded shadow-sm bg-white flex-grow flex flex-col">
+                                <h4
+                                    class="font-bold italic px-2 border-b border-black text-center bg-gray-50 h-8 flex items-center justify-center">
+                                    Sulco do pneu</h4>
+                                <div class="p-2 text-sm font-bold flex-grow flex flex-col justify-center gap-2">
+                                    <div class="flex justify-between items-center">
+                                        <span>Em condição de uso</span>
+                                        <div class="flex items-center gap-4">
+                                            <i class="fa-solid fa-flag text-green-600"></i>
+                                            <span class="text-lg">6</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Requer atenção</span>
+                                        <div class="flex items-center gap-4">
+                                            <i class="fa-solid fa-flag text-yellow-500"></i>
+                                            <span class="text-lg">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Remover pneu</span>
+                                        <div class="flex items-center gap-4">
+                                            <i class="fa-solid fa-flag text-red-600"></i>
+                                            <span class="text-lg">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pressure Table -->
+                        <div class="w-1/2 flex flex-col">
+                            <div class="border-2 border-black rounded shadow-sm bg-white flex-grow flex flex-col">
+                                <h4
+                                    class="font-bold italic px-2 border-b border-black text-center bg-gray-50 h-8 flex items-center justify-center">
+                                    Pressão</h4>
+                                <div class="p-2 text-sm font-bold flex-grow flex flex-col justify-center gap-2">
+                                    <div class="flex justify-between items-center">
+                                        <span>Correta</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-green-600 text-white px-6 py-0.5 text-center w-16 block">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Alta</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-blue-600 text-white px-6 py-0.5 text-center w-16 block">4</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Baixa</span>
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-red-600 text-white px-6 py-0.5 text-center w-16 block">1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-4 text-right text-xs text-gray-500">3/8</footer>
+        </div>
+
+        <!-- Page Summary -->
+        <div class="report-page shadow-lg">
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-xl font-bold text-gray-800">Cliente teste</h1>
+                <img src="pneu-forte-logo.jpeg" alt="Logo" class="vipal-logo">
+            </header>
+
+            <main class="flex-grow">
+                <div class="grid grid-cols-2 gap-8 mb-8">
+                    <!-- Tables -->
+                    <div>
+                        <table class="w-full text-sm border-collapse border border-gray-300 shadow-sm">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="border border-gray-300 p-2 text-left text-gray-700">Ocorrência Pneus</th>
+                                    <th class="border border-gray-300 p-2 text-right text-gray-700">Qtde Pneus</th>
+                                    <th class="border border-gray-300 p-2 text-right text-gray-700">Percentual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Pressão Correta</td>
+                                    <td class="border border-gray-300 p-2 text-right">12</td>
+                                    <td class="border border-gray-300 p-2 text-right">18%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Pressão Alta</td>
+                                    <td class="border border-gray-300 p-2 text-right">26</td>
+                                    <td class="border border-gray-300 p-2 text-right">39%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Pressão Baixa</td>
+                                    <td class="border border-gray-300 p-2 text-right">22</td>
+                                    <td class="border border-gray-300 p-2 text-right">33%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Pneus Sem Acesso a Valvula</td>
+                                    <td class="border border-gray-300 p-2 text-right">6</td>
+                                    <td class="border border-gray-300 p-2 text-right">9%</td>
+                                </tr>
+                                <tr class="font-bold bg-gray-100">
+                                    <td class="border border-gray-300 p-2">Pneus Analisados</td>
+                                    <td class="border border-gray-300 p-2 text-right">66</td>
+                                    <td class="border border-gray-300 p-2 text-right">100%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="w-full text-sm border-collapse border border-gray-300 shadow-sm">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="border border-gray-300 p-2 text-left text-gray-700">Sulco do Pneu</th>
+                                    <th class="border border-gray-300 p-2 text-right text-gray-700">Qtde Pneus</th>
+                                    <th class="border border-gray-300 p-2 text-right text-gray-700">Percentual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Em condição de uso</td>
+                                    <td class="border border-gray-300 p-2 text-right">63</td>
+                                    <td class="border border-gray-300 p-2 text-right">95%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Requer atenção</td>
+                                    <td class="border border-gray-300 p-2 text-right">3</td>
+                                    <td class="border border-gray-300 p-2 text-right">5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2">Remover pneu</td>
+                                    <td class="border border-gray-300 p-2 text-right">0</td>
+                                    <td class="border border-gray-300 p-2 text-right">0%</td>
+                                </tr>
+                                <tr class="font-bold bg-gray-100">
+                                    <td class="border border-gray-300 p-2">Pneus Analisados</td>
+                                    <td class="border border-gray-300 p-2 text-right">66</td>
+                                    <td class="border border-gray-300 p-2 text-right">100%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-red-600 mt-2 italic font-medium">*Foi avaliado durante esta inspeção, o
+                            total de 11 Veículos.</p>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800 border-b pb-1 inline-block border-gray-800">
+                        Recomendações</h3>
+                    <div class="text-sm space-y-4 text-justify text-gray-700 leading-relaxed">
+                        <p>Recomendamos reavaliar a sistemática de calibragem, e periodicidade da inspeção, de modo a
+                            aprimorar o processo de inspeção dos pneus, para detectar furos e/ou danos, que podem ser
+                            corrigidos, antes que o pneu seja danificado.</p>
+                        <p>Dentro da amostra de veículos analisados, 72% (setenta e dois por cento), <strong
+                                class="text-black">estão fora da faixa de pressão aceitável</strong>, para preservação
+                            dos pneus.</p>
+                        <p>É importante observar que 33% (trinta e três por cento) dos pneus analisados, <strong
+                                class="text-black">estão com baixa pressão</strong>, podendo provocar nos pneus <strong
+                                class="text-black">rachadura circunferencial e aquecimento do talão</strong>, e 39%
+                            (trinta e nove por cento), estão com alta pressão, reduzindo a capacidade de flexão dos
+                            francos, e deixando o pneu mais sucetivel a ruptura radial.</p>
+                        <p>Entre os pneus analisados, 9% (nove por cento), estão com problemas que não permitem realizar
+                            a verificação da calibragem.</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 mb-8">
+                    <p class="text-gray-800">Atenciosamente,</p>
+                    <p class="font-bold text-gray-800 mt-4">Welington Pires do Nascimento</p>
+                    <p class="font-bold text-gray-600">Consultor de Frotas</p>
+                </div>
+
+                <div class="border border-gray-300 rounded text-xs bg-white shadow-sm overflow-hidden">
+                    <!-- Pressure Analysis Parameters -->
+                    <div class="bg-gray-200 font-bold p-2 border-b border-gray-300 text-gray-700">Parâmetros utilizados
+                        na analise de pressão</div>
+                    <div class="p-2">
+                        <div class="grid grid-cols-[1fr_100px_100px] gap-4 border-b border-gray-100 pb-2 mb-2">
+                            <span class="text-gray-600">Variação Aceitável: 3%</span>
+                            <span class="font-bold text-center">Min</span>
+                            <span class="font-bold text-center">Max</span>
+                        </div>
+                        <div
+                            class="grid grid-cols-[1fr_100px_100px] gap-4 border-b border-gray-100 pb-2 mb-2 items-center">
+                            <span class="text-gray-800">Pressão Dianteira: 110</span>
+                            <span class="text-center">107</span>
+                            <span class="text-center">113</span>
+                        </div>
+                        <div class="grid grid-cols-[1fr_100px_100px] gap-4 items-center">
+                            <span class="text-gray-800">Pressão Outros Pneus: 110</span>
+                            <span class="text-center">107</span>
+                            <span class="text-center">113</span>
+                        </div>
+                    </div>
+
+                    <!-- Removal Analysis Parameters -->
+                    <div class="bg-gray-200 font-bold p-2 border-t border-b border-gray-300 text-gray-700">Parâmetros
+                        utilizados na analise para remoção do pneu</div>
+                    <div class="p-2">
+                        <div class="grid grid-cols-[1fr_100px_100px] gap-4 border-b border-gray-100 pb-2 mb-2">
+                            <span class="text-gray-600">Variação Aceitável: 25%</span>
+                            <span class="font-bold text-center">Min</span>
+                            <span class="font-bold text-center">Max</span>
+                        </div>
+                        <div class="grid grid-cols-[1fr_100px_100px] gap-4 items-center">
+                            <span class="text-gray-800">Remove pneu com: 3</span>
+                            <span class="text-center">2,3</span>
+                            <span class="text-center">3,8</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <div class="mt-auto text-right text-xs text-gray-500 pt-4">8/8</div>
+        </div>
+    </div>
+</body>
+
+</html>
