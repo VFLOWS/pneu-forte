@@ -28,6 +28,14 @@
                 <input type="text" placeholder="Buscar..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
+            <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
+
+                <i class="fa-solid fa-table-cells-large"></i>
+
+                <span class="text-sm font-medium">Módulos</span>
+
+            </a>
+
             <button class="relative p-2 text-white hover:text-gray-300">
                 <i class="fa-regular fa-bell text-xl"></i>
                 <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -216,7 +224,7 @@
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
-        <form class="p-6">
+        <form class="p-6" onsubmit="event.preventDefault(); showToast('Motorista cadastrado com sucesso!', 'success'); closeAddModal(false);">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo <span class="text-red-500">*</span></label>
@@ -289,7 +297,7 @@
                 <i class="fa-solid fa-times text-xl"></i>
             </button>
         </div>
-        <form class="p-6">
+        <form class="p-6" onsubmit="event.preventDefault(); showToast('Motorista atualizado com sucesso!', 'success'); closeEditModal(false);">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo <span class="text-red-500">*</span></label>
@@ -351,7 +359,7 @@
                 <button onclick="closeDeleteModal()" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
                     Cancelar
                 </button>
-                <button class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium">
+                <button onclick="showToast('Motorista excluído com sucesso', 'success'); closeDeleteModal();" class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium">
                     Excluir
                 </button>
             </div>
@@ -360,20 +368,99 @@
 </div>
 
 <script>
+    function ensureToastContainer() {
+        if (!document.getElementById('toast-container')) {
+            const c = document.createElement('div');
+            c.id = 'toast-container';
+            c.className = 'fixed bottom-5 right-5 z-[1000] space-y-4';
+            document.body.appendChild(c);
+        }
+    }
+    
+    function showToast(message, type = 'info') {
+        ensureToastContainer();
+        
+        const styles = {
+            success: {
+                border: 'border-green-500',
+                icon: 'fa-check-circle',
+                iconColor: 'text-green-500'
+            },
+            error: {
+                border: 'border-red-500',
+                icon: 'fa-times-circle',
+                iconColor: 'text-red-500'
+            },
+            warning: {
+                border: 'border-yellow-500',
+                icon: 'fa-exclamation-triangle',
+                iconColor: 'text-yellow-500'
+            },
+            info: {
+                border: 'border-azul-02',
+                icon: 'fa-info-circle',
+                iconColor: 'text-azul-02'
+            }
+        };
+
+        const style = styles[type] || styles.info;
+
+        const toast = document.createElement('div');
+        toast.className = `transform transition-all duration-300 ease-out translate-y-2 opacity-0 bg-white border-l-4 ${style.border} shadow-lg rounded-r-lg pointer-events-auto flex items-center p-4 w-auto min-w-[300px] mb-3`;
+        
+        toast.innerHTML = `
+            <div class="flex-shrink-0">
+                <i class="fa-solid ${style.icon} ${style.iconColor} text-xl"></i>
+            </div>
+            <div class="ml-3 flex-1">
+                <p class="text-sm font-medium text-gray-900">${message}</p>
+            </div>
+            <div class="ml-4 flex-shrink-0 flex">
+                <button class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none" onclick="this.closest('div.transform').remove()">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+        `;
+
+        const container = document.getElementById('toast-container');
+        container.appendChild(toast);
+
+        // Animação de entrada
+        requestAnimationFrame(() => {
+            toast.classList.remove('translate-y-2', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+        });
+
+        // Auto remoção
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-2', 'opacity-0');
+                toast.addEventListener('transitionend', () => toast.remove());
+            }
+        }, 4000);
+    }
+
     function openAddModal() {
         document.getElementById('addModal').classList.remove('hidden');
     }
 
-    function closeAddModal() {
+    function closeAddModal(showNotification = true) {
         document.getElementById('addModal').classList.add('hidden');
+        if (showNotification) {
+            showToast('Cadastro cancelado', 'info');
+        }
     }
 
     function openEditModal(name) {
         document.getElementById('editModal').classList.remove('hidden');
     }
 
-    function closeEditModal() {
+    function closeEditModal(showNotification = true) {
         document.getElementById('editModal').classList.add('hidden');
+        if (showNotification) {
+            showToast('Edição cancelada', 'info');
+        }
     }
 
     function openDeleteModal(name) {

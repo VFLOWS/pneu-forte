@@ -36,6 +36,14 @@
                 <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
+            <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
+
+                <i class="fa-solid fa-table-cells-large"></i>
+
+                <span class="text-sm font-medium">Módulos</span>
+
+            </a>
+
             <button class="relative p-2 text-white hover:text-gray-300">
                 <i class="fa-regular fa-bell text-xl"></i>
                 <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -115,6 +123,10 @@
                     <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
                     Configurações
                 </a>
+                <a href="selecao-modulo.html" class="flex items-center px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg mt-4">
+                    <i class="fa-solid fa-arrow-left mr-3"></i>
+                    Trocar Módulo
+                </a>
             </div>
         </div>
     </nav>
@@ -151,15 +163,15 @@
                 </div>
             </div>
             <div class="flex flex-row space-x-2">
-                 <a href="detalhe-analise.html" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                 <a href="detalhe-analise.html" onclick="event.preventDefault(); showToast('Carregando resultados...', 'info'); setTimeout(() => window.location.href = this.href, 1000);" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
                     <i class="fa-solid fa-chart-simple mr-2"></i>
                     Ver Resultado
                 </a>
-                 <button type="button" class="w-full px-4 py-1 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors">
+                 <button type="button" onclick="showToast('Análise salva com sucesso!', 'success'); setTimeout(() => window.location.href = 'detalhe-analise.html', 1000);" class="w-full px-4 py-1 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors">
                     <i class="fa-regular fa-floppy-disk mr-2"></i>
                     Salvar Análise
                 </button>
-                <button type="button" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                <button type="button" onclick="showToast('Análise concluída com sucesso!', 'success'); setTimeout(() => window.location.href = 'detalhe-analise.html', 1000);" class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
                     <i class="fa-solid fa-check mr-2"></i>
                     Concluir Análise
                 </button>
@@ -375,27 +387,24 @@
         const isHidden = formContainer.classList.contains('hidden');
         
         if (isHidden) {
-            // Abrindo o formulário
             formContainer.classList.remove('hidden');
             btnToggle.innerHTML = '<i class="fa-solid fa-minus mr-2"></i> Fechar Formulário';
             btnToggle.classList.replace('bg-azul-02', 'bg-gray-500');
             btnToggle.classList.replace('hover:bg-blue-800', 'hover:bg-gray-600');
             
-            // Se não estiver editando (input-index vazio), limpa o formulário
             if (document.getElementById('input-index').value === '') {
                 clearForm();
                 document.getElementById('form-title').innerHTML = '<i class="fa-solid fa-plus mr-2 text-azul-02"></i> Novo Pneu';
             }
             
-            // Focar no primeiro campo
             setTimeout(() => document.getElementById('input-marca').focus(), 100);
         } else {
-            // Fechando o formulário
             formContainer.classList.add('hidden');
             btnToggle.innerHTML = '<i class="fa-solid fa-plus mr-2"></i> Adicionar Pneu';
             btnToggle.classList.replace('bg-gray-500', 'bg-azul-02');
             btnToggle.classList.replace('hover:bg-gray-600', 'hover:bg-blue-800');
             clearForm();
+            showToast('Ação cancelada', 'info');
         }
     }
 
@@ -461,15 +470,15 @@
         };
 
         if (index !== '') {
-            // Editando
             pneusData[index] = pneu;
+            showToast('Pneu atualizado', 'success');
         } else {
-            // Criando novo
             pneusData.push(pneu);
+            showToast('Pneu adicionado', 'success');
         }
 
         renderTable();
-        toggleForm(); // Fecha o formulário e reseta o botão
+        toggleForm();
     }
 
     function editRow(index) {
@@ -510,7 +519,81 @@
         if (confirm('Tem certeza que deseja remover este pneu da lista?')) {
             pneusData.splice(index, 1);
             renderTable();
+            showToast('Pneu apagado', 'warning');
         }
+    }
+
+    function ensureToastContainer() {
+        if (!document.getElementById('toast-container')) {
+            const c = document.createElement('div');
+            c.id = 'toast-container';
+            c.className = 'fixed bottom-5 right-5 z-[1000] space-y-4';
+            document.body.appendChild(c);
+        }
+    }
+
+    function showToast(message, type = 'info') {
+        ensureToastContainer();
+        
+        const styles = {
+            success: {
+                border: 'border-green-500',
+                icon: 'fa-check-circle',
+                iconColor: 'text-green-500'
+            },
+            error: {
+                border: 'border-red-500',
+                icon: 'fa-times-circle',
+                iconColor: 'text-red-500'
+            },
+            warning: {
+                border: 'border-yellow-500',
+                icon: 'fa-exclamation-triangle',
+                iconColor: 'text-yellow-500'
+            },
+            info: {
+                border: 'border-azul-02',
+                icon: 'fa-info-circle',
+                iconColor: 'text-azul-02'
+            }
+        };
+
+        const style = styles[type] || styles.info;
+
+        const toast = document.createElement('div');
+        toast.className = `transform transition-all duration-300 ease-out translate-y-2 opacity-0 bg-white border-l-4 ${style.border} shadow-lg rounded-r-lg pointer-events-auto flex items-center p-4 w-auto min-w-[300px] mb-3`;
+        
+        toast.innerHTML = `
+            <div class="flex-shrink-0">
+                <i class="fa-solid ${style.icon} ${style.iconColor} text-xl"></i>
+            </div>
+            <div class="ml-3 flex-1">
+                <p class="text-sm font-medium text-gray-900">${message}</p>
+            </div>
+            <div class="ml-4 flex-shrink-0 flex">
+                <button class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none" onclick="this.closest('div.transform').remove()">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+        `;
+
+        const container = document.getElementById('toast-container');
+        container.appendChild(toast);
+
+        // Animação de entrada
+        requestAnimationFrame(() => {
+            toast.classList.remove('translate-y-2', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+        });
+
+        // Auto remoção
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-2', 'opacity-0');
+                toast.addEventListener('transitionend', () => toast.remove());
+            }
+        }, 4000);
     }
 </script>
 
