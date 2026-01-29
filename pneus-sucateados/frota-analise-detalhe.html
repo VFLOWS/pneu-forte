@@ -209,9 +209,9 @@
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold text-gray-800">Tendência de Qualidade da Pressão (Últimas Inspeções)</h3>
                 <div class="flex items-center space-x-4 text-xs">
-                    <span class="flex items-center"><span class="w-3 h-3 bg-azul-02 rounded-full mr-1"></span> Correta</span>
-                    <span class="flex items-center"><span class="w-3 h-3 bg-azul-04 rounded-full mr-1"></span> Baixa</span>
-                    <span class="flex items-center"><span class="w-3 h-3 bg-azul-06 rounded-full mr-1"></span> Alta</span>
+                    <span class="flex items-center"><span class="w-3 h-3 bg-green-500 rounded-full mr-1"></span> Correta</span>
+                    <span class="flex items-center"><span class="w-3 h-3 bg-red-500 rounded-full mr-1"></span> Baixa</span>
+                    <span class="flex items-center"><span class="w-3 h-3 bg-yellow-500 rounded-full mr-1"></span> Alta</span>
                 </div>
             </div>
             <div id="chart-trend" class="w-full h-80"></div>
@@ -362,7 +362,7 @@
                 name: 'Correta',
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { color: '#2D44BD', width: 3 },
+                line: { color: '#10B981', width: 3 }, // Green-500
                 marker: { size: 8 }
             };
 
@@ -372,7 +372,7 @@
                 name: 'Baixa',
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { color: '#4B63D1', width: 3 },
+                line: { color: '#EF4444', width: 3 }, // Red-500
                 marker: { size: 8 }
             };
 
@@ -382,7 +382,7 @@
                 name: 'Alta',
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { color: '#6699FF', width: 3 },
+                line: { color: '#FBBF24', width: 3 }, // Yellow-500
                 marker: { size: 8 }
             };
 
