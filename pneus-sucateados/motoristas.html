@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="pneu-forte-colors.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motoristas</title>
+    <title>Motoristas - Inspeção de Frota</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -21,11 +21,11 @@
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
+            <h1 class="text-2xl font-bold text-white">Sistema de Inspeção de Frota</h1>
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
+                <input type="text" placeholder="Buscar Inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
@@ -55,19 +55,19 @@
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col">
     <nav class="p-4 flex-1 overflow-y-auto">
         <div class="space-y-1">
-            <a href="main.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="dashboard-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
-                Dashboard
+                Dashboard de Inspeção de Frota
             </a>
-            <a href="novo-pedido.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="nova-solicitacao-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
-                Nova Solicitação de Análise
+                Nova Solicitação de Inspeção
             </a>
-            <a href="pedidos-analise.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="solicitacoes-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Solicitações de Análise
+                Solicitações de Inspeção
             </a>
-            <a href="relatorios-interativos.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+            <a href="relatorios-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
                 Relatórios
             </a>
@@ -76,38 +76,26 @@
         <div class="mt-8 pt-6 border-t border-gray-200">
             <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
             <div class="space-y-1">           
-                <a href="clientes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                <a href="clientes-frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
                     Clientes
                 </a>
                 <a href="caminhoes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-truck mr-3 text-gray-500"></i>
-                    Caminhões
+                    Veículos
                 </a>
                 <a href="motoristas.html" class="flex items-center px-4 py-2.5 text-sm bg-azul-02 text-white rounded-lg">
                     <i class="fa-solid fa-id-card mr-3 text-white"></i>
                     Motoristas
                 </a>
 
-                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                <a href="marcas_frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
-                    Marcas
+                    Marcas de Pneu
                 </a>
-                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                <a href="modelos_frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-car mr-3 text-gray-500"></i>
-                    Modelos
-                </a>
-                <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
-                    <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
-                    Tipos de Dano
-                </a>
-                <a href="categoria-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
-                    <i class="fa-solid fa-layer-group mr-3 text-gray-500"></i>
-                    Ctg. de Tipo de Dano
-                </a>
-                <a href="causa-tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
-                    <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
-                    Principais Causas (Tipo de Dano)
+                    Modelos de Pneu
                 </a>
             </div>
         </div>
@@ -144,7 +132,7 @@
             <h2 class="text-2xl font-bold text-gray-800">Motoristas</h2>
             <p class="text-sm text-gray-600 mt-1">Gerencie o cadastro de motoristas e seus vínculos</p>
         </div>
-        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
+        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-semibold shadow-sm hover:shadow-md transition-all active:scale-95">
             <i class="fa-solid fa-plus mr-2"></i>
             Novo Motorista
         </button>
@@ -159,8 +147,9 @@
                 </div>
             </div>
             <div class="flex items-center space-x-2">
-                <button class="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
+                <button class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-azul-02 border border-gray-300 rounded-lg hover:border-azul-02 transition-colors bg-white font-medium">
                     <i class="fa-solid fa-download"></i>
+                    <span>Exportar</span>
                 </button>
             </div>
         </div>
@@ -184,9 +173,15 @@
                         <td class="px-6 py-4 text-sm text-gray-700">123.456.789-00</td>
                         <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
                         <td class="px-6 py-4 text-sm text-gray-700">(11) 99999-8888</td>
-                        <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('Roberto Santos')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button onclick="openDeleteModal('Roberto Santos')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="openEditModal('Roberto Santos')" class="p-2 text-azul-02 hover:bg-azul-50 rounded-lg transition-colors group" title="Editar">
+                                    <i class="fa-solid fa-pen-to-square group-hover:scale-110 transition-transform"></i>
+                                </button>
+                                <button onclick="openDeleteModal('Roberto Santos')" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors group" title="Excluir">
+                                    <i class="fa-solid fa-trash group-hover:scale-110 transition-transform"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                     <tr class="hover:bg-gray-50">
@@ -194,9 +189,15 @@
                         <td class="px-6 py-4 text-sm text-gray-700">987.654.321-11</td>
                         <td class="px-6 py-4 text-sm text-gray-700">Agro Cargas Brasil</td>
                         <td class="px-6 py-4 text-sm text-gray-700">(65) 97777-6666</td>
-                        <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('Amanda Oliveira')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button onclick="openDeleteModal('Amanda Oliveira')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="openEditModal('Amanda Oliveira')" class="p-2 text-azul-02 hover:bg-azul-50 rounded-lg transition-colors group" title="Editar">
+                                    <i class="fa-solid fa-pen-to-square group-hover:scale-110 transition-transform"></i>
+                                </button>
+                                <button onclick="openDeleteModal('Amanda Oliveira')" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors group" title="Excluir">
+                                    <i class="fa-solid fa-trash group-hover:scale-110 transition-transform"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                     <tr class="hover:bg-gray-50">
@@ -204,9 +205,15 @@
                         <td class="px-6 py-4 text-sm text-gray-700">555.444.333-22</td>
                         <td class="px-6 py-4 text-sm text-gray-700">Inovação Logística</td>
                         <td class="px-6 py-4 text-sm text-gray-700">(11) 91234-5678</td>
-                        <td class="px-6 py-4 text-sm">
-                            <button onclick="openEditModal('Carlos Musk')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button onclick="openDeleteModal('Carlos Musk')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                        <td class="px-6 py-4 text-sm whitespace-nowrap">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="openEditModal('Carlos Musk')" class="p-2 text-azul-02 hover:bg-azul-50 rounded-lg transition-colors group" title="Editar">
+                                    <i class="fa-solid fa-pen-to-square group-hover:scale-110 transition-transform"></i>
+                                </button>
+                                <button onclick="openDeleteModal('Carlos Musk')" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors group" title="Excluir">
+                                    <i class="fa-solid fa-trash group-hover:scale-110 transition-transform"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -267,13 +274,53 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">Validade da CNH</label>
                     <input type="date" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
                 </div>
-                <div class="md:col-span-2">
+                <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Foto do Motorista</label>
-                    <input type="file" accept="image/*" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-azul-02 file:text-white hover:file:bg-azul-04">
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-azul-02 hover:bg-azul-50/30 transition-all cursor-pointer group bg-gray-50/50" onclick="document.getElementById('photo-upload').click()">
+                        <div class="space-y-2 text-center">
+                            <div class="mx-auto h-12 w-12 text-gray-400 group-hover:text-azul-02 transition-colors flex items-center justify-center bg-white rounded-full shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-camera text-xl"></i>
+                            </div>
+                            <div class="flex flex-col text-sm text-gray-600">
+                                <span class="font-semibold text-azul-02 group-hover:text-azul-04">Clique para upload</span>
+                                <span class="text-xs text-gray-500 mt-1">ou arraste e solte</span>
+                            </div>
+                        </div>
+                        <input id="photo-upload" type="file" accept="image/*" class="sr-only" onchange="handleFileSelect(this, 'photo-preview')">
+                    </div>
+                    <div id="photo-preview" class="mt-2 hidden">
+                        <div class="flex items-center p-2 bg-azul-50 rounded-lg border border-azul-100">
+                            <i class="fa-solid fa-image text-azul-02 mr-2"></i>
+                            <span class="text-xs text-azul-700 font-medium truncate flex-1">nome-do-arquivo.jpg</span>
+                            <button type="button" onclick="removeFile('photo-upload', 'photo-preview')" class="text-azul-400 hover:text-red-500 transition-colors">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Anexo de Documento (CNH, Carteira de Identidade)</label>
-                    <input type="file" accept=".pdf,.jpg,.png" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-azul-02 file:text-white hover:file:bg-azul-04">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Anexo de Documento (CNH, RG)</label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-azul-02 hover:bg-azul-50/30 transition-all cursor-pointer group bg-gray-50/50" onclick="document.getElementById('doc-upload').click()">
+                        <div class="space-y-2 text-center">
+                            <div class="mx-auto h-12 w-12 text-gray-400 group-hover:text-azul-02 transition-colors flex items-center justify-center bg-white rounded-full shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-file-invoice text-xl"></i>
+                            </div>
+                            <div class="flex flex-col text-sm text-gray-600">
+                                <span class="font-semibold text-azul-02 group-hover:text-azul-04">Clique para upload</span>
+                                <span class="text-xs text-gray-500 mt-1">ou arraste e solte</span>
+                            </div>
+                        </div>
+                        <input id="doc-upload" type="file" accept=".pdf,.jpg,.png" class="sr-only" onchange="handleFileSelect(this, 'doc-preview')">
+                    </div>
+                    <div id="doc-preview" class="mt-2 hidden">
+                        <div class="flex items-center p-2 bg-azul-50 rounded-lg border border-azul-100">
+                            <i class="fa-solid fa-file-pdf text-azul-02 mr-2"></i>
+                            <span class="text-xs text-azul-700 font-medium truncate flex-1">documento.pdf</span>
+                            <button type="button" onclick="removeFile('doc-upload', 'doc-preview')" class="text-azul-400 hover:text-red-500 transition-colors">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="flex justify-end space-x-3 mt-8">
@@ -330,9 +377,53 @@
                         <option value="E" selected>E</option>
                     </select>
                 </div>
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Anexo de Documento (CNH, Carteira de Identidade)</label>
-                    <input type="file" accept=".pdf,.jpg,.png" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-azul-02 file:text-white hover:file:bg-azul-04">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Foto do Motorista</label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-azul-02 hover:bg-azul-50/30 transition-all cursor-pointer group bg-gray-50/50" onclick="document.getElementById('edit-photo-upload').click()">
+                        <div class="space-y-2 text-center">
+                            <div class="mx-auto h-12 w-12 text-gray-400 group-hover:text-azul-02 transition-colors flex items-center justify-center bg-white rounded-full shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-camera text-xl"></i>
+                            </div>
+                            <div class="flex flex-col text-sm text-gray-600">
+                                <span class="font-semibold text-azul-02 group-hover:text-azul-04">Alterar foto</span>
+                                <span class="text-xs text-gray-500 mt-1">ou arraste e solte</span>
+                            </div>
+                        </div>
+                        <input id="edit-photo-upload" type="file" accept="image/*" class="sr-only" onchange="handleFileSelect(this, 'edit-photo-preview')">
+                    </div>
+                    <div id="edit-photo-preview" class="mt-2 flex">
+                        <div class="flex items-center p-2 bg-azul-50 rounded-lg border border-azul-100">
+                            <i class="fa-solid fa-image text-azul-02 mr-2"></i>
+                            <span class="text-xs text-azul-700 font-medium truncate flex-1">foto-atual.jpg</span>
+                            <button type="button" onclick="removeFile('edit-photo-upload', 'edit-photo-preview')" class="text-azul-400 hover:text-red-500 transition-colors">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Anexo de Documento (CNH, RG)</label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-azul-02 hover:bg-azul-50/30 transition-all cursor-pointer group bg-gray-50/50" onclick="document.getElementById('edit-doc-upload').click()">
+                        <div class="space-y-2 text-center">
+                            <div class="mx-auto h-12 w-12 text-gray-400 group-hover:text-azul-02 transition-colors flex items-center justify-center bg-white rounded-full shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-file-invoice text-xl"></i>
+                            </div>
+                            <div class="flex flex-col text-sm text-gray-600">
+                                <span class="font-semibold text-azul-02 group-hover:text-azul-04">Alterar documento</span>
+                                <span class="text-xs text-gray-500 mt-1">ou arraste e solte</span>
+                            </div>
+                        </div>
+                        <input id="edit-doc-upload" type="file" accept=".pdf,.jpg,.png" class="sr-only" onchange="handleFileSelect(this, 'edit-doc-preview')">
+                    </div>
+                    <div id="edit-doc-preview" class="mt-2 flex">
+                        <div class="flex items-center p-2 bg-azul-50 rounded-lg border border-azul-100">
+                            <i class="fa-solid fa-file-pdf text-azul-02 mr-2"></i>
+                            <span class="text-xs text-azul-700 font-medium truncate flex-1">cnh-roberto.pdf</span>
+                            <button type="button" onclick="removeFile('edit-doc-upload', 'edit-doc-preview')" class="text-azul-400 hover:text-red-500 transition-colors">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="flex justify-end space-x-3 mt-8">
@@ -472,7 +563,72 @@
         document.getElementById('deleteModal').classList.add('hidden');
     }
 
+    function handleFileSelect(input, previewId) {
+        const file = input.files[0];
+        const preview = document.getElementById(previewId);
+        if (file) {
+            preview.classList.remove('hidden');
+            preview.classList.add('flex');
+            const nameSpan = preview.querySelector('span');
+            nameSpan.textContent = file.name;
+            
+            // Trocar ícone baseado na extensão
+            const icon = preview.querySelector('i');
+            if (file.type.includes('image')) {
+                icon.className = 'fa-solid fa-image text-azul-02 mr-2';
+            } else if (file.type.includes('pdf')) {
+                icon.className = 'fa-solid fa-file-pdf text-azul-02 mr-2';
+            }
+        }
+    }
+
+    function removeFile(inputId, previewId) {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+        input.value = '';
+        preview.classList.add('hidden');
+        preview.classList.remove('flex');
+    }
+
+    function setupDragAndDrop() {
+        const zones = document.querySelectorAll('.border-dashed');
+        
+        zones.forEach(zone => {
+            const input = zone.querySelector('input[type="file"]');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                zone.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, false);
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                zone.addEventListener(eventName, () => {
+                    zone.classList.add('border-azul-02', 'bg-azul-50/50');
+                }, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                zone.addEventListener(eventName, () => {
+                    zone.classList.remove('border-azul-02', 'bg-azul-50/50');
+                }, false);
+            });
+
+            zone.addEventListener('drop', e => {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                input.files = files;
+                
+                // Disparar o evento onchange manualmente
+                const event = new Event('change', { bubbles: true });
+                input.dispatchEvent(event);
+            }, false);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+        setupDragAndDrop();
         // Example mask initialization
         var cpfMask = IMask(document.getElementById('add-cpf'), {
             mask: '000.000.000-00'

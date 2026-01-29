@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="pneu-forte-colors.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatórios - Gestão de Frotas</title>
+    <title>Relatórios - Inspeção de Frota</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <script src="tailwind.config.js"></script>
@@ -20,11 +20,11 @@
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
             <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
+            <h1 class="text-2xl font-bold text-white">Sistema de Inspeção de Frota</h1>
         </div>
         <div class="flex items-center space-x-6">
             <div class="relative">
-                <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
+                <input type="text" placeholder="Buscar Inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
             <button class="relative p-2 text-white hover:text-gray-300">
@@ -48,15 +48,15 @@
         <div class="space-y-1">
             <a href="dashboard-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-chart-line mr-3 text-base text-gray-500"></i>
-                Dashboard
+                Dashboard de Inspeção de Frota
             </a>
             <a href="nova-solicitacao-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
-                Nova Solicitação de Análise
+                Nova Solicitação de Inspeção
             </a>
             <a href="solicitacoes-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Solicitações de Análise
+                Solicitações de Inspeção
             </a>
             <a href="relatorios-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-azul-02 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base"></i>
@@ -73,20 +73,21 @@
                 </a>
                 <a href="caminhoes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-truck mr-3 text-gray-500"></i>
-                    Caminhões
+                    Veículos
                 </a>
                 <a href="motoristas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-id-card mr-3 text-gray-500"></i>
                     Motoristas
                 </a>
-                <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                <a href="marcas_frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
-                    Marcas
+                    Marcas de Pneu
                 </a>
-                <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+                <a href="modelos_frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-car mr-3 text-gray-500"></i>
-                    Modelos
+                    Modelos de Pneu
                 </a>
+                <!--
                 <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
                     Tipos de Dano
@@ -99,6 +100,7 @@
                     <i class="fa-solid fa-clipboard-list mr-3 text-gray-500"></i>
                     Principais Causas (Tipo de Dano)
                 </a>
+                -->
             </div>
         </div>
 
@@ -135,7 +137,7 @@
 <main id="main-content" class="ml-64 mt-[61px] p-6">
     <div class="mb-6 flex items-center justify-between">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">Relatórios Interativos da Frota</h2>
+            <h2 class="text-2xl font-bold text-gray-800">Relatórios Interativos de Inspeção de Frota</h2>
             <p class="text-sm text-gray-600 mt-1">Visualize e exporte indicadores de performance da frota</p>
         </div>
         <div class="flex items-center space-x-3">
@@ -336,7 +338,7 @@
     <!-- Novo Gráfico: Timeline -->
     <div id="timeline-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-gray-800">Evolução da Análise de Frotas</h3>
+            <h3 class="text-lg font-semibold text-gray-800">Evolução da Inspeção de Frota</h3>
             <button class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-expand"></i></button>
         </div>
         <div id="chart-timeline-fleet" style="height: 400px"></div>
