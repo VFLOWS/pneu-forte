@@ -316,25 +316,6 @@
         </div>
     </div>
 
-    <!-- Novos Gráficos: Distribuição e Quilometragem -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div id="wear-types-card" class="bg-white rounded-lg border border-gray-200 p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-800">Distribuição de Tipos de Desgaste</h3>
-                <button class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-expand"></i></button>
-            </div>
-            <div id="chart-wear-distribution" style="height: 380px"></div>
-        </div>
-        
-        <div id="mileage-card" class="bg-white rounded-lg border border-gray-200 p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-800">Quilometragem Média por Marca</h3>
-                <button class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-expand"></i></button>
-            </div>
-            <div id="chart-mileage" style="height: 380px"></div>
-        </div>
-    </div>
-
     <!-- Novo Gráfico: Timeline -->
     <div id="timeline-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
@@ -506,41 +487,6 @@
             }
         ];
         Plotly.newPlot('chart-brands-fleet', brandsData, { ...commonLayout, barmode: 'stack', yaxis: {title: 'Qtd Pneus'} }, commonConfig);
-
-        // 5. Chart Wear Distribution (Pie)
-        const wearData = [{
-            type: 'pie',
-            labels: ['Desgaste Irregular', 'Ombro', 'Centro', 'Escamado', 'Normal'],
-            values: [15, 10, 8, 5, 62],
-            marker: {
-                colors: ['#031590', '#1226A2', '#1A34B8', '#4D4D4D', '#60A5FA']
-            },
-            textinfo: 'label+percent',
-            textposition: 'inside',
-            hole: 0.4
-        }];
-        const wearLayout = {
-            ...commonLayout,
-            showlegend: true,
-            legend: { orientation: 'v', x: 1, y: 0.5 }
-        };
-        Plotly.newPlot('chart-wear-distribution', wearData, wearLayout, commonConfig);
-
-        // 6. Chart Mileage (Bar)
-        const mileageData = [{
-            type: 'bar',
-            x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
-            y: [120000, 115000, 110000, 118000, 112000],
-            marker: {
-                color: '#031590'
-            }
-        }];
-        const mileageLayout = {
-            ...commonLayout,
-            xaxis: { title: 'Marca', tickangle: -45 },
-            yaxis: { title: 'Km Médio' }
-        };
-        Plotly.newPlot('chart-mileage', mileageData, mileageLayout, commonConfig);
 
         // 7. Chart Timeline (Line)
         const timelineData = [
