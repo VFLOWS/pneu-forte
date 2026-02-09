@@ -15,21 +15,14 @@
 <body class="bg-gray-50 font-sans">
 
 <header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-6 py-3">
-        <!--div class="flex items-center space-x-4">
-            <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
-                <div>
-                    <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
-                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
-                </div>
-            </div>
-        </div-->
+    <div class="flex items-center justify-between px-4 md:px-6 py-3">
         
         <div class="flex items-center space-x-4">
-                <!--i class="fa-solid fa-shield-halved text-white text-3xl"></i-->
-            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
+            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none mr-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 md:h-10">
+            <h1 class="text-lg md:text-2xl font-bold text-white hidden md:block">Sistema de Análise de Pneus</h1>
         </div> 
         <div class="flex items-center space-x-6">
             <div class="relative">
@@ -91,11 +84,11 @@
                 
                 <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
-                    Marcas
+                    Marcas de Pneu
                 </a>
                 <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-car mr-3 text-gray-500"></i>
-                    Modelos
+                    Modelos de Pneu
                 </a>
                 <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
@@ -273,6 +266,12 @@
                     <input type="text" id="input-dot" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10" placeholder="0000">
                 </div>
 
+                <!-- Vida (1 col) -->
+                <div class="md:col-span-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Vida</label>
+                    <input type="number" id="input-vida" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-azul-02 focus:ring focus:ring-azul-02 focus:ring-opacity-50 h-10" placeholder="0">
+                </div>
+
                 <!-- Foto (1 col) -->
                 <div class="md:col-span-1">
                     <label class="block text-xs font-semibold text-gray-600 mb-1">Foto</label>
@@ -308,6 +307,7 @@
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tipo de Dano</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-20">Profund.</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-20">DOT</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-16">Vida</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Fotos</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Status</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">Ações</th>
@@ -321,7 +321,54 @@
     </div>
 </main>
 
+<!-- Overlay for mobile -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity opacity-0"></div>
+
 <script>
+    // Sidebar Toggle Logic
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const mainContent = document.getElementById('main-content');
+
+    function toggleSidebar() {
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        
+        if (isClosed) {
+            // Open sidebar
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarOverlay.classList.remove('opacity-0');
+            }, 10);
+        } else {
+            // Close sidebar
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarOverlay.classList.add('hidden');
+            }, 300);
+        }
+    }
+
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+    }
+
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+    }
+
+    // Close sidebar on window resize if moving to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.add('hidden', 'opacity-0');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
+
     // Armazenar pneus em memória
     let pneusData = [];
     
@@ -336,6 +383,7 @@
             tipoDano: 'Desgaste Irregular',
             profundidade: '12',
             dot: '4521',
+            vida: '2',
             foto: true,
             status: 'Não Iniciada'
         });
@@ -364,6 +412,7 @@
                 </td>
                 <td class="px-4 py-4 text-sm text-gray-700">${pneu.profundidade ? pneu.profundidade + ' mm' : '-'}</td>
                 <td class="px-4 py-4 text-sm text-gray-700">${pneu.dot || '-'}</td>
+                <td class="px-4 py-4 text-sm text-gray-700 font-medium text-azul-02">${pneu.vida || '-'}</td>
                 <td class="px-4 py-4 text-sm text-center">
                     ${pneu.foto ? '<button class="text-azul-02 hover:text-blue-800"><i class="fa-solid fa-camera"></i></button>' : '<span class="text-gray-400">-</span>'}
                 </td>
@@ -417,6 +466,7 @@
         document.getElementById('input-tipoDano').value = '';
         document.getElementById('input-profundidade').value = '';
         document.getElementById('input-dot').value = '';
+        document.getElementById('input-vida').value = '';
         document.getElementById('input-foto').value = ''; // Limpa input file
         resetFotoPreview();
     }
@@ -447,6 +497,7 @@
         const tipoDano = document.getElementById('input-tipoDano').value;
         const profundidade = document.getElementById('input-profundidade').value;
         const dot = document.getElementById('input-dot').value;
+        const vida = document.getElementById('input-vida').value;
         const fotoInput = document.getElementById('input-foto');
         const temFoto = fotoInput.files && fotoInput.files.length > 0;
 
@@ -465,6 +516,7 @@
             tipoDano,
             profundidade,
             dot,
+            vida,
             foto: index !== '' ? (temFoto ? true : pneusData[index].foto) : temFoto,
             status: index !== '' ? pneusData[index].status : 'Não Iniciada'
         };
@@ -493,6 +545,7 @@
         document.getElementById('input-tipoDano').value = pneu.tipoDano;
         document.getElementById('input-profundidade').value = pneu.profundidade;
         document.getElementById('input-dot').value = pneu.dot;
+        document.getElementById('input-vida').value = pneu.vida || '';
         
         // Resetar preview de foto (não carregamos a foto real na edição simulada)
         resetFotoPreview();

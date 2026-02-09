@@ -20,15 +20,18 @@
 <header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
     <div class="flex items-center justify-between px-6 py-3">
         <div class="flex items-center space-x-4">
+            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
             <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-2xl font-bold text-white">Sistema de Inspeção de Frota</h1>
+            <h1 class="text-xl md:text-2xl font-bold text-white hidden sm:block">Sistema de Inspeção de Frota</h1>
         </div>
         <div class="flex items-center space-x-6">
-            <div class="relative">
-                <input type="text" placeholder="Buscar Inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
+            <div class="relative hidden md:block">
+                <input type="text" placeholder="Buscar Inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 lg:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
-            <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
+            <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2 hidden md:flex" title="Trocar Módulo">
 
                 <i class="fa-solid fa-table-cells-large"></i>
 
@@ -42,17 +45,20 @@
             </button>
             <div class="flex items-center space-x-3">
                 <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
-                <div class="text-right">
+                <div class="text-right hidden sm:block">
                     <p class="text-sm font-medium text-white">Carlos Silva</p>
                     <p class="text-xs text-white">Analista</p>
                 </div>
-                <i class="fa-solid fa-chevron-down text-white text-xs"></i>
+                <i class="fa-solid fa-chevron-down text-white text-xs hidden sm:block"></i>
             </div>
         </div>
     </div>
 </header>
 
-<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col">
+<!-- Overlay for mobile -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="toggleSidebar()"></div>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
     <nav class="p-4 flex-1 overflow-y-auto">
         <div class="space-y-1">
             <a href="dashboard-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -342,6 +348,11 @@
                         <option value="fiat">Fiat</option>
                         <option value="chevrolet">Chevrolet</option>
                         <option value="toyota">Toyota</option>
+                        <option value="randon">Randon</option>
+                        <option value="facchini">Facchini</option>
+                        <option value="guerra">Guerra</option>
+                        <option value="librelato">Librelato</option>
+                        <option value="noma">Noma</option>
                         <option value="outros">Outros</option>
                     </select>
                 </div>
@@ -389,6 +400,8 @@
                                     <option value="6x2">6x2 (Trucado)</option>
                                     <option value="6x4">6x4 (Traçado)</option>
                                     <option value="8x2">8x2 (Bitruck)</option>
+                                    <option value="8x4">8x4 (Traçado)</option>
+                                    <option value="9_axles">9 Eixos (Bitrem / Rodotrem)</option>
                                 </select>
                             </div>
                             <div class="flex items-center mt-6">
@@ -424,11 +437,45 @@
                                     <option value="2">2 Eixos</option>
                                     <option value="3" selected>3 Eixos</option>
                                     <option value="4">4 Eixos</option>
+                                    <option value="5">5 Eixos</option>
+                                    <option value="6">6 Eixos</option>
+                                    <option value="7">7 Eixos</option>
+                                    <option value="8">8 Eixos</option>
+                                    <option value="9">9 Eixos</option>
                                 </select>
                             </div>
                             <div class="linked-trailer-only hidden">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Placa da Carreta</label>
                                 <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="ABC-1234">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campos Específicos: Ônibus -->
+                <div id="van-options-add" class="md:col-span-2 hidden">
+                    <div class="flex items-center mt-2 mb-4">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="add-is-bus" class="form-checkbox text-azul-02 w-5 h-5" onchange="toggleBusFields('add')">
+                            <span class="ml-2 text-sm text-gray-700 font-medium">Este veículo é um Ônibus?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="add-bus-section" class="md:col-span-2 hidden field-group-bus" data-group="add">
+                    <div class="border-t border-gray-200 pt-4 mt-2 mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider mb-4">Especificações do Ônibus</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos</label>
+                                <select id="add-bus-axles" onchange="updateTireLayout('add')" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                                    <option value="simples">Simples (4 Pneus)</option>
+                                    <option value="4x2">4x2 (6 Pneus)</option>
+                                    <option value="6x2">6x2 (Trucado)</option>
+                                    <option value="articulado">Articulado (3 Eixos)</option>
+                                    <option value="biarticulado">Biarticulado (4 Eixos)</option>
+                                    <option value="bidirecional">Bidirecional (Simétrico)</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -528,6 +575,11 @@
                         <option value="fiat">Fiat</option>
                         <option value="chevrolet">Chevrolet</option>
                         <option value="toyota">Toyota</option>
+                        <option value="randon">Randon</option>
+                        <option value="facchini">Facchini</option>
+                        <option value="guerra">Guerra</option>
+                        <option value="librelato">Librelato</option>
+                        <option value="noma">Noma</option>
                         <option value="outros">Outros</option>
                     </select>
                 </div>
@@ -559,6 +611,8 @@
                                     <option value="6x2" selected>6x2 (Trucado)</option>
                                     <option value="6x4">6x4 (Traçado)</option>
                                     <option value="8x2">8x2 (Bitruck)</option>
+                                    <option value="8x4">8x4 (Traçado)</option>
+                                    <option value="9_axles">9 Eixos (Bitrem / Rodotrem)</option>
                                 </select>
                             </div>
                             <div class="flex items-center mt-6">
@@ -594,11 +648,45 @@
                                     <option value="2">2 Eixos</option>
                                     <option value="3" selected>3 Eixos</option>
                                     <option value="4">4 Eixos</option>
+                                    <option value="5">5 Eixos</option>
+                                    <option value="6">6 Eixos</option>
+                                    <option value="7">7 Eixos</option>
+                                    <option value="8">8 Eixos</option>
+                                    <option value="9">9 Eixos</option>
                                 </select>
                             </div>
                             <div class="linked-trailer-only hidden">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Placa da Carreta</label>
                                 <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 uppercase" placeholder="ABC-1234">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campos Específicos: Ônibus -->
+                <div id="van-options-edit" class="md:col-span-2 hidden">
+                    <div class="flex items-center mt-2 mb-4">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="edit-is-bus" class="form-checkbox text-azul-02 w-5 h-5" onchange="toggleBusFields('edit')">
+                            <span class="ml-2 text-sm text-gray-700 font-medium">Este veículo é um Ônibus?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="edit-bus-section" class="md:col-span-2 hidden field-group-bus" data-group="edit">
+                    <div class="border-t border-gray-200 pt-4 mt-2 mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wider mb-4">Especificações do Ônibus</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Configuração de Eixos</label>
+                                <select id="edit-bus-axles" onchange="updateTireLayout('edit')" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                                    <option value="simples">Simples (4 Pneus)</option>
+                                    <option value="4x2">4x2 (6 Pneus)</option>
+                                    <option value="6x2">6x2 (Trucado)</option>
+                                    <option value="articulado">Articulado (3 Eixos)</option>
+                                    <option value="biarticulado">Biarticulado (4 Eixos)</option>
+                                    <option value="bidirecional">Bidirecional (Simétrico)</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -787,11 +875,24 @@
                 html += renderAxle(1, 2, 'truck', '(Dianteiro)');
                 html += renderAxle(2, 4, 'truck', '(Tração)');
                 html += renderAxle(3, 4, 'truck', '(Truck/Tração)');
-            } else if (axleConfig === '8x2') { // 4 axles: 2, 2, 4, 4
+            } else if (axleConfig === '8x2' || axleConfig === '8x4') { // 4 axles: 2, 2, 4, 4
                 html += renderAxle(1, 2, 'truck', '(Dianteiro 1)');
                 html += renderAxle(2, 2, 'truck', '(Dianteiro 2)');
                 html += renderAxle(3, 4, 'truck', '(Tração)');
                 html += renderAxle(4, 4, 'truck', '(Truck)');
+            } else if (axleConfig === '9_axles') {
+                html += renderAxle(1, 2, 'truck', '(Dianteiro)');
+                html += renderAxle(2, 4, 'truck', '(Tração 1)');
+                html += renderAxle(3, 4, 'truck', '(Tração 2)');
+                
+                // Bitrem/Rodotrem: Usually 2 semitrailers with 3 axles each
+                // Total: 3 (truck) + 3 (trailer 1) + 3 (trailer 2) = 9 axles
+                for(let i=1; i<=3; i++) {
+                    html += renderAxle(i, 4, 'linked_trailer', `(1º Reboque - Eixo ${i})`);
+                }
+                for(let i=1; i<=3; i++) {
+                    html += renderAxle(i, 4, 'linked_trailer_2', `(2º Reboque - Eixo ${i})`);
+                }
             }
 
             // Linked Trailer?
@@ -812,8 +913,42 @@
             for(let i=1; i<=count; i++) {
                 html += renderAxle(i, 4, 'trailer', `(Eixo ${i})`);
             }
+        } else if (selectedType === 'van') {
+            const isBus = document.getElementById(modalType + '-is-bus').checked;
+            if (isBus) {
+                const busAxles = document.getElementById(modalType + '-bus-axles').value;
+                if (busAxles === 'simples') {
+                    html += renderAxle(1, 2, 'bus', '(Dianteiro)');
+                    html += renderAxle(2, 2, 'bus', '(Traseiro)');
+                } else if (busAxles === '4x2') {
+                    html += renderAxle(1, 2, 'bus', '(Dianteiro)');
+                    html += renderAxle(2, 4, 'bus', '(Tração)');
+                } else if (busAxles === '6x2') {
+                    html += renderAxle(1, 2, 'bus', '(Dianteiro)');
+                    html += renderAxle(2, 4, 'bus', '(Tração)');
+                    html += renderAxle(3, 2, 'bus', '(Auxiliar)');
+                } else if (busAxles === 'articulado') {
+                    html += renderAxle(1, 2, 'bus', '(Dianteiro)');
+                    html += renderAxle(2, 4, 'bus', '(Tração)');
+                    html += renderAxle(3, 4, 'bus', '(Reboque)');
+                } else if (busAxles === 'biarticulado') {
+                    html += renderAxle(1, 2, 'bus', '(Dianteiro)');
+                    html += renderAxle(2, 4, 'bus', '(Tração)');
+                    html += renderAxle(3, 4, 'bus', '(Reboque 1)');
+                    html += renderAxle(4, 4, 'bus', '(Reboque 2)');
+                } else if (busAxles === 'bidirecional') {
+                    html += renderAxle(1, 2, 'bus', '(Direcional Dianteiro)');
+                    html += renderAxle(2, 4, 'bus', '(Tração 1)');
+                    html += renderAxle(3, 4, 'bus', '(Tração 2)');
+                    html += renderAxle(4, 2, 'bus', '(Direcional Traseiro)');
+                }
+            } else {
+                // Van layout - 4 tires
+                html += renderAxle(1, 2, 'van', '(Dianteiro)');
+                html += renderAxle(2, 2, 'van', '(Traseiro)');
+            }
         } else {
-            // Car/Van - Just 4 tires
+            // Car - Just 4 tires
             html += renderAxle(1, 2, 'car', '(Dianteiro)');
             html += renderAxle(2, 2, 'car', '(Traseiro)');
         }
@@ -837,12 +972,16 @@
         const motorFields = document.querySelectorAll(`.field-group-motor[data-group="${modalType}"]`);
         const truckFields = document.querySelector(`.field-group-truck[data-group="${modalType}"]`);
         const trailerFields = document.querySelector(`.field-group-trailer[data-group="${modalType}"]`);
+        const busFields = document.querySelector(`.field-group-bus[data-group="${modalType}"]`);
+        const vanOptions = document.getElementById(`van-options-${modalType}`);
         const placaLabel = document.getElementById(`label-placa-${modalType}`);
         
         // Reset visibility
         motorFields.forEach(el => el.classList.remove('hidden'));
         if(truckFields) truckFields.classList.add('hidden');
         if(trailerFields) trailerFields.classList.add('hidden');
+        if(busFields) busFields.classList.add('hidden');
+        if(vanOptions) vanOptions.classList.add('hidden');
 
         // Logic
         if (selectedType === 'caminhao') {
@@ -855,16 +994,15 @@
             motorFields.forEach(el => el.classList.add('hidden')); // No engine fields for trailer
             if(trailerFields) {
                 trailerFields.classList.remove('hidden');
-                // Ensure linked-only fields are hidden or shown appropriately? 
-                // For standalone trailer, we don't need "Linked Trailer" logic, just the fields.
-                // But my HTML structure shared the div. Let's fix in toggleLinkedTrailer or just show it here.
                 const linkedOnly = trailerFields.querySelectorAll('.linked-trailer-only');
-                linkedOnly.forEach(el => el.classList.add('hidden')); // Hide "Placa da Carreta" if it's the main Placa
+                linkedOnly.forEach(el => el.classList.add('hidden')); 
             }
-        } else if (selectedType === 'carro' || selectedType === 'van') {
+        } else if (selectedType === 'van') {
             if(placaLabel) placaLabel.innerHTML = 'Placa <span class="text-red-500">*</span>';
-            // Basic motor fields already shown
-            // Truck/Trailer fields hidden
+            if(vanOptions) vanOptions.classList.remove('hidden');
+            toggleBusFields(modalType);
+        } else if (selectedType === 'carro') {
+            if(placaLabel) placaLabel.innerHTML = 'Placa <span class="text-red-500">*</span>';
         }
         
         // Update Tire Layout
@@ -892,6 +1030,18 @@
             if (selectedType === 'caminhao' && trailerSection) {
                 trailerSection.classList.add('hidden');
             }
+        }
+        updateTireLayout(modalType);
+    }
+
+    function toggleBusFields(modalType) {
+        const checkbox = document.getElementById(modalType + '-is-bus');
+        const busSection = document.getElementById(modalType + '-bus-section');
+        
+        if (checkbox && checkbox.checked) {
+            if(busSection) busSection.classList.remove('hidden');
+        } else {
+            if(busSection) busSection.classList.add('hidden');
         }
         updateTireLayout(modalType);
     }
@@ -935,5 +1085,16 @@
     });
 </script>
 
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+        
+        document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+    </script>
 </body>
 </html>

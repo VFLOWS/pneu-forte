@@ -20,49 +20,48 @@
 
 <body class="bg-gray-50 font-sans">
 
-    <header id="header"
-        class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-        <div class="flex items-center justify-between px-6 py-3">
-            <!--div class="flex items-center space-x-4">
-            <div class="flex items-center">
-                <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
-                <div>
-                    <h1 class="text-xl font-bold text-gray-800">Pneu Forte</h1>
-                    <p class="text-xs text-gray-500">Sistema de Análise de Pneus</p>
-                </div>
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
+    <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
+            <h1 class="text-xl md:text-2xl font-bold text-white hidden sm:block">Sistema de Análise de Pneus</h1>
+        </div> 
+        <div class="flex items-center space-x-6">
+            <div class="relative hidden md:block">
+                <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 lg:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
-        </div-->
+            <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2 hidden md:flex" title="Trocar Módulo">
 
-            <div class="flex items-center space-x-4">
-                <!--i class="fa-solid fa-shield-halved text-white text-3xl"></i-->
-                <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-                <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
-            </div>
-            <div class="flex items-center space-x-6">
-                <div class="relative">
-                    <input type="text" placeholder="Buscar pedidos..."
-                        class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
-                    <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                <i class="fa-solid fa-table-cells-large"></i>
+
+                <span class="text-sm font-medium">Módulos</span>
+
+            </a>
+
+            <button class="relative p-2 text-white hover:text-gray-300">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-medium text-white">Carlos Silva</p>
+                    <p class="text-xs text-white">Analista</p>
                 </div>
-                <button class="relative p-2 text-white hover:text-gray-300">
-                    <i class="fa-regular fa-bell text-xl"></i>
-                    <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
-                <div class="flex items-center space-x-3">
-                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User"
-                        class="w-9 h-9 rounded-full">
-                    <div class="text-right">
-                        <p class="text-sm font-medium text-white">Carlos Silva</p>
-                        <p class="text-xs text-white">Analista</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-white text-xs"></i>
-                </div>
+                <i class="fa-solid fa-chevron-down text-white text-xs hidden sm:block"></i>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <aside id="sidebar"
-        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col">
+<!-- Overlay for mobile -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden" onclick="toggleSidebar()"></div>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
         <nav class="p-4 flex-1 overflow-y-auto">
             <div class="space-y-1">
                 <a href="main.html"
@@ -100,12 +99,12 @@
                 <a href="marcas.html"
                     class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                         <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
-                        Marcas
+                        Marcas de Pneu
                     </a>
                     <a href="modelos.html"
                         class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                         <i class="fa-solid fa-car mr-3 text-gray-500"></i>
-                        Modelos
+                        Modelos de Pneu
                     </a>
                     <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
@@ -155,8 +154,8 @@
         </div>
     </aside>
 
-    <main id="main-content" class="ml-64 mt-[61px] p-6">
-        <div class="mb-6 flex items-center justify-between">
+    <main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-6 transition-all duration-300">
+    <div class="mb-6 flex items-center justify-between">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800">Relatórios Interativos</h2>
                 <p class="text-sm text-gray-600 mt-1">Visualize e exporte dados de pneus analisados</p>
@@ -307,7 +306,7 @@
                     </button>
                     <button onclick="switchTab('vida')" id="btn-tab-vida"
                         class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 border-b-2 border-transparent whitespace-nowrap">
-                        Vida útil
+                        Vida Útil
                     </button>
                     <button onclick="switchTab('dot')" id="btn-tab-dot"
                         class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 border-b-2 border-transparent whitespace-nowrap">
@@ -370,8 +369,8 @@
             <div id="content-vida" class="tab-content p-6 hidden">
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <h3 class="text-lg font-semibold text-gray-800">Análise de Vida Útil</h3>
-                        <p class="text-sm text-gray-600 mt-1">Quilometragem média antes do sucateamento</p>
+                        <h3 class="text-lg font-semibold text-gray-800">Análise por Quantidade de Recapagens</h3>
+                        <p class="text-sm text-gray-600 mt-1">Distribuição de pneus sucateados por quantidade de vidas (recapagens)</p>
                     </div>
                 </div>
                 <div id="chart-lifespan-analysis-tab" style="height: 480px"></div>
@@ -402,7 +401,7 @@
 
             <div id="lifespan-card" class="bg-white rounded-lg border border-gray-200 p-6">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Vida útil Média por Marca</h3>
+                    <h3 class="text-lg font-semibold text-gray-800">Quantidade de Recapagens por Marca</h3>
                     <button class="text-gray-500 hover:text-gray-700">
                         <i class="fa-solid fa-expand"></i>
                     </button>
@@ -468,7 +467,7 @@
                             </th>
                             <th
                                 class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Vida útil Média (km)
+                                Vida Útil Média (km)
                                 <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                             </th>
                             <th
@@ -676,18 +675,20 @@
                 Plotly.newPlot('chart-damage-analysis-tab', damageTabData, damageTabLayout, config);
 
 
-                // Gráfico de Vida Útil (NOVO - ABA)
+                // Gráfico de Recapagens (Substituindo Vida Útil)
                 var lifespanTabData = [{
                     type: 'bar',
                     x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
-                    y: [41250, 44800, 43100, 46900, 45600],
-                    marker: { color: '#031590' }
+                    y: [2.8, 2.4, 2.1, 2.6, 2.3],
+                    marker: { color: '#031590' },
+                    text: ['2.8', '2.4', '2.1', '2.6', '2.3'],
+                    textposition: 'outside'
                 }];
 
                 var lifespanTabLayout = {
                     margin: { t: 40, r: 20, b: 80, l: 60 },
                     xaxis: { title: 'Fabricante', tickangle: -45 },
-                    yaxis: { title: 'Quilometragem (km)' },
+                    yaxis: { title: 'Média de Recapagens', range: [0, 4] },
                     plot_bgcolor: '#ffffff',
                     paper_bgcolor: '#ffffff',
                     showlegend: false
@@ -740,21 +741,22 @@
 
                 Plotly.newPlot('chart-damage-distribution', damageDistData, damageDistLayout, config);
 
+                // Gráfico de Recapagens (Substituindo Vida Útil no Card)
                 var lifespanData = [{
                     type: 'bar',
                     x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
-                    y: [41250, 44800, 43100, 46900, 45600],
+                    y: [2.8, 2.4, 2.1, 2.6, 2.3],
                     marker: {
                         color: '#031590'
                     },
-                    text: ['41.3k', '44.8k', '43.1k', '46.9k', '45.6k'],
+                    text: ['2.8', '2.4', '2.1', '2.6', '2.3'],
                     textposition: 'outside'
                 }];
 
                 var lifespanLayout = {
                     margin: { t: 40, r: 20, b: 80, l: 60 },
                     xaxis: { title: 'Fabricante', tickangle: -45 },
-                    yaxis: { title: 'Quilometragem (km)', range: [0, 52000] },
+                    yaxis: { title: 'Média de Recapagens', range: [0, 4] },
                     plot_bgcolor: '#ffffff',
                     paper_bgcolor: '#ffffff',
                     showlegend: false
@@ -829,5 +831,29 @@
     </script>
 
 </body>
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        
+        if (isClosed) {
+            // Open sidebar
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarOverlay.classList.remove('opacity-0');
+            }, 10);
+        } else {
+            // Close sidebar
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarOverlay.classList.add('hidden');
+            }, 300);
+        }
+    }
 
+    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+</script>
 </html>

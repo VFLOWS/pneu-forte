@@ -18,7 +18,7 @@
 <body class="bg-gray-50 font-sans">
 
 <header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-6 py-3">
+    <div class="flex items-center justify-between px-4 md:px-6 py-3">
         <!--div class="flex items-center space-x-4">
             <div class="flex items-center">
                 <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
@@ -30,9 +30,12 @@
         </div-->
         
         <div class="flex items-center space-x-4">
+            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none mr-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
                 <!--i class="fa-solid fa-shield-halved text-white text-3xl"></i-->
             <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
+            <h1 class="text-lg md:text-2xl font-bold text-white">Sistema de Análise de Pneus</h1>
         </div> 
         <div class="flex items-center space-x-6">
             <div class="relative">
@@ -94,11 +97,11 @@
                 
                 <a href="marcas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
-                    Marcas
+                    Marcas de Pneu
                 </a>
                 <a href="modelos.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-car mr-3 text-gray-500"></i>
-                    Modelos
+                    Modelos de Pneu
                 </a>
                 <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-triangle-exclamation mr-3 text-gray-500"></i>
@@ -145,7 +148,7 @@
     </div>
 </aside>
 
-<main id="main-content" class="ml-64 mt-[61px] p-6">
+<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-4 md:p-6 transition-all duration-300">
     <div class="mb-6">
          <a href="pedido-detalhe.html" class="text-sm text-azul-02 hover:text-azul-04 flex items-center mb-2">
             <i class="fa-solid fa-arrow-left mr-2"></i>
@@ -248,6 +251,51 @@
     </div>
 </main>
 
+    <script>
+        // Sidebar Toggle Logic
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const mainContent = document.getElementById('main-content');
+
+        function toggleSidebar() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            
+            if (isClosed) {
+                // Open sidebar
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    sidebarOverlay.classList.remove('opacity-0');
+                }, 10);
+            } else {
+                // Close sidebar
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    sidebarOverlay.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', toggleSidebar);
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+        }
+
+        // Close sidebar on window resize if moving to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.add('hidden', 'opacity-0');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
 </body>
 </html>
 
