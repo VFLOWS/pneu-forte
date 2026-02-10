@@ -20,17 +20,17 @@
 
 <body class="bg-gray-50 font-sans">
 
-<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-6 py-3">
-        <div class="flex items-center space-x-4">
-            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90 h-[61px]">
+    <div class="h-full flex items-center justify-between px-3 sm:px-4 md:px-6">
+        <div class="flex items-center space-x-2 sm:space-x-4 min-w-0">
+            <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-xl md:text-2xl font-bold text-white hidden sm:block">Sistema de Análise de Pneus</h1>
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 sm:h-10">
+            <h1 class="text-sm sm:text-xl md:text-2xl font-bold text-white hidden sm:block whitespace-nowrap truncate">Sistema de Análise de Pneus</h1>
         </div> 
         <div class="flex items-center space-x-6">
-            <div class="relative hidden md:block">
+            <div class="relative hidden lg:block">
                 <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 lg:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
@@ -59,7 +59,7 @@
 </header>
 
 <!-- Overlay for mobile -->
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden" onclick="toggleSidebar()"></div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
         <nav class="p-4 flex-1 overflow-y-auto">
@@ -154,20 +154,20 @@
         </div>
     </aside>
 
-    <main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-6 transition-all duration-300">
-    <div class="mb-6 flex items-center justify-between">
+    <main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
+    <div class="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
             <div>
-                <h2 class="text-2xl font-bold text-gray-800">Relatórios Interativos</h2>
-                <p class="text-sm text-gray-600 mt-1">Visualize e exporte dados de pneus analisados</p>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Relatórios Interativos</h2>
+                <p class="text-xs sm:text-sm text-gray-600 mt-1">Visualize e exporte dados de pneus analisados</p>
             </div>
-            <div class="flex items-center space-x-3">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
                 <button
-                    class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center">
+                    class="px-3 sm:px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center text-sm w-full sm:w-auto justify-center sm:justify-start">
                     <i class="fa-solid fa-file-excel mr-2 text-green-600"></i>
                     Exportar Excel
                 </button>
                 <a href="relatorio-pdf.html"
-                    class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center">
+                    class="px-3 sm:px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center text-sm w-full sm:w-auto justify-center">
                     <i class="fa-solid fa-file-pdf mr-2"></i>
                     Relatório Sucata
                 </a>
@@ -175,7 +175,7 @@
             </div>
         </div>
 
-        <div id="filters-section" class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div id="filters-section" class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6 mb-4 sm:mb-6">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold text-gray-800 flex items-center">
                     <i class="fa-solid fa-filter mr-2 text-azul-02"></i>
@@ -185,18 +185,18 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Clientes</label>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Clientes</label>
                     <select
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Todos os clientes</option>
                         <option>Transportadora Veloz</option>
                         <option>Agro Cargas Brasil</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Período</label>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Período</label>
                     <select
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Últimos 30 dias</option>
                         <option>Últimos 3 meses</option>
                         <option>Últimos 6 meses</option>
@@ -205,9 +205,9 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Marca</label>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Marca</label>
                     <select
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Todas as marcas</option>
                         <option>Michelin</option>
                         <option>Goodyear</option>
@@ -217,18 +217,18 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Status</label>
                     <select
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Todos</option>
                         <option>Sucateado</option>
                         <option>Aprovado</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Dano</label>
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Tipo de Dano</label>
                     <select
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Todos os tipos</option>
                         <option>Desgaste Irregular</option>
                         <option>Corte Lateral</option>
@@ -239,7 +239,7 @@
             </div>
         </div>
 
-        <div id="kpi-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div id="kpi-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-6">
             <div class="bg-white rounded-lg border border-gray-200 p-6">
                 <div class="flex items-center justify-between">
                     <div>
@@ -426,14 +426,14 @@
         </div>
 
         <div id="detailed-table" class="bg-white rounded-lg border border-gray-200">
-            <div class="p-6 border-b border-gray-200">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-lg font-semibold text-gray-800">Dados Detalhados</h3>
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
+            <div class="p-3 sm:p-6 border-b border-gray-200">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                    <h3 class="text-base sm:text-lg font-semibold text-gray-800">Dados Detalhados</h3>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
+                        <div class="relative w-full sm:w-64">
                             <input type="text" placeholder="Buscar na tabela..."
-                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-azul-02">
-                            <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400 text-sm"></i>
+                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
+                            <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400 text-sm"></i>
                         </div>
                         <button class="text-gray-600 hover:text-gray-800">
                             <i class="fa-solid fa-download"></i>
@@ -442,128 +442,128 @@
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full">
+                <table class="w-full min-w-[900px]">
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
                             <th
-                                class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Marca
                                 <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Total Analisados
                                 <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Sucateados
                                 <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 % Sucateamento
                                 <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Vida Útil Média (km)
                                 <i class="fa-solid fa-sort ml-1 text-gray-400"></i>
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Principal Dano
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm font-medium text-gray-800">Michelin</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">354</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">101</td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">Michelin</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">354</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">101</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4">
                                 <div class="flex items-center">
-                                    <span class="text-sm font-medium text-gray-800 mr-2">28.4%</span>
-                                    <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <span class="text-xs sm:text-sm font-medium text-gray-800 mr-2">28.4%</span>
+                                    <div class="w-16 sm:w-20 bg-gray-200 rounded-full h-2">
                                         <div class="bg-red-500 h-2 rounded-full" style="width: 28.4%"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">41,250</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Desgaste Irregular</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">41,250</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Desgaste Irregular</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm font-medium text-gray-800">Goodyear</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">298</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">66</td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">Goodyear</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">298</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">66</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4">
                                 <div class="flex items-center">
-                                    <span class="text-sm font-medium text-gray-800 mr-2">22.1%</span>
-                                    <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <span class="text-xs sm:text-sm font-medium text-gray-800 mr-2">22.1%</span>
+                                    <div class="w-16 sm:w-20 bg-gray-200 rounded-full h-2">
                                         <div class="bg-orange-500 h-2 rounded-full" style="width: 22.1%"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">44,800</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Corte Lateral</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">44,800</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Corte Lateral</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm font-medium text-gray-800">Pirelli</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">245</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">46</td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">Pirelli</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">245</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">46</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4">
                                 <div class="flex items-center">
-                                    <span class="text-sm font-medium text-gray-800 mr-2">18.6%</span>
-                                    <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <span class="text-xs sm:text-sm font-medium text-gray-800 mr-2">18.6%</span>
+                                    <div class="w-16 sm:w-20 bg-gray-200 rounded-full h-2">
                                         <div class="bg-yellow-500 h-2 rounded-full" style="width: 18.6%"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">43,100</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Separação Banda</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">43,100</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Separação Banda</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm font-medium text-gray-800">Continental</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">189</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">31</td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">Continental</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">189</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">31</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4">
                                 <div class="flex items-center">
-                                    <span class="text-sm font-medium text-gray-800 mr-2">16.2%</span>
-                                    <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <span class="text-xs sm:text-sm font-medium text-gray-800 mr-2">16.2%</span>
+                                    <div class="w-16 sm:w-20 bg-gray-200 rounded-full h-2">
                                         <div class="bg-green-500 h-2 rounded-full" style="width: 16.2%"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">46,900</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Deformação</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">46,900</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Deformação</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm font-medium text-gray-800">Bridgestone</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">161</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">24</td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">Bridgestone</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">161</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">24</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4">
                                 <div class="flex items-center">
-                                    <span class="text-sm font-medium text-gray-800 mr-2">14.7%</span>
-                                    <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <span class="text-xs sm:text-sm font-medium text-gray-800 mr-2">14.7%</span>
+                                    <div class="w-16 sm:w-20 bg-gray-200 rounded-full h-2">
                                         <div class="bg-blue-500 h-2 rounded-full" style="width: 14.7%"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">45,600</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Desgaste Irregular</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">45,600</td>
+                            <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Desgaste Irregular</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                <p class="text-sm text-gray-600">Mostrando 5 de 5 marcas</p>
+            <div class="p-3 sm:p-4 border-t border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                <p class="text-xs sm:text-sm text-gray-600">Mostrando 5 de 5 marcas</p>
                 <div class="flex items-center space-x-2">
-                    <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                    <button class="px-2 sm:px-3 py-1 border border-gray-300 rounded text-xs sm:text-sm text-gray-600 hover:bg-gray-50"
                         disabled>
                         Anterior
                     </button>
-                    <button class="px-3 py-1 bg-azul-02 text-white rounded text-sm">1</button>
-                    <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                    <button class="px-2 sm:px-3 py-1 bg-azul-02 text-white rounded text-xs sm:text-sm">1</button>
+                    <button class="px-2 sm:px-3 py-1 border border-gray-300 rounded text-xs sm:text-sm text-gray-600 hover:bg-gray-50"
                         disabled>
                         Próximo
                     </button>
@@ -832,28 +832,35 @@
 
 </body>
 <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
     function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
         const isClosed = sidebar.classList.contains('-translate-x-full');
-        
+
         if (isClosed) {
-            // Open sidebar
             sidebar.classList.remove('-translate-x-full');
             sidebarOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                sidebarOverlay.classList.remove('opacity-0');
-            }, 10);
+            requestAnimationFrame(() => sidebarOverlay.classList.remove('opacity-0'));
         } else {
-            // Close sidebar
             sidebar.classList.add('-translate-x-full');
             sidebarOverlay.classList.add('opacity-0');
-            setTimeout(() => {
-                sidebarOverlay.classList.add('hidden');
-            }, 300);
+            setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
         }
     }
 
-    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+    const btnToggle = document.getElementById('sidebar-toggle');
+    if (btnToggle) btnToggle.addEventListener('click', toggleSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.add('hidden', 'opacity-0');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
 </script>
 </html>
+

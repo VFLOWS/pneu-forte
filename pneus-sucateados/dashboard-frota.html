@@ -16,17 +16,17 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-6 py-3">
-        <div class="flex items-center space-x-4">
-            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90 h-[61px]">
+    <div class="h-full flex items-center justify-between px-3 sm:px-4 md:px-6">
+        <div class="flex items-center space-x-4 min-w-0">
+            <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none mr-2">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-xl md:text-2xl font-bold text-white hidden sm:block">Sistema de Inspeção de Frota</h1>
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 md:h-10">
+            <h1 class="text-lg md:text-2xl font-bold text-white hidden md:block whitespace-nowrap truncate">Sistema de Inspeção de Frota</h1>
         </div>
         <div class="flex items-center space-x-6">
-            <div class="relative hidden md:block">
+            <div class="relative hidden lg:block">
                 <input type="text" placeholder="Buscar Inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 lg:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
@@ -47,7 +47,7 @@
 </header>
 
 <!-- Overlay for mobile -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden" onclick="toggleSidebar()"></div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
     <nav class="p-4 flex-1 overflow-y-auto">
@@ -140,14 +140,14 @@
     </div>
 </aside>
 
-<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-6 transition-all duration-300">
+<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
     <div class="mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Dashboard de Inspeção de Frota</h2>
-        <p class="text-sm text-gray-600 mt-1">Visão geral das inspeções e indicadores</p>
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Dashboard de Inspeção de Frota</h2>
+        <p class="text-xs sm:text-sm text-gray-600 mt-1">Visão geral das inspeções e indicadores</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Solicitações de Inspeção</p>
@@ -163,7 +163,7 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Veículos Inspecionados</p>
@@ -179,7 +179,7 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">PSI Acima do Recomendado</p>
@@ -196,7 +196,7 @@
         </div>
     </div>
 
-    <div id="action-buttons" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div id="action-buttons" class="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-6">
         <a href="nova-solicitacao-frota.html"
             class="bg-azul-02 hover:bg-azul-04 text-white rounded-lg p-4 flex items-center justify-between transition-colors">
             <div class="flex items-center">
@@ -234,8 +234,8 @@
         </a>
     </div>
 
-    <div id="charts-section" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+    <div id="charts-section" class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6 mb-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold text-gray-800">Inspeções por Marca</h3>
                 <button class="text-gray-500 hover:text-gray-700">
@@ -245,14 +245,14 @@
             <div id="chart-brands" style="height: 320px"></div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold text-gray-800">Condição dos Pneus</h3>
                 <button class="text-gray-500 hover:text-gray-700">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
             </div>
-            <div class="grid grid-cols-2 gap-4" style="height: 320px">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" style="height: 320px">
                 <div class="flex flex-col h-full">
                     <h4 class="text-sm font-medium text-gray-600 text-center mb-2">Sulco do Pneu</h4>
                     <div id="chart-sulco" class="flex-1"></div>
@@ -265,13 +265,13 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 mb-6">
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
-            <div class="flex items-center justify-between mb-4">
+    <div class="grid grid-cols-1 gap-3 sm:gap-6 mb-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
                 <h3 class="text-lg font-semibold text-gray-800">Tendência de Inspeções (Últimos 12 Meses)</h3>
-                <div class="flex items-center space-x-2">
-                    <button class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">6M</button>
-                    <button class="px-3 py-1.5 text-sm bg-azul-02 text-white rounded-lg">12M</button>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button class="px-3 py-1.5 text-xs sm:text-sm border border-gray-300 rounded-lg hover:bg-gray-50">6M</button>
+                    <button class="px-3 py-1.5 text-xs sm:text-sm bg-azul-02 text-white rounded-lg">12M</button>
                     <button class="text-gray-500 hover:text-gray-700">
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
@@ -282,41 +282,41 @@
     </div>
 
     <div class="bg-white rounded-lg border border-gray-200">
-        <div class="flex items-center justify-between p-6 border-b border-gray-200">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 sm:p-6 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-800">Últimas Solicitações</h3>
             <a href="solicitacoes-frota.html" class="text-azul-02 hover:text-azul-04 text-sm font-medium">Ver todas</a>
         </div>
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table class="w-full min-w-[850px]">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Código</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cliente</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Veículo</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Código</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Cliente</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Veículo</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">FRT-024</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">78191</td>
-                        <td class="px-6 py-4 text-sm">
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">FRT-024</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Transportadora Veloz</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">78191</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm">
                             <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Em Análise</span>
                         </td>
-                        <td class="px-6 py-4 text-sm">
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm">
                             <a href="frota-analise-detalhe.html" class="text-azul-02 hover:text-azul-04">Detalhes</a>
                         </td>
                     </tr>
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">FRT-023</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Agro Cargas Brasil</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">38010</td>
-                        <td class="px-6 py-4 text-sm">
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">FRT-023</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Agro Cargas Brasil</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">38010</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm">
                             <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Concluída</span>
                         </td>
-                        <td class="px-6 py-4 text-sm">
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm">
                             <a href="frota-analise-detalhe.html" class="text-azul-02 hover:text-azul-04">Detalhes</a>
                         </td>
                     </tr>
@@ -327,29 +327,46 @@
 </main>
 
 <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+
+    function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+        requestAnimationFrame(() => sidebarOverlay.classList.add('opacity-100'));
+    }
+
+    function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.remove('opacity-100');
+        setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+    }
+
     function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-        const isClosed = sidebar.classList.contains('-translate-x-full');
-        
-        if (isClosed) {
-            // Open sidebar
-            sidebar.classList.remove('-translate-x-full');
-            sidebarOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                sidebarOverlay.classList.remove('opacity-0');
-            }, 10);
+        if (sidebar.classList.contains('-translate-x-full')) {
+            openSidebar();
         } else {
-            // Close sidebar
-            sidebar.classList.add('-translate-x-full');
-            sidebarOverlay.classList.add('opacity-0');
-            setTimeout(() => {
-                sidebarOverlay.classList.add('hidden');
-            }, 300);
+            closeSidebar();
         }
     }
 
-    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+    if (sidebarToggleBtn) {
+        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+    }
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebarOverlay.classList.add('hidden');
+            sidebarOverlay.classList.remove('opacity-100');
+            sidebar.classList.remove('-translate-x-full');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
 
     window.addEventListener('load', function () {
         try {
@@ -443,3 +460,4 @@
 
 </body>
 </html>
+

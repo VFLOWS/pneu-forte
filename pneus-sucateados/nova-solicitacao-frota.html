@@ -18,16 +18,16 @@
 <body class="bg-gray-50 font-sans">
 
 <header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-4 md:px-6 py-3">
-        <div class="flex items-center space-x-4">
-            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none mr-2">
+    <div class="flex items-center justify-between px-4 sm:px-6 py-3 h-[61px]">
+        <div class="flex items-center space-x-3 sm:space-x-4 min-w-0">
+            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 md:h-10">
-            <h1 class="text-lg md:text-2xl font-bold text-white hidden md:block">Sistema de Inspeção de Frota</h1>
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
+            <h1 class="text-lg lg:text-2xl font-bold text-white hidden sm:block whitespace-nowrap truncate">Sistema de Inspeção de Frota</h1>
         </div> 
         <div class="flex items-center space-x-3 md:space-x-6">
-            <div class="relative hidden md:block">
+            <div class="relative hidden lg:block">
                 <input type="text" placeholder="Buscar Inspeções..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 md:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
@@ -36,18 +36,21 @@
                 <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
             <div class="flex items-center space-x-3">
-                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-8 h-8 md:w-9 md:h-9 rounded-full">
-                <div class="text-right hidden md:block">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-9 h-9 rounded-full">
+                <div class="text-right hidden sm:block">
                     <p class="text-sm font-medium text-white">Carlos Silva</p>
                     <p class="text-xs text-white">Analista</p>
                 </div>
-                <i class="fa-solid fa-chevron-down text-white text-xs hidden md:block"></i>
+                <i class="fa-solid fa-chevron-down text-white text-xs hidden sm:block"></i>
             </div>
         </div>
     </div>
 </header>
 
-<aside id="sidebar" class="fixed left-0 top-[64px] h-[calc(100vh-64px)] w-64 bg-white border-r border-gray-200 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
+<!-- Overlay for mobile -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden" onclick="toggleSidebar()"></div>
+
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
     <nav class="p-4 flex-1 overflow-y-auto">
         <div class="space-y-1">
             <a href="dashboard-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -138,35 +141,35 @@
     </div>
 </aside>
 
-<main id="main-content" class="md:ml-64 mt-[61px] p-6 transition-all duration-300">
-    <div class="mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Nova Solicitação de Inspeção</h2>
-        <p class="text-sm text-gray-600 mt-1">Crie um novo lote de inspeção para um cliente</p>
+<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-6">
+        <h2 class="text-lg sm:text-2xl font-bold text-gray-800">Nova Solicitação de Inspeção</h2>
+        <p class="text-xs sm:text-sm text-gray-600 sm:text-right sm:max-w-sm">Crie um novo lote de inspeção para um cliente</p>
     </div>
 
-    <div class="bg-white rounded-lg border border-gray-200 p-6">
+    <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
         <form>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                    <label for="cliente" class="block text-sm font-medium text-gray-700 mb-2">Cliente *</label>
-                    <select id="cliente" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
+                    <label for="cliente" class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Cliente *</label>
+                    <select id="cliente" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02 bg-white">
                         <option>Selecione um cliente</option>
                         <option>Transportadora Veloz</option>
                         <option>Agro Cargas Brasil</option>
                     </select>
                 </div>
                 <div>
-                    <label for="data-entrada" class="block text-sm font-medium text-gray-700 mb-2">Data de Entrada *</label>
-                    <input type="date" id="data-entrada" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <label for="data-entrada" class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Data de Entrada *</label>
+                    <input type="date" id="data-entrada" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
                 </div>
             </div>
             <div class="mt-6">
-                <label for="observacoes" class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
-                <textarea id="observacoes" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Adicione qualquer observação relevante sobre esta inspeção..."></textarea>
+                <label for="observacoes" class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Observações</label>
+                <textarea id="observacoes" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Adicione qualquer observação relevante sobre esta inspeção..."></textarea>
             </div>
-            <div class="mt-8 flex justify-end space-x-3">
-                <a href="solicitacoes-frota.html" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Cancelar</a>
-                <a href="inspecao-frota.html" class="px-6 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium transition-colors">
+            <div class="mt-8 flex flex-col sm:flex-row sm:justify-end gap-3">
+                <a href="solicitacoes-frota.html" class="w-full sm:w-auto text-center px-4 sm:px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-sm">Cancelar</a>
+                <a href="inspecao-frota.html" class="w-full sm:w-auto text-center px-4 sm:px-6 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium transition-colors text-sm">
                     <i class="fa-solid fa-plus mr-2"></i>
                     Criar Solicitação e Adicionar Veículos
                 </a>
@@ -175,25 +178,31 @@
     </div>
 </main>
 
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
-
 <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebar-overlay');
-
-    if (mobileMenuBtn && sidebar && overlay) {
-        mobileMenuBtn.addEventListener('click', function() {
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        });
-
-        overlay.addEventListener('click', function() {
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        
+        if (isClosed) {
+            // Open sidebar
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarOverlay.classList.remove('opacity-0');
+            }, 10);
+        } else {
+            // Close sidebar
             sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
+            sidebarOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarOverlay.classList.add('hidden');
+            }, 300);
+        }
     }
+
+    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
 </script>
 </body>
 </html>
+

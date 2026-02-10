@@ -29,21 +29,21 @@
 
     <header id="header"
         class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-        <div class="flex items-center justify-between px-6 py-3">
-            <div class="flex items-center space-x-4">
-                <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none mr-2">
+        <div class="flex items-center justify-between px-4 sm:px-6 py-3 h-[61px]">
+            <div class="flex items-center space-x-3 sm:space-x-4 min-w-0">
+                <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-                <h1 class="text-2xl font-bold text-white">Sistema de Inspeção de Frota</h1>
+                <h1 class="text-lg lg:text-2xl font-bold text-white hidden sm:block whitespace-nowrap truncate">Sistema de Inspeção de Frota</h1>
             </div>
             <div class="flex items-center space-x-6">
-                <div class="relative">
+                <div class="relative hidden lg:block">
                     <input type="text" placeholder="Buscar inspeções..."
                         class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
-                <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
+                <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2 hidden md:flex" title="Trocar Módulo">
 
                     <i class="fa-solid fa-table-cells-large"></i>
 
@@ -58,18 +58,21 @@
                 <div class="flex items-center space-x-3">
                     <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User"
                         class="w-9 h-9 rounded-full">
-                    <div class="text-right">
+                    <div class="text-right hidden sm:block">
                         <p class="text-sm font-medium text-white">Carlos Silva</p>
                         <p class="text-xs text-white">Analista</p>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-white text-xs"></i>
+                    <i class="fa-solid fa-chevron-down text-white text-xs hidden sm:block"></i>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Overlay for mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden" onclick="toggleSidebar()"></div>
+
     <aside id="sidebar"
-        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col">
+        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
         <nav class="p-4 flex-1 overflow-y-auto">
             <div class="space-y-1">
                 <a href="dashboard-frota.html"
@@ -157,19 +160,19 @@
         </div>
     </aside>
 
-    <main id="main-content" class="ml-64 mt-[61px] p-6">
+    <main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
         <div class="mb-6">
             <a href="nova-solicitacao-frota.html" class="text-sm text-primary-700 hover:text-primary-800 flex items-center mb-2">
                 <i class="fa-solid fa-arrow-left mr-2"></i>
                 Voltar para Nova Solicitação
             </a>
-            <h2 class="text-2xl font-bold text-gray-800">Inspeção de Frota #FROTA-2026-001</h2>
+            <h2 class="text-lg sm:text-2xl font-bold text-gray-800">Inspeção de Frota #FROTA-2026-001</h2>
             <p class="text-sm text-gray-600 mt-1">Cliente: <span class="font-bold text-gray-800">Transportadora
                     Veloz</span></p>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6">
-            <div class="flex justify-between items-start">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 mb-6">
+            <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800">Informações da Inspeção</h3>
                     <div class="mt-4 space-y-2 text-sm text-gray-600">
@@ -181,19 +184,19 @@
                                 id="total-veiculos">0</span></p>
                     </div>
                 </div>
-                <div class="flex flex-row space-x-2">
+                <div class="flex flex-col sm:flex-row gap-2 w-full lg:w-auto">
                     <button onclick="viewResult()"
-                        class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                        class="w-full sm:w-auto px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors text-sm">
                         <i class="fa-solid fa-chart-simple mr-2"></i>
                         Ver Resultado
                     </button>
                     <button type="button" onclick="saveAnalysis()"
-                        class="w-full px-4 py-1 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors">
+                        class="w-full sm:w-auto px-4 py-2.5 bg-white text-azul-02 border border-azul-02 rounded-lg hover:bg-blue-50 flex items-center justify-center font-medium transition-colors text-sm">
                         <i class="fa-regular fa-floppy-disk mr-2"></i>
                         Salvar Análise
                     </button>
                     <button type="button" onclick="finishInspection()"
-                        class="w-full px-4 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors">
+                        class="w-full sm:w-auto px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center font-medium transition-colors text-sm">
                         <i class="fa-solid fa-check mr-2"></i>
                         Concluir Inspeção
                     </button>
@@ -201,13 +204,13 @@
             </div>
         </div>
 
-        <div class="mb-6 flex items-center justify-between">
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <h3 class="text-xl font-bold text-gray-800">Veículos da Frota</h3>
-                <p class="text-sm text-gray-500">Adicione os veículos para iniciar a coleta de dados dos pneus.</p>
+                <h3 class="text-lg sm:text-xl font-bold text-gray-800">Veículos da Frota</h3>
+                <p class="text-xs sm:text-sm text-gray-500">Adicione os veículos para iniciar a coleta de dados dos pneus.</p>
             </div>
             <button onclick="toggleVehicleForm()" id="btn-add-vehicle"
-                class="px-4 py-2 bg-azul-02 text-white rounded-lg hover:bg-blue-800 flex items-center font-medium transition-colors duration-200">
+                class="w-full sm:w-auto justify-center px-4 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-blue-800 flex items-center font-medium transition-colors duration-200 text-sm">
                 <i class="fa-solid fa-truck-medical mr-2"></i>
                 Adicionar Veículo
             </button>
@@ -218,13 +221,13 @@
             class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
             <div
                 class="bg-white rounded-lg w-full max-w-3xl shadow-xl transform transition-all max-h-[90vh] flex flex-col">
-                <div class="flex items-center justify-between p-6 border-b border-gray-200 shrink-0">
-                    <h3 class="text-xl font-bold text-gray-800">Adicionar Veículo à Inspeção</h3>
+                <div class="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800">Adicionar Veículo à Inspeção</h3>
                     <button onclick="toggleVehicleForm()" class="text-gray-400 hover:text-gray-600">
                         <i class="fa-solid fa-times text-xl"></i>
                     </button>
                 </div>
-                <div class="p-6 overflow-y-auto flex-1">
+                <div class="p-4 sm:p-6 overflow-y-auto flex-1">
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Selecionar Veículo</label>
@@ -819,29 +822,33 @@
                 card.className = 'bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm';
 
                 let headerHtml = `
-                <div class="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center cursor-pointer" onclick="toggleDetails(${v.id})">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-blue-100 p-2 rounded-lg text-azul-02">
-                            <i class="fa-solid fa-truck text-xl"></i>
+                <div class="bg-gray-50 px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 cursor-pointer" onclick="toggleDetails(${v.id})">
+                    <div class="flex items-center space-x-3 sm:space-x-4 min-w-0 sm:flex-1">
+                        <div class="bg-blue-100 p-2 rounded-lg text-azul-02 shrink-0">
+                            <i class="fa-solid fa-truck text-lg sm:text-xl"></i>
                         </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-gray-800">${v.placa}</h4>
-                            <p class="text-sm text-gray-500">${v.modelo} • KM: ${v.km || 'N/I'}</p>
+                        <div class="min-w-0">
+                            <h4 class="text-base sm:text-lg font-bold text-gray-800 break-words">${v.placa}</h4>
+                            <p class="text-xs sm:text-sm text-gray-500 sm:truncate">${v.modelo} • KM: ${v.km || 'N/I'}</p>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-6">
-                        <div class="text-right">
-                            <span class="block text-xs text-gray-500 uppercase">Pneus</span>
-                            <span class="block font-bold text-gray-800">${v.tires.length} Unidades</span>
+                    <div class="w-full sm:w-auto flex items-start justify-between sm:items-center sm:justify-end gap-3 sm:gap-6 shrink-0">
+                        <div class="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-6 flex-1 sm:flex-none">
+                            <div class="text-left sm:text-right">
+                                <span class="block text-[11px] sm:text-xs text-gray-500 uppercase">Pneus</span>
+                                <span class="block text-sm sm:text-base font-bold text-gray-800">${v.tires.length} Unidades</span>
+                            </div>
+                            <div class="text-left sm:text-right">
+                                <span class="block text-[11px] sm:text-xs text-gray-500 uppercase">Status</span>
+                                 <span class="block text-sm sm:text-base font-bold text-green-600">Em Análise</span>
+                            </div>
                         </div>
-                        <div class="text-right">
-                            <span class="block text-xs text-gray-500 uppercase">Status</span>
-                             <span class="block font-bold text-green-600">Em Análise</span>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="event.stopPropagation(); removeVehicle(${v.id})" class="text-gray-400 hover:text-red-500 transition-colors p-2" title="Remover Veículo">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-200" id="icon-${v.id}" style="transform: ${isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}"></i>
                         </div>
-                        <button onclick="event.stopPropagation(); removeVehicle(${v.id})" class="text-gray-400 hover:text-red-500 transition-colors p-2" title="Remover Veículo">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-200" id="icon-${v.id}" style="transform: ${isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}"></i>
                     </div>
                 </div>
             `;
@@ -1187,12 +1194,36 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebar-overlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                }, 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
         }
-        
+
         document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+
+        window.addEventListener('resize', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden', 'opacity-0');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
     </script>
 </body>
 

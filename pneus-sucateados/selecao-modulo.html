@@ -16,14 +16,14 @@
 
 <body class="bg-gray-50 font-sans h-screen flex flex-col">
 
-    <header class="bg-white border-b border-gray-200 bg-gradient-to-br from-azul-02 to-preto-90 py-4 shadow-md">
-        <div class="container mx-auto px-6 flex items-center justify-between">
+    <header class="bg-white border-b border-gray-200 bg-gradient-to-br from-azul-02 to-preto-90 py-2 sm:py-4 shadow-md">
+        <div class="container mx-auto px-3 sm:px-6 flex items-center justify-between">
             <div class="flex items-center">
-                <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
+                <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 sm:h-10">
             </div>
             <div class="flex items-center space-x-3">
                 <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User"
-                    class="w-10 h-10 rounded-full border-2 border-white">
+                    class="w-8 sm:w-10 h-8 sm:h-10 rounded-full border-2 border-white">
                 <div class="text-right hidden md:block">
                     <p class="text-sm font-medium text-white">Carlos Silva</p>
                     <p class="text-xs text-white opacity-80">Analista</p>
@@ -35,22 +35,22 @@
         </div>
     </header>
 
-    <main class="flex-1 container mx-auto px-6 py-12 flex flex-col items-center justify-center">
-        <h2 class="text-3xl font-bold text-gray-800 mb-2">Bem-vindo, Carlos!</h2>
-        <p class="text-gray-600 mb-12 text-lg">Selecione o módulo que deseja acessar:</p>
+    <main class="flex-1 container mx-auto px-3 sm:px-6 py-6 sm:py-12 flex flex-col items-center justify-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Bem-vindo, Carlos!</h2>
+        <p class="text-gray-600 mb-8 sm:mb-12 text-base sm:text-lg">Selecione o módulo que deseja acessar:</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 w-full max-w-4xl">
             <!-- Módulo de Pneus -->
             <a href="main.html" class="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-azul-02 to-azul-04 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                <div class="p-8 flex flex-col items-center text-center h-full">
-                    <div class="w-24 h-24 bg-azul-01 rounded-full flex items-center justify-center mb-6 group-hover:bg-azul-02 transition-colors duration-300">
-                        <i class="fa-solid fa-compact-disc text-4xl text-azul-02 group-hover:text-white transition-colors duration-300"></i>
+                <div class="p-6 sm:p-8 flex flex-col items-center text-center h-full">
+                    <div class="w-20 sm:w-24 h-20 sm:h-24 bg-azul-01 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-azul-02 transition-colors duration-300">
+                        <i class="fa-solid fa-compact-disc text-3xl sm:text-4xl text-azul-02 group-hover:text-white transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-azul-02">Pneus Sucateados</h3>
-                    <p class="text-gray-600">Análise de sucatas, gestão de laudos e controle de pneus descartados.</p>
-                    <div class="mt-auto pt-8 w-full">
-                        <span class="inline-block w-full py-3 px-4 bg-gray-50 text-azul-02 font-semibold rounded-lg group-hover:bg-azul-02 group-hover:text-white transition-colors duration-300">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 group-hover:text-azul-02">Pneus Sucateados</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Análise de sucatas, gestão de laudos e controle de pneus descartados.</p>
+                    <div class="mt-auto pt-6 sm:pt-8 w-full">
+                        <span class="inline-block w-full py-2 sm:py-3 px-4 bg-gray-50 text-azul-02 font-semibold rounded-lg text-sm sm:text-base group-hover:bg-azul-02 group-hover:text-white transition-colors duration-300">
                             Acessar Módulo <i class="fa-solid fa-arrow-right ml-2"></i>
                         </span>
                     </div>
@@ -60,14 +60,14 @@
             <!-- Módulo de Frota -->
             <a href="dashboard-frota.html" class="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                <div class="p-8 flex flex-col items-center text-center h-full">
-                    <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
-                        <i class="fa-solid fa-truck-moving text-4xl text-green-600 group-hover:text-white transition-colors duration-300"></i>
+                <div class="p-6 sm:p-8 flex flex-col items-center text-center h-full">
+                    <div class="w-20 sm:w-24 h-20 sm:h-24 bg-green-100 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-green-600 transition-colors duration-300">
+                        <i class="fa-solid fa-truck-moving text-3xl sm:text-4xl text-green-600 group-hover:text-white transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600">Inspeção de Frota</h3>
-                    <p class="text-gray-600">Inspeção de veículos, análise de pressão e controle de pneus em uso.</p>
-                    <div class="mt-auto pt-8 w-full">
-                        <span class="inline-block w-full py-3 px-4 bg-gray-50 text-green-600 font-semibold rounded-lg group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 group-hover:text-green-600">Inspeção de Frota</h3>
+                    <p class="text-sm sm:text-base text-gray-600">Inspeção de veículos, análise de pressão e controle de pneus em uso.</p>
+                    <div class="mt-auto pt-6 sm:pt-8 w-full">
+                        <span class="inline-block w-full py-2 sm:py-3 px-4 bg-gray-50 text-green-600 font-semibold rounded-lg text-sm sm:text-base group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
                             Acessar Módulo <i class="fa-solid fa-arrow-right ml-2"></i>
                         </span>
                     </div>
@@ -76,8 +76,8 @@
         </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-200 py-6">
-        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
+    <footer class="bg-white border-t border-gray-200 py-4 sm:py-6">
+        <div class="container mx-auto px-3 sm:px-6 text-center text-gray-500 text-xs sm:text-sm">
             &copy; 2026 Pneu Forte. Todos os direitos reservados.
         </div>
     </footer>

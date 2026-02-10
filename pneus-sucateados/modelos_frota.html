@@ -21,22 +21,22 @@
 <body class="bg-gray-50 font-sans">
 
     <header id="header"
-        class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-        <div class="flex items-center justify-between px-6 py-3">
+        class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90 h-[61px]">
+        <div class="flex items-center justify-between px-3 sm:px-4 md:px-6 h-full">
             <div class="flex items-center space-x-4">
-                <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none mr-2">
+                <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none mr-2">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-                <h1 class="text-2xl font-bold text-white">Sistema de Inspeção de Frota</h1>
+                <h1 class="text-base sm:text-2xl font-bold text-white hidden sm:block">Sistema de Inspeção de Frota</h1>
             </div>
             <div class="flex items-center space-x-6">
-                <div class="relative">
+                <div class="relative hidden lg:block">
                     <input type="text" placeholder="Buscar pedidos..."
                         class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
-                <a href="selecao-modulo.html" class="flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
+                <a href="selecao-modulo.html" class="hidden md:flex items-center space-x-2 text-white hover:text-gray-200 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors mr-2" title="Trocar Módulo">
                     <i class="fa-solid fa-table-cells-large"></i>
                     <span class="text-sm font-medium">Módulos</span>
                 </a>
@@ -48,7 +48,7 @@
                 <div class="flex items-center space-x-3">
                     <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User"
                         class="w-9 h-9 rounded-full">
-                    <div class="text-right">
+                    <div class="text-right hidden sm:block">
                         <p class="text-sm font-medium text-white">Carlos Silva</p>
                         <p class="text-xs text-white">Analista</p>
                     </div>
@@ -58,8 +58,11 @@
         </div>
     </header>
 
+    <!-- Overlay for mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden"></div>
+
     <aside id="sidebar"
-        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col">
+        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
         <nav class="p-4 flex-1 overflow-y-auto">
             <div class="space-y-1">
                 <a href="dashboard-frota.html"
@@ -147,106 +150,106 @@
         </div>
     </aside>
 
-    <main id="main-content" class="ml-64 mt-[61px] p-6">
+    <main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6">
         <div id="breadcrumb-section" class="mb-4">
-            <div class="flex items-center text-sm text-gray-600">
+            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600">
                 <a href="marcas_frota.html" class="hover:text-azul-02 flex items-center">
                     <i class="fa-solid fa-copyright mr-2"></i>
                     Marcas de Pneu
                 </a>
-                <i class="fa-solid fa-chevron-right mx-3 text-xs"></i>
+                <i class="fa-solid fa-chevron-right mx-1 sm:mx-3 text-xs"></i>
                 <span class="text-gray-800 font-medium">Michelin</span>
             </div>
         </div>
 
-        <div class="mb-6 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
+        <div class="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 md:gap-6">
+            <div class="flex items-start sm:items-center gap-3 sm:gap-4">
                 <button onclick="goBackToBrands()"
                     class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-arrow-left text-lg"></i>
                 </button>
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-800">Modelos de Pneu - Michelin</h2>
-                    <p class="text-sm text-gray-600 mt-1">Gerencie os modelos de pneus desta marca na frota</p>
+                    <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Modelos de Pneu - Michelin</h2>
+                    <p class="text-xs sm:text-sm text-gray-600 mt-1">Gerencie os modelos de pneus desta marca na frota</p>
                 </div>
             </div>
             <button onclick="openAddModelModal()"
-                class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
+                class="w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium text-sm sm:text-base whitespace-nowrap">
                 <i class="fa-solid fa-plus mr-2"></i>
                 Novo Modelo
             </button>
         </div>
 
-        <div id="brand-stats-section" class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-            <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div id="brand-stats-section" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-4 sm:mb-6">
+            <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Total de Modelos</p>
-                        <p class="text-3xl font-bold text-gray-800 mt-2">24</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Total de Modelos</p>
+                        <p class="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">24</p>
                     </div>
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-car text-blue-600 text-xl"></i>
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-car text-blue-600 text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Total de Inspeções</p>
-                        <p class="text-3xl font-bold text-gray-800 mt-2">1.247</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Total de Inspeções</p>
+                        <p class="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">1.247</p>
                     </div>
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-chart-bar text-green-600 text-xl"></i>
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-chart-bar text-green-600 text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Modelo Mais Utilizado</p>
-                        <p class="text-lg font-bold text-gray-800 mt-2">X One</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Modelo Mais Utilizado</p>
+                        <p class="text-base sm:text-lg font-bold text-gray-800 mt-2">X One</p>
                     </div>
-                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-star text-orange-600 text-xl"></i>
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-star text-orange-600 text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Origem Mais Comum</p>
-                        <p class="text-lg font-bold text-gray-800 mt-2">Importado</p>
+                        <p class="text-xs sm:text-sm font-medium text-gray-600">Origem Mais Comum</p>
+                        <p class="text-base sm:text-lg font-bold text-gray-800 mt-2">Importado</p>
                     </div>
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-globe text-purple-600 text-xl"></i>
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-globe text-purple-600 text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="filter-section" class="bg-white rounded-lg border border-gray-200 p-4 mb-6">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4 flex-1">
-                    <div class="relative flex-1 max-w-md">
+        <div id="filter-section" class="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 mb-4 sm:mb-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 flex-1 w-full">
+                    <div class="relative w-full sm:max-w-md">
                         <input type="text" id="searchModelInput" placeholder="Buscar modelo..."
-                            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
-                        <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
                     </div>
                     <select
-                        class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
+                        class="px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-azul-02">
                         <option>Todos os Modelos</option>
                         <option>Mais Utilizados</option>
                         <option>Menos Utilizados</option>
                     </select>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <button class="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
+                <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                    <button class="p-1.5 sm:p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
                         <i class="fa-solid fa-filter"></i>
                     </button>
-                    <button class="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
+                    <button class="p-1.5 sm:p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
                         <i class="fa-solid fa-download"></i>
                     </button>
                 </div>
@@ -254,13 +257,13 @@
         </div>
 
         <div id="models-list-section" class="bg-white rounded-lg border border-gray-200">
-            <div class="p-6">
-                <h3 class="text-lg font-bold text-gray-800 mb-4">Modelos Cadastrados</h3>
+            <div class="p-4 sm:p-6">
+                <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-4">Modelos Cadastrados</h3>
 
                 <div class="space-y-3">
                     <div
-                        class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="flex items-center space-x-4 flex-1">
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-3 sm:gap-4 flex-1 w-full">
                             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                                 <span class="text-blue-700 font-bold text-sm">01</span>
                             </div>
@@ -270,7 +273,7 @@
                                         R22.5</span> | 342 Inspeções realizadas</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="flex items-center space-x-2 self-end sm:self-auto">
                             <button onclick="openEditModelModal('X One')"
                                 class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -283,8 +286,8 @@
                     </div>
 
                     <div
-                        class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="flex items-center space-x-4 flex-1">
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-3 sm:gap-4 flex-1 w-full">
                             <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                                 <span class="text-green-700 font-bold text-sm">02</span>
                             </div>
@@ -294,7 +297,7 @@
                                         R22.5</span> | 287 Inspeções realizadas</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="flex items-center space-x-2 self-end sm:self-auto">
                             <button onclick="openEditModelModal('Pilot Sport 4')"
                                 class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -307,8 +310,8 @@
                     </div>
 
                     <div
-                        class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="flex items-center space-x-4 flex-1">
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-3 sm:gap-4 flex-1 w-full">
                             <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
                                 <span class="text-yellow-700 font-bold text-sm">03</span>
                             </div>
@@ -318,7 +321,7 @@
                                     | 234 Inspeções realizadas</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="flex items-center space-x-2 self-end sm:self-auto">
                             <button onclick="openEditModelModal('Primacy 4')"
                                 class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -331,8 +334,8 @@
                     </div>
 
                     <div
-                        class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="flex items-center space-x-4 flex-1">
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-3 sm:gap-4 flex-1 w-full">
                             <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                                 <span class="text-purple-700 font-bold text-sm">04</span>
                             </div>
@@ -342,7 +345,7 @@
                                         R17.5</span> | 198 Inspeções realizadas</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="flex items-center space-x-2 self-end sm:self-auto">
                             <button onclick="openEditModelModal('Energy XM2')"
                                 class="p-2 text-azul-02 hover:text-azul-04 hover:bg-blue-50 rounded-lg">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -375,8 +378,8 @@
     </main>
 
     <div id="addModelModal"
-        class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md">
+        class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-[60] hidden overflow-y-auto px-4 py-6 sm:py-10">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
             <div class="p-6 border-b border-gray-200">
                 <h3 class="text-xl font-bold text-gray-800">Adicionar Novo Modelo</h3>
             </div>
@@ -402,7 +405,7 @@
                                 <option>Pirelli</option>
                             </select>
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label for="val-pneu-novo" class="block text-sm font-medium text-gray-700 mb-1">Valor Pneu
                                     Novo</label>
@@ -418,7 +421,7 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div>
                                 <label for="largura"
                                     class="block text-sm font-medium text-gray-700 mb-1">Largura</label>
@@ -440,7 +443,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="mt-8 flex w-full justify-between space-x-4">
+                     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row w-full gap-3 sm:gap-4">
                         <button type="button" onclick="closeAddModelModal()"
                             class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg w-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
                             Cancelar
@@ -457,8 +460,8 @@
 
     <!-- Modal para Editar Modelo -->
     <div id="editModelModal"
-        class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md">
+        class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-[60] hidden overflow-y-auto px-4 py-6 sm:py-10">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
             <div class="p-6 border-b border-gray-200">
                 <h3 class="text-xl font-bold text-gray-800">Editar Modelo</h3>
             </div>
@@ -472,7 +475,7 @@
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02"
                                 value="X One">
                         </div>
-                        <div class="grid grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div>
                                 <label for="editLargura"
                                     class="block text-sm font-medium text-gray-700 mb-1">Largura</label>
@@ -495,13 +498,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex justify-end space-x-4">
+                    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:justify-end gap-3 sm:gap-4">
                         <button type="button" onclick="closeEditModelModal()"
-                            class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                            class="px-6 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 w-full sm:w-auto">
                             Cancelar
                         </button>
                         <button type="submit"
-                            class="px-6 py-2 text-white bg-azul-02 rounded-lg hover:bg-azul-04 focus:outline-none focus:ring-2 focus:ring-azul-02">
+                            class="px-6 py-2 text-white bg-azul-02 rounded-lg hover:bg-azul-04 focus:outline-none focus:ring-2 focus:ring-azul-02 w-full sm:w-auto">
                             Salvar Alterações
                         </button>
                     </div>
@@ -511,8 +514,8 @@
     </div>
 
     <div id="deleteModelModal"
-        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg w-full max-w-md p-6">
+        class="hidden fixed inset-0 bg-black bg-opacity-50 z-[60] flex items-center justify-center overflow-y-auto px-4 py-6 sm:py-10">
+        <div class="bg-white rounded-lg w-full max-w-md p-4 sm:p-6 mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-gray-800">Excluir Modelo</h3>
                 <button onclick="closeDeleteModelModal()" class="text-gray-400 hover:text-gray-600">
@@ -527,7 +530,7 @@
                         id="deleteModelName"></strong>?</p>
                 <p class="text-center text-sm text-gray-500 mt-2">Esta ação não pode ser desfeita.</p>
             </div>
-            <div class="flex space-x-3">
+            <div class="flex flex-col sm:flex-row gap-3">
                 <button type="button" onclick="closeDeleteModelModal()"
                     class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
                     Cancelar
@@ -686,16 +689,48 @@
     </script>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            requestAnimationFrame(() => sidebarOverlay.classList.add('opacity-100'));
         }
-        
-        document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.remove('opacity-100');
+            setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+        }
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                openSidebar();
+            } else {
+                closeSidebar();
+            }
+        }
+
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', toggleSidebar);
+        }
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeSidebar);
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                sidebarOverlay.classList.add('hidden');
+                sidebarOverlay.classList.remove('opacity-100');
+                sidebar.classList.remove('-translate-x-full');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
     </script>
 </body>
 
 </html>
+

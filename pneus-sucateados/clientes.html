@@ -17,17 +17,17 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-6 py-3">
-        <div class="flex items-center space-x-4">
-            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90 h-[61px]">
+    <div class="h-full flex items-center justify-between px-3 sm:px-4 md:px-6">
+        <div class="flex items-center space-x-4 min-w-0">
+            <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none mr-2">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
-            <h1 class="text-xl md:text-2xl font-bold text-white hidden sm:block">Sistema de Análise de Pneus</h1>
+            <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 md:h-10">
+            <h1 class="text-lg md:text-2xl font-bold text-white hidden md:block whitespace-nowrap truncate">Sistema de Análise de Pneus</h1>
         </div>
         <div class="flex items-center space-x-6">
-            <div class="relative hidden md:block">
+            <div class="relative hidden lg:block">
                 <input type="text" placeholder="Buscar Análises..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 lg:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
@@ -48,7 +48,7 @@
 </header>
 
 <!-- Overlay for mobile -->
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="toggleSidebar()"></div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
     <nav class="p-4 flex-1 overflow-y-auto">
@@ -133,27 +133,27 @@
     </div>
 </aside>
 
-<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-6 transition-all duration-300">
-    <div class="mb-6 flex items-center justify-between">
+<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
+    <div class="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">Clientes</h2>
-            <p class="text-sm text-gray-600 mt-1">Gerencie os clientes do sistema</p>
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Clientes</h2>
+            <p class="text-xs sm:text-sm text-gray-600 mt-1">Gerencie os clientes do sistema</p>
         </div>
-        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
+        <button onclick="openAddModal()" class="w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
             <i class="fa-solid fa-plus mr-2"></i>
             Novo Cliente
         </button>
     </div>
 
     <div id="filter-section" class="bg-white rounded-lg border border-gray-200 p-4 mb-6">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-4 flex-1">
-                <div class="relative flex-1 max-w-md">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="flex items-center flex-1">
+                <div class="relative w-full sm:max-w-md">
                     <input type="text" id="searchInput" placeholder="Buscar cliente por nome ou código..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
             </div>
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 justify-end">
                 <button class="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
                     <i class="fa-solid fa-download"></i>
                 </button>
@@ -163,33 +163,33 @@
 
     <div id="clients-table-section" class="bg-white rounded-lg border border-gray-200">
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table class="w-full min-w-[850px]">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Código</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nome do Cliente</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Contato</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Telefone</th>
-                        <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Código</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nome do Cliente</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Contato</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Telefone</th>
+                        <th class="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">CLI-001</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Transportadora Veloz</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">João Almeida</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">(11) 98765-4321</td>
-                        <td class="px-6 py-4 text-sm">
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">CLI-001</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Transportadora Veloz</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">João Almeida</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">(11) 98765-4321</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm">
                             <button onclick="openEditModal('CLI-001')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('CLI-001')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">CLI-002</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Agro Cargas Brasil</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">Maria Souza</td>
-                        <td class="px-6 py-4 text-sm text-gray-700">(65) 91234-5678</td>
-                        <td class="px-6 py-4 text-sm">
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-800">CLI-002</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Agro Cargas Brasil</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">Maria Souza</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm text-gray-700">(65) 91234-5678</td>
+                        <td class="px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm">
                             <button onclick="openEditModal('CLI-002')" class="text-azul-02 hover:text-azul-04 mr-3"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button onclick="openDeleteModal('CLI-002')" class="text-red-600 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                         </td>
@@ -201,62 +201,62 @@
 </main>
 
 <!-- Add/Edit/Delete Modals -->
-<div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center overflow-y-auto py-10">
-    <div class="bg-white rounded-lg w-full max-w-3xl mx-4">
-        <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h3 class="text-xl font-bold text-gray-800">Novo Cliente</h3>
+<div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 lg:bg-opacity-0 z-[60] flex items-center justify-center overflow-y-auto py-6 sm:py-10">
+    <div class="bg-white rounded-lg w-full max-w-3xl mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Novo Cliente</h3>
             <button onclick="closeAddModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
+                <i class="fa-solid fa-times text-lg sm:text-xl"></i>
             </button>
         </div>
-        <form class="p-6" onsubmit="event.preventDefault(); showToast('Cliente cadastrado com sucesso!', 'success'); closeAddModal(false);">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+        <form class="p-4 sm:p-6" onsubmit="event.preventDefault(); showToast('Cliente cadastrado com sucesso!', 'success'); closeAddModal(false);">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-x-6 sm:gap-y-5">
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Cliente / Razão Social <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Transportadora Veloz">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Nome do Cliente / Razão Social <span class="text-red-500">*</span></label>
+                    <input type="text" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: Transportadora Veloz">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">CPF/CNPJ <span class="text-red-500">*</span></label>
-                    <input type="text" id="add-cpf-cnpj" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="00.000.000/0000-00">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">CPF/CNPJ <span class="text-red-500">*</span></label>
+                    <input type="text" id="add-cpf-cnpj" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="00.000.000/0000-00">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
-                    <input type="text" id="add-cep" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="00000-000">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">CEP</label>
+                    <input type="text" id="add-cep" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="00000-000">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Endereço Completo</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Rua, Avenida, etc.">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Endereço Completo</label>
+                    <input type="text" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Rua, Avenida, etc.">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Cidade</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: São Paulo">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Cidade</label>
+                    <input type="text" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: São Paulo">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">UF</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: SP">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">UF</label>
+                    <input type="text" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: SP">
                 </div>
 
                 <div class="md:col-span-2 pt-4 border-t border-gray-200 mt-2">
-                    <p class="text-base font-medium text-gray-800">Informações de Contato</p>
+                    <p class="text-sm sm:text-base font-medium text-gray-800">Informações de Contato</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Pessoa de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: João Almeida">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Nome da Pessoa de Contato <span class="text-red-500">*</span></label>
+                    <input type="text" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="Ex: João Almeida">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Telefone de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" id="add-telefone" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="(00) 00000-0000">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Telefone de Contato <span class="text-red-500">*</span></label>
+                    <input type="text" id="add-telefone" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="(00) 00000-0000">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email de Contato <span class="text-red-500">*</span></label>
-                    <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="contato@empresa.com">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Email de Contato <span class="text-red-500">*</span></label>
+                    <input type="email" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" placeholder="contato@empresa.com">
                 </div>
             </div>
-            <div class="flex justify-end space-x-3 mt-8">
-                <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
+            <div class="flex flex-col sm:flex-row sm:justify-end gap-2 sm:gap-3 mt-6 sm:mt-8">
+                <button type="button" onclick="closeAddModal()" class="px-3 sm:px-5 py-2 sm:py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium text-sm w-full sm:w-auto">
                     Cancelar
                 </button>
-                <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
+                <button type="submit" class="px-3 sm:px-5 py-2 sm:py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium text-sm w-full sm:w-auto">
                     <i class="fa-solid fa-plus mr-2"></i>
                     Adicionar Cliente
                 </button>
@@ -265,62 +265,62 @@
     </div>
 </div>
 
-<div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center overflow-y-auto py-10">
-    <div class="bg-white rounded-lg w-full max-w-3xl mx-4">
-        <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h3 class="text-xl font-bold text-gray-800">Editar Cliente</h3>
+<div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 lg:bg-opacity-0 z-[60] flex items-center justify-center overflow-y-auto py-6 sm:py-10">
+    <div class="bg-white rounded-lg w-full max-w-3xl mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Editar Cliente</h3>
             <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
+                <i class="fa-solid fa-times text-lg sm:text-xl"></i>
             </button>
         </div>
-        <form class="p-6" onsubmit="event.preventDefault(); showToast('Cliente atualizado com sucesso!', 'success'); closeEditModal(false);">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+        <form class="p-4 sm:p-6" onsubmit="event.preventDefault(); showToast('Cliente atualizado com sucesso!', 'success'); closeEditModal(false);">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-x-6 sm:gap-y-5">
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Cliente / Razão Social <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Transportadora Veloz">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Nome do Cliente / Razão Social <span class="text-red-500">*</span></label>
+                    <input type="text" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="Transportadora Veloz">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">CPF/CNPJ <span class="text-red-500">*</span></label>
-                    <input type="text" id="edit-cpf-cnpj" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="12.345.678/0001-99">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">CPF/CNPJ <span class="text-red-500">*</span></label>
+                    <input type="text" id="edit-cpf-cnpj" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="12.345.678/0001-99">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
-                    <input type="text" id="edit-cep" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="01000-000">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">CEP</label>
+                    <input type="text" id="edit-cep" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="01000-000">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Endereço Completo</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="Avenida Paulista, 1000">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Endereço Completo</label>
+                    <input type="text" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="Avenida Paulista, 1000">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Cidade</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="São Paulo">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Cidade</label>
+                    <input type="text" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="São Paulo">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">UF</label>
-                    <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="SP">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">UF</label>
+                    <input type="text" class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="SP">
                 </div>
 
                 <div class="md:col-span-2 pt-4 border-t border-gray-200 mt-2">
-                    <p class="text-base font-medium text-gray-800">Informações de Contato</p>
+                    <p class="text-sm sm:text-base font-medium text-gray-800">Informações de Contato</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Pessoa de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="João Almeida">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Nome da Pessoa de Contato <span class="text-red-500">*</span></label>
+                    <input type="text" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="João Almeida">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Telefone de Contato <span class="text-red-500">*</span></label>
-                    <input type="text" id="edit-telefone" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="(11) 98765-4321">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Telefone de Contato <span class="text-red-500">*</span></label>
+                    <input type="text" id="edit-telefone" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="(11) 98765-4321">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email de Contato <span class="text-red-500">*</span></label>
-                    <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-azul-02" value="contato@transportadoraveloz.com.br">
+                    <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Email de Contato <span class="text-red-500">*</span></label>
+                    <input type="email" required class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-azul-02" value="contato@transportadoraveloz.com.br">
                 </div>
             </div>
-            <div class="flex justify-end space-x-3 mt-8">
-                <button type="button" onclick="closeEditModal()" class="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium">
+            <div class="flex flex-col sm:flex-row sm:justify-end gap-2 sm:gap-3 mt-6 sm:mt-8">
+                <button type="button" onclick="closeEditModal()" class="px-3 sm:px-5 py-2 sm:py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium text-sm w-full sm:w-auto">
                     Cancelar
                 </button>
-                <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
+                <button type="submit" class="px-3 sm:px-5 py-2 sm:py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium text-sm w-full sm:w-auto">
                     <i class="fa-solid fa-save mr-2"></i>
                     Salvar Alterações
                 </button>
@@ -459,15 +459,46 @@ function openDeleteModal(id) {
 
 </body>
 <script>
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        
-        sidebar.classList.toggle('-translate-x-full');
-        overlay.classList.toggle('hidden');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+
+    function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+        requestAnimationFrame(() => sidebarOverlay.classList.add('opacity-100'));
     }
 
-    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+    function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.remove('opacity-100');
+        setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+    }
+
+    function toggleSidebar() {
+        if (sidebar.classList.contains('-translate-x-full')) {
+            openSidebar();
+        } else {
+            closeSidebar();
+        }
+    }
+
+    if (sidebarToggleBtn) {
+        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+    }
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebarOverlay.classList.add('hidden');
+            sidebarOverlay.classList.remove('opacity-100');
+            sidebar.classList.remove('-translate-x-full');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
 </script>
 </html>
 

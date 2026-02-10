@@ -17,8 +17,8 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90">
-    <div class="flex items-center justify-between px-6 py-3">
+<header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90 h-[61px]">
+    <div class="flex items-center justify-between px-3 sm:px-4 md:px-6 h-full">
         <!--div class="flex items-center space-x-4">
             <div class="flex items-center">
                 <i class="fa-solid fa-shield-halved text-azul-02 text-2xl mr-3"></i>
@@ -31,14 +31,14 @@
         
         <div class="flex items-center space-x-4">
                 <!--i class="fa-solid fa-shield-halved text-white text-3xl"></i-->
-            <button id="sidebar-toggle" class="text-white text-xl md:hidden focus:outline-none">
+            <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-10">
             <h1 class="text-xl md:text-2xl font-bold text-white hidden sm:block">Sistema de Análise de Pneus</h1>
         </div> 
         <div class="flex items-center space-x-6">
-            <div class="relative hidden md:block">
+            <div class="relative hidden lg:block">
                 <input type="text" placeholder="Buscar pedidos..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-64 lg:w-80 focus:outline-none focus:ring-2 focus:ring-azul-02 focus:border-transparent">
                 <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
             </div>
@@ -67,7 +67,7 @@
 </header>
 
 <!-- Overlay for mobile -->
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden" onclick="toggleSidebar()"></div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden"></div>
 
 <aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
     <nav class="p-4 flex-1 overflow-y-auto">
@@ -151,109 +151,109 @@
     </div>
 </aside>
 
-<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-6 transition-all duration-300">
-    <div class="mb-6 flex items-center justify-between">
+<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
+    <div class="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">Marcas</h2>
-            <p class="text-sm text-gray-600 mt-1">Gerencie as marcas de pneus utilizadas no sistema</p>
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Marcas</h2>
+            <p class="text-xs sm:text-sm text-gray-600 mt-1">Gerencie as marcas de pneus utilizadas no sistema</p>
         </div>
-        <button onclick="openAddModal()" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium">
+        <button onclick="openAddModal()" class="px-3 sm:px-5 py-2 sm:py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 flex items-center font-medium text-sm sm:text-base whitespace-nowrap">
             <i class="fa-solid fa-plus mr-2"></i>
             Nova Marca
         </button>
     </div>
 
-    <div id="stats-section" class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+    <div id="stats-section" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-4 sm:mb-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Total de Marcas</p>
-                    <p class="text-3xl font-bold text-gray-800 mt-2">18</p>
+                    <p class="text-xs sm:text-sm font-medium text-gray-600">Total de Marcas</p>
+                    <p class="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">18</p>
                 </div>
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-azul-02 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-azul-02 text-lg sm:text-xl"></i>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Mais Analisada</p>
-                    <p class="text-lg font-bold text-gray-800 mt-2">Michelin</p>
+                    <p class="text-xs sm:text-sm font-medium text-gray-600">Mais Analisada</p>
+                    <p class="text-base sm:text-lg font-bold text-gray-800 mt-2">Michelin</p>
                 </div>
-                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-chart-line text-orange-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-chart-line text-orange-600 text-lg sm:text-xl"></i>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Com Mais Modelos</p>
-                    <p class="text-lg font-bold text-gray-800 mt-2">Bridgestone</p>
+                    <p class="text-xs sm:text-sm font-medium text-gray-600">Com Mais Modelos</p>
+                    <p class="text-base sm:text-lg font-bold text-gray-800 mt-2">Bridgestone</p>
                 </div>
-                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-car text-green-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-car text-green-600 text-lg sm:text-xl"></i>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-3 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Adicionada Recentemente</p>
-                    <p class="text-lg font-bold text-gray-800 mt-2">Hankook</p>
+                    <p class="text-xs sm:text-sm font-medium text-gray-600">Adicionada Recentemente</p>
+                    <p class="text-base sm:text-lg font-bold text-gray-800 mt-2">Hankook</p>
                 </div>
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-clock text-blue-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-clock text-blue-600 text-lg sm:text-xl"></i>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="filter-section" class="bg-white rounded-lg border border-gray-200 p-4 mb-6">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-4 flex-1">
-                <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchInput" placeholder="Buscar marca..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
-                    <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+    <div id="filter-section" class="bg-white rounded-lg border border-gray-200 p-3 sm:p-4 mb-4 sm:mb-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 flex-1 w-full">
+                <div class="relative w-full sm:max-w-md">
+                    <input type="text" id="searchInput" placeholder="Buscar marca..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full focus:outline-none focus:ring-2 focus:ring-azul-02">
+                    <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400"></i>
                 </div>
-                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-azul-02">
+                <select class="px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-azul-02">
                     <option>Todas as Origens</option>
                     <option>Nacional</option>
                     <option>Importado</option>
                 </select>
             </div>
-            <div class="flex items-center space-x-2">
-                <button class="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
+            <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                <button class="p-1.5 sm:p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
                     <i class="fa-solid fa-filter"></i>
                 </button>
-                <button class="p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
+                <button class="p-1.5 sm:p-2 text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg">
                     <i class="fa-solid fa-download"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <div id="brands-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('michelin')">
+    <div id="brands-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('michelin')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-blue-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-blue-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('michelin')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('michelin')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('michelin')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('michelin')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Michelin</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Michelin</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">24</span>
@@ -269,22 +269,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('bridgestone')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('bridgestone')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-green-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-green-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('bridgestone')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('bridgestone')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('bridgestone')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('bridgestone')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Bridgestone</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Bridgestone</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">32</span>
@@ -300,22 +300,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('continental')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('continental')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-yellow-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-yellow-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('continental')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('continental')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('continental')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('continental')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Continental</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Continental</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">18</span>
@@ -331,22 +331,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('goodyear')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('goodyear')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-purple-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-purple-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('goodyear')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('goodyear')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('goodyear')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('goodyear')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Goodyear</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Goodyear</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">22</span>
@@ -362,22 +362,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('pirelli')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('pirelli')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-red-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-red-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('pirelli')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('pirelli')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('pirelli')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('pirelli')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Pirelli</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Pirelli</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">16</span>
@@ -393,22 +393,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('dunlop')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('dunlop')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-indigo-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-indigo-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('dunlop')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('dunlop')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('dunlop')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('dunlop')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Dunlop</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Dunlop</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">14</span>
@@ -424,22 +424,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('yokohama')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('yokohama')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-pink-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-pink-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-pink-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('yokohama')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('yokohama')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('yokohama')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('yokohama')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Yokohama</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Yokohama</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">11</span>
@@ -455,22 +455,22 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('hankook')">
+        <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="redirectToModels('hankook')">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-copyright text-teal-600 text-xl"></i>
+                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-teal-100 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-copyright text-teal-600 text-lg sm:text-xl"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="event.stopPropagation(); openEditModal('hankook')" class="p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openEditModal('hankook')" class="p-1.5 sm:p-2 text-azul-02 hover:text-azul-04 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button onclick="event.stopPropagation(); openDeleteModal('hankook')" class="p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
+                    <button onclick="event.stopPropagation(); openDeleteModal('hankook')" class="p-1.5 sm:p-2 text-red-600 hover:text-red-700 hover:bg-gray-100 rounded">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </div>
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Hankook</h3>
-            <div class="space-y-2 text-sm text-gray-600">
+            <h3 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Hankook</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-gray-600">
                 <div class="flex items-center justify-between">
                     <span>Modelos:</span>
                     <span class="font-medium text-gray-800">8</span>
@@ -487,27 +487,27 @@
         </div>
     </div>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-6 sm:mt-8 flex justify-center">
         <div class="flex items-center space-x-2">
-            <button class="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
+            <button class="px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-600 hover:bg-gray-50">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button class="px-4 py-2 bg-azul-02 text-white rounded-lg text-sm">1</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">2</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">3</button>
-            <button class="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
+            <button class="px-3 sm:px-4 py-1.5 sm:py-2 bg-azul-02 text-white rounded-lg text-xs sm:text-sm">1</button>
+            <button class="px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-600 hover:bg-gray-50">2</button>
+            <button class="px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-600 hover:bg-gray-50">3</button>
+            <button class="px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-600 hover:bg-gray-50">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
     </div>
 </main>
 
-<div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg w-full max-w-md p-6">
+<div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[60] flex items-center justify-center overflow-y-auto py-6 sm:py-10">
+    <div class="bg-white rounded-lg w-full max-w-md p-4 sm:p-6 mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-gray-800">Nova Marca</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Nova Marca</h3>
             <button onclick="closeAddModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
+                <i class="fa-solid fa-times text-lg sm:text-xl"></i>
             </button>
         </div>
         <form onsubmit="event.preventDefault(); showToast('Marca cadastrada com sucesso!', 'success'); closeAddModal(false);">
@@ -523,11 +523,11 @@
                     <option>Importado</option>
                 </select>
             </div>
-            <div class="flex space-x-3">
+            <div class="flex flex-col sm:flex-row sm:justify-end gap-2 sm:gap-3">
                 <button type="button" onclick="closeAddModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
                     Cancelar
                 </button>
-             <button type="submit" class="px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
+             <button type="submit" class="flex-1 px-5 py-2.5 bg-azul-02 text-white rounded-lg hover:bg-azul-04 font-medium">
                     <i class="fa-solid fa-plus mr-2"></i>
                     Adicionar
                 </button>
@@ -536,12 +536,12 @@
     </div>
 </div>
 
-<div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg w-full max-w-md p-6">
+<div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[60] flex items-center justify-center overflow-y-auto py-6 sm:py-10">
+    <div class="bg-white rounded-lg w-full max-w-md p-4 sm:p-6 mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-gray-800">Editar Marca</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Editar Marca</h3>
             <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
+                <i class="fa-solid fa-times text-lg sm:text-xl"></i>
             </button>
         </div>
         <form onsubmit="event.preventDefault(); showToast('Marca atualizada com sucesso!', 'success'); closeEditModal(false);">
@@ -556,7 +556,7 @@
                     <option>Importado</option>
                 </select>
             </div>
-            <div class="flex space-x-3">
+            <div class="flex flex-col sm:flex-row sm:justify-end gap-2 sm:gap-3">
                 <button type="button" onclick="closeEditModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
                     Cancelar
                 </button>
@@ -568,16 +568,16 @@
     </div>
 </div>
 
-<div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg w-full max-w-md p-6">
+<div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[60] flex items-center justify-center overflow-y-auto py-6 sm:py-10">
+    <div class="bg-white rounded-lg w-full max-w-md p-4 sm:p-6 mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-gray-800">Excluir Marca</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Excluir Marca</h3>
             <button onclick="closeDeleteModal()" class="text-gray-400 hover:text-gray-600">
-                <i class="fa-solid fa-times text-xl"></i>
+                <i class="fa-solid fa-times text-lg sm:text-xl"></i>
             </button>
         </div>
         <p class="text-gray-600 mb-6">Tem certeza que deseja excluir esta marca? Esta ação N�o pode ser desfeita.</p>
-        <div class="flex space-x-3">
+        <div class="flex flex-col sm:flex-row sm:justify-end gap-2 sm:gap-3">
             <button type="button" onclick="closeDeleteModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
                 Cancelar
             </button>
@@ -709,16 +709,48 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 
 </body>
 <script>
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        
-        sidebar.classList.toggle('-translate-x-full');
-        overlay.classList.toggle('hidden');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+
+    function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+        requestAnimationFrame(() => sidebarOverlay.classList.add('opacity-100'));
     }
 
-    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+    function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.remove('opacity-100');
+        setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+    }
+
+    function toggleSidebar() {
+        if (sidebar.classList.contains('-translate-x-full')) {
+            openSidebar();
+        } else {
+            closeSidebar();
+        }
+    }
+
+    if (sidebarToggleBtn) {
+        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+    }
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebarOverlay.classList.add('hidden');
+            sidebarOverlay.classList.remove('opacity-100');
+            sidebar.classList.remove('-translate-x-full');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+        }
+    });
 </script>
 </html>
+
 
 
