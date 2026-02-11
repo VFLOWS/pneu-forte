@@ -81,6 +81,23 @@
             transform: translateY(-50%);
             z-index: 0;
         }
+
+        /* Extra breathing room for the smallest PSI boxes */
+        .report-page div[class*="text-[10px]"][class*="border-2"][class*="border-black"] {
+            padding-top: 0.35rem !important;
+            padding-bottom: 0.35rem !important;
+            padding-left: 0.35rem !important;
+            padding-right: 0.35rem !important;
+            line-height: 1.1;
+        }
+
+        /* Standard padding for all PSI boxes (helps red ones too) */
+        .report-page div[class*="border-2"][class*="border-black"][class*="rounded"][class*="shadow-sm"][class*="text-center"] {
+            padding-left: 0.35rem;
+            padding-right: 0.35rem;
+        }
+
+        /* mm callouts are repositioned via JS to avoid overlap */
     </style>
 </head>
 
@@ -157,9 +174,9 @@
 
             <div class="flex-grow flex flex-col">
                 <!-- Image Placeholder -->
-                <div class="mb-4 flex justify-end">
+                <div class="mb-8 flex justify-end">
                     <div
-                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        class="w-44 h-28 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
                         <div class="text-center">
                             <i class="fa-regular fa-image text-2xl mb-1 block"></i>
                             <span>Foto do Veículo</span>
@@ -168,10 +185,10 @@
                 </div>
 
                 <!-- Vehicle Diagram -->
-                <div class="relative h-80 mb-8 flex items-center justify-center">
+                <div class="relative h-96 mb-4 flex items-center justify-center">
                     <!-- Chassis -->
-                    <div
-                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-20 rounded text-lg shadow-md pointer-events-none">
+                    <div class="absolute w-full h-12 bg-black z-0 rounded shadow-md"></div>
+                    <div class="absolute w-full h-12 flex items-center justify-center text-white font-bold z-20 rounded text-lg pointer-events-none">
                         --- Veículo: 78191 ---
                     </div>
 
@@ -316,7 +333,7 @@
                 </div>
 
                 <!-- Recommendations & Tables -->
-                <div class="mt-auto">
+                <div class="mt-3">
                     <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
                     <div class="border-b-2 border-black mb-2 pb-1">
                         <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
@@ -409,9 +426,9 @@
 
             <div class="flex-grow flex flex-col">
                 <!-- Image Placeholder -->
-                <div class="mb-4 flex justify-end">
+                <div class="mb-8 flex justify-end">
                     <div
-                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        class="w-44 h-28 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
                         <div class="text-center">
                             <i class="fa-regular fa-image text-2xl mb-1 block"></i>
                             <span>Foto do Veículo</span>
@@ -420,10 +437,10 @@
                 </div>
 
                 <!-- Vehicle Diagram -->
-                <div class="relative h-80 mb-8 flex items-center justify-center">
+                <div class="relative h-96 mb-4 flex items-center justify-center">
                     <!-- Chassis -->
-                    <div
-                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-20 rounded text-lg shadow-md pointer-events-none">
+                    <div class="absolute w-full h-12 bg-black z-0 rounded shadow-md"></div>
+                    <div class="absolute w-full h-12 flex items-center justify-center text-white font-bold z-20 rounded text-lg pointer-events-none">
                         --- Veículo: 78425 ---
                     </div>
 
@@ -514,7 +531,7 @@
                 </div>
 
                 <!-- Recommendations & Tables -->
-                <div class="mt-auto">
+                <div class="mt-3">
                     <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
                     <div class="border-b-2 border-black mb-6 pb-1">
                         <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
@@ -600,9 +617,9 @@
 
             <div class="flex-grow flex flex-col">
                 <!-- Image Placeholder -->
-                <div class="mb-4 flex justify-end">
+                <div class="mb-8 flex justify-end">
                     <div
-                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        class="w-44 h-28 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
                         <div class="text-center">
                             <i class="fa-regular fa-image text-2xl mb-1 block"></i>
                             <span>Foto do Veículo</span>
@@ -611,10 +628,10 @@
                 </div>
 
                 <!-- Vehicle Diagram -->
-                <div class="relative h-80 mb-8 flex items-center justify-center">
+                <div class="relative h-96 mb-4 flex items-center justify-center">
                     <!-- Chassis -->
-                    <div
-                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-20 rounded text-lg shadow-md pointer-events-none">
+                    <div class="absolute w-full h-12 bg-black z-0 rounded shadow-md"></div>
+                    <div class="absolute w-full h-12 flex items-center justify-center text-white font-bold z-20 rounded text-lg pointer-events-none">
                         --- Veículo: 79210 ---
                     </div>
 
@@ -759,7 +776,7 @@
                 </div>
 
                 <!-- Recommendations & Tables -->
-                <div class="mt-auto">
+                <div class="mt-3">
                     <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
                     <div class="border-b-2 border-black mb-6 pb-1">
                         <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
@@ -845,9 +862,9 @@
 
             <div class="flex-grow flex flex-col">
                 <!-- Image Placeholder -->
-                <div class="mb-4 flex justify-end">
+                <div class="mb-8 flex justify-end">
                     <div
-                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        class="w-44 h-28 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
                         <div class="text-center">
                             <i class="fa-regular fa-image text-2xl mb-1 block"></i>
                             <span>Foto do Veículo</span>
@@ -856,10 +873,10 @@
                 </div>
 
                 <!-- Vehicle Diagram -->
-                <div class="relative h-80 mb-8 flex items-center justify-center">
+                <div class="relative h-96 mb-4 flex items-center justify-center">
                     <!-- Chassis -->
-                    <div
-                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-20 rounded text-lg shadow-md pointer-events-none">
+                    <div class="absolute w-full h-12 bg-black z-0 rounded shadow-md"></div>
+                    <div class="absolute w-full h-12 flex items-center justify-center text-white font-bold z-20 rounded text-lg pointer-events-none">
                         --- Veículo: 79980 ---
                     </div>
 
@@ -1046,7 +1063,7 @@
                 </div>
 
                 <!-- Recommendations & Tables -->
-                <div class="mt-auto">
+                <div class="mt-3">
                     <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
                     <div class="border-b-2 border-black mb-6 pb-1">
                         <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
@@ -1132,9 +1149,9 @@
 
             <div class="flex-grow flex flex-col">
                 <!-- Image Placeholder -->
-                <div class="mb-4 flex justify-end">
+                <div class="mb-8 flex justify-end">
                     <div
-                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        class="w-44 h-28 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
                         <div class="text-center">
                             <i class="fa-regular fa-image text-2xl mb-1 block"></i>
                             <span>Foto do Veículo</span>
@@ -1143,10 +1160,10 @@
                 </div>
 
                 <!-- Vehicle Diagram -->
-                <div class="relative h-80 mb-8 flex items-center justify-center">
+                <div class="relative h-96 mb-4 flex items-center justify-center">
                     <!-- Chassis -->
-                    <div
-                        class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-20 rounded text-lg shadow-md pointer-events-none">
+                    <div class="absolute w-full h-12 bg-black z-0 rounded shadow-md"></div>
+                    <div class="absolute w-full h-12 flex items-center justify-center text-white font-bold z-20 rounded text-lg pointer-events-none">
                         --- Veículo: 80315 ---
                     </div>
 
@@ -1336,7 +1353,7 @@
                 </div>
 
                 <!-- Recommendations & Tables -->
-                <div class="mt-auto">
+                <div class="mt-3">
                     <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
                     <div class="border-b-2 border-black mb-6 pb-1">
                         <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
@@ -1413,9 +1430,9 @@
 
             <div class="flex-grow flex flex-col">
                 <!-- Image Placeholder -->
-                <div class="mb-4 flex justify-end">
+                <div class="mb-8 flex justify-end">
                     <div
-                        class="w-32 h-24 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
+                        class="w-44 h-28 bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-400 text-xs rounded shadow-inner">
                         <div class="text-center">
                             <i class="fa-regular fa-image text-2xl mb-1 block"></i>
                             <span>Foto do Veículo</span>
@@ -1424,8 +1441,9 @@
                 </div>
 
                 <!-- Vehicle Diagram -->
-                <div class="relative h-80 mb-8 flex items-center justify-center">
-                    <div class="absolute w-full h-12 bg-black flex items-center justify-center text-white font-bold z-20 rounded text-lg shadow-md pointer-events-none">
+                <div class="relative h-96 mb-4 flex items-center justify-center">
+                    <div class="absolute w-full h-12 bg-black z-0 rounded shadow-md"></div>
+                    <div class="absolute w-full h-12 flex items-center justify-center text-white font-bold z-20 rounded text-lg pointer-events-none">
                         --- Veículo: 81540 ---
                     </div>
 
@@ -1455,12 +1473,36 @@
                         <div class="flex flex-col h-full relative group w-16 items-center">
                             <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2"></div>
                             <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">121 PSI</div>
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">111 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    121 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">10,4mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    111 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">10,1mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">118 PSI</div>
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">112 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    118 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,8mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    112 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">10,0mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -1468,12 +1510,36 @@
                         <div class="flex flex-col h-full relative group w-16 items-center">
                             <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2"></div>
                             <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">120 PSI</div>
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">118 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    120 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,6mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    118 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,9mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">113 PSI</div>
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">117 PSI</div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    113 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,7mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    117 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,5mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -1481,12 +1547,36 @@
                         <div class="flex flex-col h-full relative group w-16 items-center">
                             <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2"></div>
                             <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">122 PSI</div>
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">112 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    122 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">8,8mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    112 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,2mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-red-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">106 PSI</div>
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">118 PSI</div>
+                                <div class="w-16 bg-red-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    106 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-red-600 font-bold text-sm">5,2mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    118 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">8,5mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -1494,12 +1584,36 @@
                         <div class="flex flex-col h-full relative group w-16 items-center">
                             <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2"></div>
                             <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">121 PSI</div>
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">119 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    121 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,1mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    119 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,3mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">113 PSI</div>
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">117 PSI</div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    113 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,0mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    117 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">8,9mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -1507,18 +1621,42 @@
                         <div class="flex flex-col h-full relative group w-16 items-center">
                             <div class="absolute top-0 bottom-0 w-3 bg-black z-0 left-1/2 transform -translate-x-1/2"></div>
                             <div class="z-10 mt-2 mb-auto flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">120 PSI</div>
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">112 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    120 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,4mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    112 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,6mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="z-10 mt-auto mb-2 flex flex-col gap-2 w-full items-center">
-                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">118 PSI</div>
-                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">113 PSI</div>
+                                <div class="w-16 bg-blue-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    118 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,2mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
+                                <div class="w-16 bg-green-600 text-white font-bold text-center py-1 border-2 border-black rounded shadow-sm relative text-[10px] z-10">
+                                    113 PSI
+                                    <div class="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 flex items-center gap-1 w-max">
+                                        <span class="text-green-600 font-bold text-sm">9,5mm</span>
+                                        <i class="fa-solid fa-flag text-gray-400 text-xs"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-auto">
+                <div class="mt-3">
                     <h3 class="font-bold text-black mb-2 text-lg">Recomendação:</h3>
                     <div class="border-b-2 border-black mb-6 pb-1">
                         <p class="text-sm">Realizar a correção da calibragem, dos pneus indicados com divergência.</p>
@@ -1741,6 +1879,86 @@
             <div class="mt-auto text-right text-xs text-gray-500 pt-4">8/8</div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sizeRegex = /^text-(xs|sm|base|lg|xl|\d+xl|\[.*\])$/;
+
+            const isInlineMmRow = (el) => {
+                if (!(el instanceof HTMLElement)) return false;
+                if (!el.classList.contains('flex') || !el.classList.contains('items-center')) return false;
+                if (!el.classList.contains('w-max')) return false;
+
+                const icon = el.querySelector(':scope > i.fa-flag');
+                const span = el.querySelector(':scope > span');
+                if (!icon || !span) return false;
+
+                const txt = (span.textContent || '').trim();
+                return txt.endsWith('mm');
+            };
+
+            const calloutSelectors = [
+                'div[class*="absolute right-full mr-2 top-1/2 transform -translate-y-1/2"]',
+                'div[class*="absolute left-full ml-2 top-1/2 transform -translate-y-1/2"]'
+            ];
+
+            calloutSelectors.forEach((selector) => {
+                const callouts = Array.from(document.querySelectorAll(selector));
+
+                callouts.forEach((callout) => {
+                    const parent = callout.parentElement;
+                    if (!parent) return;
+
+                    callout.remove();
+
+                    // Interleave: PSI box -> mm callout -> PSI box -> mm callout
+                    // (keeps both values visible and avoids overlay)
+                    callout.className = 'pf-mm-badge inline-flex items-center justify-center gap-1 w-max bg-white border border-gray-300 rounded px-1 py-0 shadow-sm text-[9px] leading-none -mt-1 -mb-1';
+
+                    const span = callout.querySelector('span');
+                    if (span) {
+                        const classes = span.className.split(/\s+/).filter(Boolean);
+                        span.className = classes.filter(c => !sizeRegex.test(c)).concat(['text-[9px]']).join(' ');
+                    }
+
+                    const icon = callout.querySelector('i');
+                    if (icon) {
+                        const classes = icon.className.split(/\s+/).filter(Boolean);
+                        icon.className = classes.filter(c => !sizeRegex.test(c)).concat(['text-[9px]']).join(' ');
+                    }
+
+                    parent.insertAdjacentElement('afterend', callout);
+                });
+            });
+
+            // Clean up: previous version could mistakenly style axle containers.
+            const mistakenlyStyled = Array.from(document.querySelectorAll('div[class*="flex-col"][class*="bg-white"][class*="border-gray-300"][class*="shadow-sm"]'));
+            mistakenlyStyled.forEach((el) => {
+                el.classList.remove('bg-white', 'border', 'border-gray-300', 'rounded', 'px-1', 'py-0', 'shadow-sm');
+            });
+
+            // Front axle (and any other) mm rows that were already inline (not absolute callouts)
+            // also get the same fixed background badge for readability.
+            const mmRows = Array.from(document.querySelectorAll('div.flex.items-center.w-max'))
+                .filter((row) => isInlineMmRow(row) && !row.classList.contains('pf-mm-badge'));
+
+            mmRows.forEach((row) => {
+                row.classList.add('pf-mm-badge', 'bg-white', 'border', 'border-gray-300', 'rounded', 'px-1', 'py-0', 'shadow-sm');
+
+                const span = row.querySelector(':scope > span');
+                if (span) {
+                    const classes = span.className.split(/\s+/).filter(Boolean);
+                    span.className = classes.filter(c => !sizeRegex.test(c)).concat(['text-[10px]']).join(' ');
+                }
+
+                const icon = row.querySelector(':scope > i');
+                if (icon) {
+                    const classes = icon.className.split(/\s+/).filter(Boolean);
+                    icon.className = classes.filter(c => !sizeRegex.test(c)).concat(['text-[10px]']).join(' ');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

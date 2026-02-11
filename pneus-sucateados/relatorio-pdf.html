@@ -13,7 +13,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="pneu-forte-colors.css">
     <script src="tailwind.config.js"></script>
-    
+
+    <style>
+        .page-break {
+            break-after: page;
+            page-break-after: always;
+        }
+
+        /* Keep the individual tire table within the page without reducing font size */
+        .pf-tire-table {
+            table-layout: fixed;
+        }
+
+        .pf-tire-table th,
+        .pf-tire-table td {
+            padding: 4px 6px !important;
+            line-height: 1.2 !important;
+            vertical-align: top;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #fff !important; }
+            #report-container { box-shadow: none !important; margin: 0 !important; }
+        }
+    </style>
 </head>
 <body class="bg-gray-200">
 
@@ -241,12 +265,12 @@
             </header>
             <main class="flex-grow">
                 <h3 class="font-bold text-lg mb-4">Gráficos analíticos</h3>
-                <div class="grid grid-cols-2 gap-6">
-                    <div id="chart-brand" class="w-full h-64 border rounded-lg p-4 bg-white shadow-sm"></div>
-                    <div id="chart-measure" class="w-full h-64 border rounded-lg p-4 bg-white shadow-sm"></div>
-                    <div id="chart-life" class="w-full h-64 border rounded-lg p-4 bg-white shadow-sm"></div>
-                    <div id="chart-model" class="w-full h-64 border rounded-lg p-4 bg-white shadow-sm"></div>
-                    <div id="chart-cause" class="w-full h-64 border rounded-lg p-4 bg-white shadow-sm col-span-2"></div>
+                <div class="w-full max-w-[180mm] mx-auto grid grid-cols-2 gap-6">
+                    <div id="chart-brand" class="w-full h-64 border rounded-lg pt-2 bg-white shadow-sm"></div>
+                    <div id="chart-measure" class="w-full h-64 border rounded-lg pt-2 bg-white shadow-sm"></div>
+                    <div id="chart-life" class="w-full h-64 border rounded-lg pt-2 bg-white shadow-sm"></div>
+                    <div id="chart-model" class="w-full h-64 border rounded-lg pt-2 bg-white shadow-sm"></div>
+                    <div id="chart-cause" class="w-full h-64 border rounded-lg pt-2 bg-white shadow-sm col-span-2"></div>
                 </div>
             </main>
             <footer class="text-right text-sm text-gray-500 mt-8">5/7</footer>
@@ -255,13 +279,22 @@
         <div class="page-break"></div>
 
         <!-- Page 6: Individual Tire Analysis Table -->
-        <div class="report-page h-[297mm] flex flex-col p-8">
-            <header class="flex justify-between items-start mb-6">
+        <div class="report-page h-[297mm] flex flex-col p-6">
+            <header class="flex justify-between items-start mb-4">
                 <h3 class="font-bold text-lg">Análise Individual do Pneu</h3>
                 <img src="pneu-forte-logo.jpeg" alt="Vipal Logo" class="vipal-logo">
             </header>
             <main class="flex-grow">
-                <table class="w-full text-xs">
+                <table class="pf-tire-table w-full text-xs">
+                    <colgroup>
+                        <col style="width: 14%;" />
+                        <col style="width: 11%;" />
+                        <col style="width: 14%;" />
+                        <col style="width: 8%;" />
+                        <col style="width: 6%;" />
+                        <col style="width: 8%;" />
+                        <col style="width: 39%;" />
+                    </colgroup>
                     <thead class="bg-gray-200">
                         <tr>
                             <th class="p-2 text-left font-semibold">Nº Fogo</th>
@@ -292,10 +325,235 @@
                             <td class="p-2 text-right">02 mm</td>
                             <td class="p-2 text-red-600">Danos no talão (71)</td>
                         </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025411</td>
+                            <td class="p-2">Goodyear</td>
+                            <td class="p-2">G658</td>
+                            <td class="p-2">1420</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">03 mm</td>
+                            <td class="p-2 text-red-600">Separação de cintas (32)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025587</td>
+                            <td class="p-2">Continental</td>
+                            <td class="p-2">HS3</td>
+                            <td class="p-2">5119</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">05 mm</td>
+                            <td class="p-2 text-red-600">Desgaste irregular (12)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025603</td>
+                            <td class="p-2">Firestone</td>
+                            <td class="p-2">FS440</td>
+                            <td class="p-2">0721</td>
+                            <td class="p-2 text-center">N</td>
+                            <td class="p-2 text-right">08 mm</td>
+                            <td class="p-2 text-red-600">Perfuração por objeto (44)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025644</td>
+                            <td class="p-2">Dunlop</td>
+                            <td class="p-2">SP320</td>
+                            <td class="p-2">3520</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">02 mm</td>
+                            <td class="p-2 text-red-600">Rodagem com baixa pressão (18)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025691</td>
+                            <td class="p-2">Michelin</td>
+                            <td class="p-2">X Multi</td>
+                            <td class="p-2">2619</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">04 mm</td>
+                            <td class="p-2 text-red-600">Corte lateral (27)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025734</td>
+                            <td class="p-2">Pirelli</td>
+                            <td class="p-2">FG:01</td>
+                            <td class="p-2">1122</td>
+                            <td class="p-2 text-center">N</td>
+                            <td class="p-2 text-right">09 mm</td>
+                            <td class="p-2 text-red-600">Dano acidental na banda (45)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025801</td>
+                            <td class="p-2">Bridgestone</td>
+                            <td class="p-2">M840</td>
+                            <td class="p-2">4820</td>
+                            <td class="p-2 text-center">R3</td>
+                            <td class="p-2 text-right">01 mm</td>
+                            <td class="p-2 text-red-600">Fim de vida / sulco abaixo do limite (01)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025846</td>
+                            <td class="p-2">Goodyear</td>
+                            <td class="p-2">KMAX S</td>
+                            <td class="p-2">4019</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">03 mm</td>
+                            <td class="p-2 text-red-600">Dano no ombro (22)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025902</td>
+                            <td class="p-2">Continental</td>
+                            <td class="p-2">HTR2</td>
+                            <td class="p-2">0821</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">06 mm</td>
+                            <td class="p-2 text-red-600">Bolha / impacto (35)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000025949</td>
+                            <td class="p-2">Firestone</td>
+                            <td class="p-2">FD662</td>
+                            <td class="p-2">1320</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">02 mm</td>
+                            <td class="p-2 text-red-600">Ruptura radial (30)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026014</td>
+                            <td class="p-2">Dunlop</td>
+                            <td class="p-2">SP835</td>
+                            <td class="p-2">4621</td>
+                            <td class="p-2 text-center">N</td>
+                            <td class="p-2 text-right">10 mm</td>
+                            <td class="p-2 text-red-600">Dano no talão (72)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026077</td>
+                            <td class="p-2">Michelin</td>
+                            <td class="p-2">X Line Energy</td>
+                            <td class="p-2">0220</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">05 mm</td>
+                            <td class="p-2 text-red-600">Desgaste em serrilha (14)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026131</td>
+                            <td class="p-2">Pirelli</td>
+                            <td class="p-2">FR01</td>
+                            <td class="p-2">3821</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">04 mm</td>
+                            <td class="p-2 text-red-600">Separação de banda (33)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026208</td>
+                            <td class="p-2">Importado</td>
+                            <td class="p-2">N/I</td>
+                            <td class="p-2">2019</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">03 mm</td>
+                            <td class="p-2 text-red-600">Desgaste irregular (11)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026269</td>
+                            <td class="p-2">Bridgestone</td>
+                            <td class="p-2">R-Steer 001</td>
+                            <td class="p-2">1017</td>
+                            <td class="p-2 text-center">R3</td>
+                            <td class="p-2 text-right">01 mm</td>
+                            <td class="p-2 text-red-600">Fim de vida / sulco abaixo do limite (01)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026318</td>
+                            <td class="p-2">Goodyear</td>
+                            <td class="p-2">G399A</td>
+                            <td class="p-2">3018</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">02 mm</td>
+                            <td class="p-2 text-red-600">Corte na banda (46)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026374</td>
+                            <td class="p-2">Continental</td>
+                            <td class="p-2">Conti Hybrid</td>
+                            <td class="p-2">4920</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">06 mm</td>
+                            <td class="p-2 text-red-600">Rachaduras na banda (62)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026433</td>
+                            <td class="p-2">Firestone</td>
+                            <td class="p-2">FTL</td>
+                            <td class="p-2">1822</td>
+                            <td class="p-2 text-center">N</td>
+                            <td class="p-2 text-right">07 mm</td>
+                            <td class="p-2 text-red-600">Aquecimento no talão (19)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026501</td>
+                            <td class="p-2">Dunlop</td>
+                            <td class="p-2">SP160</td>
+                            <td class="p-2">2419</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">04 mm</td>
+                            <td class="p-2 text-red-600">Ruptura lateral (28)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026577</td>
+                            <td class="p-2">Michelin</td>
+                            <td class="p-2">X Works</td>
+                            <td class="p-2">3621</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">03 mm</td>
+                            <td class="p-2 text-red-600">Desgaste em escamas (15)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026644</td>
+                            <td class="p-2">Pirelli</td>
+                            <td class="p-2">TR:01</td>
+                            <td class="p-2">0720</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">02 mm</td>
+                            <td class="p-2 text-red-600">Perfuração / rodagem (47)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026709</td>
+                            <td class="p-2">Bridgestone</td>
+                            <td class="p-2">M729</td>
+                            <td class="p-2">4122</td>
+                            <td class="p-2 text-center">N</td>
+                            <td class="p-2 text-right">11 mm</td>
+                            <td class="p-2 text-red-600">Corte profundo (48)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026781</td>
+                            <td class="p-2">Goodyear</td>
+                            <td class="p-2">Omnitrac MSD II</td>
+                            <td class="p-2">4319</td>
+                            <td class="p-2 text-center">R1</td>
+                            <td class="p-2 text-right">05 mm</td>
+                            <td class="p-2 text-red-600">Desgaste irregular (13)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026844</td>
+                            <td class="p-2">Continental</td>
+                            <td class="p-2">FR88</td>
+                            <td class="p-2">1522</td>
+                            <td class="p-2 text-center">N</td>
+                            <td class="p-2 text-right">08 mm</td>
+                            <td class="p-2 text-red-600">Rachadura no flanco (63)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-medium">000026913</td>
+                            <td class="p-2">Importado</td>
+                            <td class="p-2">N/I</td>
+                            <td class="p-2">3318</td>
+                            <td class="p-2 text-center">R2</td>
+                            <td class="p-2 text-right">02 mm</td>
+                            <td class="p-2 text-red-600">Falha estrutural (34)</td>
+                        </tr>
                     </tbody>
                 </table>
             </main>
-            <footer class="text-right text-sm text-gray-500 mt-8">6/7</footer>
+            <footer class="text-right text-sm text-gray-500 mt-4">6/7</footer>
         </div>
 
         <div class="page-break"></div>
@@ -353,6 +611,7 @@
             const opt = {
                 margin:       0,
                 filename:     'relatorio-analise-sucata.pdf',
+                pagebreak:    { mode: ['css', 'legacy'] },
                 image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { scale: 2, useCORS: true },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -363,9 +622,9 @@
         window.addEventListener('load', function() {
             const pieChartOptions = {
                 showlegend: true,
-                legend: { x: 1.05, xanchor: 'left', y: 0.5, font: { size: 11, family: 'Inter, sans-serif' } },
-                margin: { t: 40, r: 20, b: 20, l: 20 },
-                height: 250,
+                legend: { x: 1.05, xanchor: 'left', y: 0.5, yanchor: 'middle', font: { size: 11, family: 'Inter, sans-serif' } },
+                margin: { t: 56, r: 90, b: 20, l: 20 },
+                height: 240,
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 font: { family: 'Inter, sans-serif', color: '#374151' },
@@ -381,6 +640,7 @@
                 marker: {
                     line: { color: '#ffffff', width: 2 }
                 },
+                domain: { x: [0.08, 0.78], y: [0, 1] },
                 automargin: true
             };
 
@@ -396,8 +656,13 @@
                 ...pieChartOptions,
                 title: { 
                     text: title, 
-                    font: { size: 16, weight: 'bold' },
-                    y: 0.95
+                    font: { size: 16 },
+                    x: 0.5,
+                    xref: 'container',
+                    xanchor: 'center',
+                    y: 0.98,
+                    yref: 'container',
+                    yanchor: 'top'
                 }
             });
 

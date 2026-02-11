@@ -15,7 +15,7 @@
     <script src="tailwind.config.js"></script>    
 
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gradient-to-br from-azul-02 to-preto-90 lg:bg-none lg:bg-gray-50 font-sans">
 
 <div id="login-container" class="min-h-screen flex">
     <div id="left-panel" class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-azul-02 to-preto-90 relative overflow-hidden">
@@ -28,7 +28,7 @@
             <div class="flex items-center space-x-8 sm:space-x-20">
                 <!--i class="fa-solid fa-shield-halved text-white text-3xl"></i-->
                 <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-16 sm:h-20">
-                <h1 class="text-2xl font-bold text-white">Central de Serviços</h1>
+                <h1 class="text-2xl font-bold text-white">Central de Tarefas</h1>
             </div>
 
             <div class="space-y-8">
@@ -82,12 +82,11 @@
 
     <div id="right-panel" class="w-full lg:w-1/2 flex items-center justify-center p-3 sm:p-6">
         <div class="w-full max-w-md">
-            <div class="lg:hidden mb-6 sm:mb-8 text-center">
-                <div class="flex items-center justify-center space-x-2 sm:space-x-3 mb-2">
-                    <i class="fa-solid fa-shield-halved text-azul-02 text-2xl sm:text-3xl"></i>
-                    <div>
-                        <h1 class="text-xl sm:text-2xl font-bold text-gray-800">Pneu Forte</h1>
-                        <p class="text-xs sm:text-sm text-gray-600">Sistema de Análise de Pneus</p>
+            <div class="lg:hidden mb-6 sm:mb-8">
+                <div class="bg-gradient-to-br from-azul-02 to-preto-90 rounded-xl p-4 sm:p-6 text-center">
+                    <div class="flex flex-col items-center justify-center gap-3">
+                        <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-14 sm:h-16">
+                        <h1 class="text-xl sm:text-2xl font-bold text-white">Central de Tarefas</h1>
                     </div>
                 </div>
             </div>
@@ -166,21 +165,21 @@
             </div>
 
             <div class="mt-4 sm:mt-6 text-center">
-                <p class="text-xs sm:text-xs text-gray-500">
+                <p class="text-xs sm:text-xs text-gray-200 lg:text-gray-500">
                     Ao entrar, você concorda com nossos 
-                    <a href="#" class="text-azul-02 hover:underline">Termos de Uso</a> e 
-                    <a href="#" class="text-azul-02 hover:underline">Política de Privacidade</a>
+                    <a href="#" class="text-white lg:text-azul-02 hover:underline">Termos de Uso</a> e 
+                    <a href="#" class="text-white lg:text-azul-02 hover:underline">Política de Privacidade</a>
                 </p>
             </div>
 
-            <div class="mt-8 flex items-center justify-center space-x-6 text-gray-400">
-                <a href="#" class="hover:text-gray-600 transition-colors">
+            <div class="mt-8 flex items-center justify-center space-x-6 text-gray-200 lg:text-gray-400">
+                <a href="#" class="hover:text-white lg:hover:text-gray-600 transition-colors">
                     <i class="fa-solid fa-circle-question text-xl"></i>
                 </a>
-                <a href="#" class="hover:text-gray-600 transition-colors">
+                <a href="#" class="hover:text-white lg:hover:text-gray-600 transition-colors">
                     <i class="fa-solid fa-headset text-xl"></i>
                 </a>
-                <a href="#" class="hover:text-gray-600 transition-colors">
+                <a href="#" class="hover:text-white lg:hover:text-gray-600 transition-colors">
                     <i class="fa-solid fa-file-lines text-xl"></i>
                 </a>
             </div>

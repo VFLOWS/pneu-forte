@@ -209,42 +209,66 @@
             </div>
         </div>
 
-        <div id="action-buttons" class="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
-            <a href="novo-pedido.html"
-                class="bg-azul-02 hover:bg-azul-04 text-white rounded-lg p-4 flex items-center justify-between transition-colors">
-                <div class="flex items-center">
-                    <i class="fa-solid fa-plus-circle text-2xl mr-3"></i>
-                    <div class="text-left">
-                        <p class="font-semibold">Nova Solicitação de Análise</p>
-                        <p class="text-xs opacity-90">Iniciar um novo lote de análise</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+        <div id="action-buttons" class="mb-4 sm:mb-6">
+            <!-- Mobile/Tablet: ações compactas e dinâmicas -->
+            <div class="grid grid-cols-3 gap-2 lg:hidden">
+                <a href="novo-pedido.html" title="Criar uma nova solicitação de análise"
+                    class="w-full flex flex-col items-center justify-center gap-1 rounded-lg bg-azul-02 hover:bg-azul-04 text-white px-2 py-2 transition-colors">
+                    <i class="fa-solid fa-plus-circle text-base"></i>
+                    <span class="text-[11px] font-semibold leading-tight">Análise</span>
+                </a>
 
-            <a href="clientes.html"
-                class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg p-4 flex items-center justify-between transition-colors">
-                <div class="flex items-center">
-                    <i class="fa-solid fa-users text-2xl mr-3 text-azul-02"></i>
-                    <div class="text-left">
-                        <p class="font-semibold">Gerenciar Clientes</p>
-                        <p class="text-xs text-gray-600">Adicionar ou editar clientes</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+                <a href="clientes.html" title="Cadastrar, editar e gerenciar clientes"
+                    class="w-full flex flex-col items-center justify-center gap-1 rounded-lg bg-white hover:bg-gray-50 text-gray-800 px-2 py-2 border border-gray-300 transition-colors">
+                    <i class="fa-solid fa-users text-azul-02 text-base"></i>
+                    <span class="text-[11px] font-semibold leading-tight">Clientes</span>
+                </a>
 
-            <a href="relatorios-interativos.html"
-                class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg p-4 flex items-center justify-between transition-colors">
-                <div class="flex items-center">
-                    <i class="fa-solid fa-file-pdf text-2xl mr-3 text-red-600"></i>
-                    <div class="text-left">
-                        <p class="font-semibold">Acessar Relatórios</p>
-                        <p class="text-xs text-gray-600">Visualizar e exportar dados</p>
+                <a href="relatorios-interativos.html" title="Acessar relatórios, indicadores e exportações"
+                    class="w-full flex flex-col items-center justify-center gap-1 rounded-lg bg-white hover:bg-gray-50 text-gray-800 px-2 py-2 border border-gray-300 transition-colors">
+                    <i class="fa-solid fa-file-pdf text-red-600 text-base"></i>
+                    <span class="text-[11px] font-semibold leading-tight">Relatórios</span>
+                </a>
+            </div>
+
+            <!-- Desktop: mantém o layout original -->
+            <div class="hidden lg:grid lg:grid-cols-3 gap-4">
+                <a href="novo-pedido.html"
+                    class="bg-azul-02 hover:bg-azul-04 text-white rounded-lg p-4 flex items-center justify-between transition-colors">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-plus-circle text-2xl mr-3"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Nova Solicitação de Análise</p>
+                            <p class="text-xs opacity-90">Iniciar um novo lote de análise</p>
+                        </div>
                     </div>
-                </div>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="clientes.html"
+                    class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg p-4 flex items-center justify-between transition-colors">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-users text-2xl mr-3 text-azul-02"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Gerenciar Clientes</p>
+                            <p class="text-xs text-gray-600">Adicionar ou editar clientes</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="relatorios-interativos.html"
+                    class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 rounded-lg p-4 flex items-center justify-between transition-colors">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-file-pdf text-2xl mr-3 text-red-600"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Acessar Relatórios</p>
+                            <p class="text-xs text-gray-600">Visualizar e exportar dados</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
 
         <div id="charts-section" class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-6">
