@@ -13,14 +13,150 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Tablet-only (md..lg): sidebar recolhido (ícones) com toggle */
+        @media (min-width: 768px) and (max-width: 1023.98px) {
+            /* animação de largura e conteúdo */
+            #sidebar {
+                transition: width 300ms ease;
+            }
+            #main-content {
+                transition: margin-left 300ms ease;
+            }
+
+            /* evita scroll horizontal enquanto o conteúdo "desliza" */
+            body {
+                overflow-x: hidden;
+            }
+
+            /* garante referência para labels absolutas no recolhimento */
+            #sidebar nav a {
+                position: relative;
+                overflow: hidden;
+                min-height: 44px;
+            }
+
+            /* trava largura do ícone para não “andar” */
+            #sidebar nav a i {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 1.25rem;
+                flex: 0 0 1.25rem;
+                line-height: 1;
+            }
+
+            /* Labels (texto) animado: some até ficar só ícones */
+            #sidebar .pf-sidebar-label {
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                max-width: 999px;
+                opacity: 1;
+                transform: translateX(0);
+                transition: max-width 300ms ease, opacity 200ms ease, transform 200ms ease;
+            }
+
+            #sidebar .pf-sidebar-section-title {
+                overflow: hidden;
+                max-height: 2rem;
+                opacity: 1;
+                transform: translateY(0);
+                transition: max-height 300ms ease, opacity 200ms ease, transform 200ms ease;
+            }
+
+            #sidebar .pf-sidebar-footer {
+                overflow: hidden;
+                max-height: 120px;
+                opacity: 1;
+                transform: translateY(0);
+                transition: max-height 300ms ease, opacity 200ms ease, transform 200ms ease;
+            }
+
+            /* Importante: não alterar alinhamento/padding/margens dos links no abre/fecha.
+               Assim os ícones não mudam de posição; apenas o texto anima. */
+
+            body:not(.pf-tablet-sidebar-expanded) #sidebar .pf-sidebar-label {
+                max-width: 0;
+                opacity: 0;
+                transform: translateX(-6px);
+            }
+
+            body:not(.pf-tablet-sidebar-expanded) #sidebar .pf-sidebar-section-title {
+                max-height: 0;
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            body:not(.pf-tablet-sidebar-expanded) #sidebar .pf-sidebar-footer {
+                max-height: 0;
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            /* Força larguras/margens no tablet com toggle (mais largo para caber textos) */
+            body.pf-tablet-sidebar-expanded #sidebar {
+                width: 20rem !important; /* w-80 */
+            }
+
+            body:not(.pf-tablet-sidebar-expanded) #sidebar {
+                width: 5rem !important; /* w-20 */
+            }
+
+            /* No tablet, não altere a largura útil do conteúdo (evita reflow duro do Plotly).
+               Mantém reflow natural (aceita o “piscar” do Plotly após resize). */
+            #main-content {
+                margin-left: 5rem !important; /* w-20 */
+            }
+
+            body.pf-tablet-sidebar-expanded #main-content {
+                margin-left: 20rem !important; /* w-80 */
+            }
+
+            /* KPIs: no tablet com menu aberto, 1 por linha */
+            body.pf-tablet-sidebar-expanded #kpi-cards {
+                grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            }
+        }
+
+        /* Mobile hamburger animation (bars <-> X) */
+        #sidebar-toggle .pf-icon {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 200ms ease, transform 200ms ease;
+            transform-origin: 50% 50%;
+        }
+        body.pf-hamburger-open #sidebar-toggle .pf-icon-bars {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.85);
+        }
+        body:not(.pf-hamburger-open) #sidebar-toggle .pf-icon-x {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.85);
+        }
+
+        /* Gráficos (tablet): fade-out -> fica escondido -> fade-in.
+           Usado apenas no comportamento do menu retrátil do tablet. */
+        .pf-plotly-anim { will-change: opacity; }
+        .pf-plotly-hidden { opacity: 0 !important; pointer-events: none; }
+        .pf-plotly-fade-out { animation: pf-plotly-fade-out 60ms cubic-bezier(0, 0, 0.2, 1) both; }
+        .pf-plotly-fade-in { animation: pf-plotly-fade-in 220ms ease both; }
+        @keyframes pf-plotly-fade-out { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes pf-plotly-fade-in { from { opacity: 0; } to { opacity: 1; } }
+    </style>
 </head>
 <body class="bg-gray-50 font-sans">
 
 <header id="header" class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-azul-02 to-preto-90 h-[61px]">
     <div class="h-full flex items-center justify-between px-3 sm:px-4 md:px-6">
         <div class="flex items-center space-x-4 min-w-0">
-            <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none mr-2">
-                <i class="fa-solid fa-bars"></i>
+            <button id="sidebar-toggle" class="text-white text-lg md:hidden focus:outline-none mr-2 relative w-9 h-9" aria-label="Abrir menu">
+                <span class="pf-icon pf-icon-bars"><i class="fa-solid fa-bars"></i></span>
+                <span class="pf-icon pf-icon-x"><i class="fa-solid fa-xmark"></i></span>
             </button>
             <img src="PNEU-FORTE-2.png" alt="Pneu Forte Logo" class="h-8 md:h-10">
             <h1 class="text-lg md:text-2xl font-bold text-white hidden md:block whitespace-nowrap truncate">Sistema de Inspeção de Frota</h1>
@@ -49,49 +185,55 @@
 <!-- Overlay for mobile -->
 <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 
-<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 md:w-20 lg:w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
     <nav class="p-4 flex-1 overflow-y-auto">
+        <!-- Tablet toggle (somente md..lg) -->
+        <div class="pf-tablet-toggle-wrap hidden md:flex lg:hidden justify-end mb-3">
+            <button id="tablet-sidebar-toggle" type="button" class="h-9 w-9 inline-flex items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Expandir/Recolher menu">
+                <i class="fa-solid fa-angles-right"></i>
+            </button>
+        </div>
         <div class="space-y-1">
             <a href="dashboard-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-white bg-azul-02 rounded-lg">
                 <i class="fa-solid fa-chart-line mr-3 text-base"></i>
-                Dashboard de Inspeção de Frota
+                <span class="pf-sidebar-label">Dashboard de Inspeção de Frota</span>
             </a>
             <a href="nova-solicitacao-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-plus-circle mr-3 text-base text-gray-500"></i>
-                Nova Solicitação de Inspeção
+                <span class="pf-sidebar-label">Nova Solicitação de Inspeção</span>
             </a>
             <a href="solicitacoes-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-list mr-3 text-base text-gray-500"></i>
-                Solicitações de Inspeção
+                <span class="pf-sidebar-label">Solicitações de Inspeção</span>
             </a>
             <a href="relatorios-frota.html" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                 <i class="fa-solid fa-file-chart-column mr-3 text-base text-gray-500"></i>
-                Relatórios
+                <span class="pf-sidebar-label">Relatórios</span>
             </a>
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
+            <p class="pf-sidebar-section-title px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cadastros</p>
             <div class="space-y-1">
                 <a href="clientes-frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
-                    Clientes
+                    <span class="pf-sidebar-label">Clientes</span>
                 </a>
                 <a href="caminhoes.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-truck mr-3 text-gray-500"></i>
-                    Veículos
+                    <span class="pf-sidebar-label">Veículos</span>
                 </a>
                 <a href="motoristas.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-id-card mr-3 text-gray-500"></i>
-                    Motoristas
+                    <span class="pf-sidebar-label">Motoristas</span>
                 </a>
                 <a href="marcas_frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-copyright mr-3 text-gray-500"></i>
-                    Marcas de Pneu
+                    <span class="pf-sidebar-label">Marcas de Pneu</span>
                 </a>
                 <a href="modelos_frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-car mr-3 text-gray-500"></i>
-                    Modelos de Pneu
+                    <span class="pf-sidebar-label">Modelos de Pneu</span>
                 </a>
                 <!--
                 <a href="tipo-dano.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
@@ -111,25 +253,25 @@
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
+            <p class="pf-sidebar-section-title px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Administração</p>
             <div class="space-y-1">
                 <a href="usuarios-frota.html" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-users mr-3 text-gray-500"></i>
-                    Usuários
+                    <span class="pf-sidebar-label">Usuários</span>
                 </a>
                 <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
                     <i class="fa-solid fa-gear mr-3 text-gray-500"></i>
-                    Configurações
+                    <span class="pf-sidebar-label">Configurações</span>
                 </a>
                 <a href="selecao-modulo.html" class="flex items-center px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg mt-4">
                     <i class="fa-solid fa-arrow-left mr-3"></i>
-                    Trocar Módulo
+                    <span class="pf-sidebar-label">Trocar Módulo</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="shrink-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
+    <div class="pf-sidebar-footer shrink-0 p-4 bg-gradient-to-r from-azul-02 to-azul-04 m-4 rounded-lg">
         <div class="flex items-center justify-between text-white">
             <div>
                 <p class="text-xs font-medium opacity-90">Parceiro</p>
@@ -140,13 +282,13 @@
     </div>
 </aside>
 
-<main id="main-content" class="ml-0 md:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
+<main id="main-content" class="ml-0 md:ml-20 lg:ml-64 mt-[61px] p-3 sm:p-6 transition-all duration-300">
     <div class="mb-6">
         <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Dashboard de Inspeção de Frota</h2>
         <p class="text-xs sm:text-sm text-gray-600 mt-1">Visão geral das inspeções e indicadores</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-6">
+    <div id="kpi-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-6">
         <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
             <div class="flex items-center justify-between">
                 <div>
@@ -354,17 +496,191 @@
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
     const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+    const tabletSidebarToggleBtn = document.getElementById('tablet-sidebar-toggle');
+
+    const PLOTLY_IDS = ['chart-brands', 'chart-sulco', 'chart-pressao', 'chart-trend'];
+    const TABLET_MENU_MS = 320;
+    const PLOTLY_FADE_OUT_MS = 60;
+    const PLOTLY_HIDDEN_EXTRA_MS = 180; // fica apagado um pouco mais após o menu
+    const PLOTLY_FADE_IN_MS = 220;
+
+    function isTabletViewport() {
+        return window.innerWidth >= 768 && window.innerWidth < 1024;
+    }
+
+    function setTabletSidebarExpanded(expanded) {
+        if (!isTabletViewport()) return;
+        startPlotlyHide();
+
+        // Começa a animação do layout no próximo frame (reduz a chance de ver o gráfico “andando” enquanto some)
+        requestAnimationFrame(() => {
+            document.body.classList.toggle('pf-tablet-sidebar-expanded', expanded);
+            updateTabletSidebarToggleIcon();
+
+            // No tablet, o layout muda de verdade (margin-left), então fazemos resize no fim da transição.
+            if (tabletPlotlyEndTimer) clearTimeout(tabletPlotlyEndTimer);
+            tabletPlotlyEndTimer = setTimeout(() => {
+                resizePlotlyCharts(PLOTLY_IDS);
+            }, TABLET_MENU_MS);
+
+            schedulePlotlyShow(TABLET_MENU_MS + PLOTLY_HIDDEN_EXTRA_MS);
+        });
+    }
+
+    let plotlyResizeTimer = null;
+    let plotlyResizeRaf = null;
+    let plotlyAnimEndTimer = null;
+    let tabletPlotlyEndTimer = null;
+    let plotlyFadeTimer = null;
+    let plotlyFadeOutTimer = null;
+    let plotlyFadeInTimer = null;
+
+    function resizePlotlyCharts(ids) {
+        if (typeof Plotly === 'undefined' || !Plotly.Plots || !Plotly.Plots.resize) return;
+        ids.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            try { Plotly.Plots.resize(el); } catch (e) { /* ignore */ }
+        });
+    }
+
+    function clearPlotlyFadeTimers() {
+        if (plotlyFadeTimer) clearTimeout(plotlyFadeTimer);
+        if (plotlyFadeOutTimer) clearTimeout(plotlyFadeOutTimer);
+        if (plotlyFadeInTimer) clearTimeout(plotlyFadeInTimer);
+    }
+
+    function startPlotlyHide() {
+        // Exclusivo do tablet
+        if (!isTabletViewport()) return;
+
+        clearPlotlyFadeTimers();
+
+        // Fade-out suave
+        PLOTLY_IDS.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.add('pf-plotly-anim');
+            el.classList.remove('pf-plotly-fade-in', 'pf-plotly-hidden', 'pf-plotly-fade-out');
+            void el.offsetWidth;
+            el.classList.add('pf-plotly-fade-out');
+        });
+
+        // Após o fade-out, mantém oculto
+        plotlyFadeOutTimer = setTimeout(() => {
+            PLOTLY_IDS.forEach((id) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.classList.remove('pf-plotly-fade-out');
+                el.classList.add('pf-plotly-hidden');
+            });
+        }, PLOTLY_FADE_OUT_MS);
+    }
+
+    function schedulePlotlyShow(delayMs) {
+        // Exclusivo do tablet
+        if (!isTabletViewport()) return;
+
+        if (plotlyFadeTimer) clearTimeout(plotlyFadeTimer);
+        if (plotlyFadeInTimer) clearTimeout(plotlyFadeInTimer);
+
+        // Após o menu terminar + extra, fade-in já no layout final
+        plotlyFadeTimer = setTimeout(() => {
+            PLOTLY_IDS.forEach((id) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.classList.remove('pf-plotly-hidden');
+                void el.offsetWidth;
+                el.classList.add('pf-plotly-fade-in');
+            });
+
+            plotlyFadeInTimer = setTimeout(() => {
+                PLOTLY_IDS.forEach((id) => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    el.classList.remove('pf-plotly-fade-in');
+                });
+            }, PLOTLY_FADE_IN_MS);
+        }, delayMs);
+    }
+
+    function resizePlotlyDuringTransition(ids, durationMs) {
+        const start = performance.now();
+        let last = 0;
+
+        ids.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.add('pf-plotly-anim', 'pf-plotly-resizing');
+        });
+
+        const tick = (now) => {
+            const elapsed = now - start;
+
+            // Throttle para ~30fps (suficiente e mais leve)
+            if (now - last > 33) {
+                resizePlotlyCharts(ids);
+                last = now;
+            }
+
+            if (elapsed < durationMs) {
+                plotlyResizeRaf = requestAnimationFrame(tick);
+            } else {
+                // Um último resize no fim
+                resizePlotlyCharts(ids);
+                // Remove efeito visual
+                ids.forEach((id) => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    el.classList.remove('pf-plotly-resizing');
+                });
+            }
+        };
+
+        plotlyResizeRaf = requestAnimationFrame(tick);
+    }
+
+    function schedulePlotlyResize(animate) {
+        const ids = PLOTLY_IDS;
+
+        if (plotlyResizeTimer) clearTimeout(plotlyResizeTimer);
+        if (plotlyAnimEndTimer) clearTimeout(plotlyAnimEndTimer);
+        if (plotlyResizeRaf) cancelAnimationFrame(plotlyResizeRaf);
+
+        if (animate) {
+            // Acompanha a transição do menu (width/margin 300ms)
+            resizePlotlyDuringTransition(ids, 320);
+            return;
+        }
+
+        // Sem animação: apenas um resize debounced
+        plotlyResizeTimer = setTimeout(() => resizePlotlyCharts(ids), 0);
+    }
+
+    function updateTabletSidebarToggleIcon() {
+        if (!tabletSidebarToggleBtn) return;
+        if (!isTabletViewport()) return;
+
+        const expanded = document.body.classList.contains('pf-tablet-sidebar-expanded');
+        tabletSidebarToggleBtn.innerHTML = expanded
+            ? '<i class="fa-solid fa-angles-left"></i>'
+            : '<i class="fa-solid fa-angles-right"></i>';
+    }
 
     function openSidebar() {
         sidebar.classList.remove('-translate-x-full');
         sidebarOverlay.classList.remove('hidden');
+        document.body.classList.add('pf-hamburger-open');
         requestAnimationFrame(() => sidebarOverlay.classList.add('opacity-100'));
+        // Mobile: não aplica máscara de gráfico
     }
 
     function closeSidebar() {
         sidebar.classList.add('-translate-x-full');
         sidebarOverlay.classList.remove('opacity-100');
+        document.body.classList.remove('pf-hamburger-open');
         setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+        // Mobile: não aplica máscara de gráfico
     }
 
     function toggleSidebar() {
@@ -382,13 +698,50 @@
         sidebarOverlay.addEventListener('click', closeSidebar);
     }
 
+    if (tabletSidebarToggleBtn) {
+        tabletSidebarToggleBtn.addEventListener('click', () => {
+            const expanded = document.body.classList.contains('pf-tablet-sidebar-expanded');
+            setTabletSidebarExpanded(!expanded);
+        });
+    }
+
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
             sidebarOverlay.classList.add('hidden');
             sidebarOverlay.classList.remove('opacity-100');
             sidebar.classList.remove('-translate-x-full');
+            document.body.classList.remove('pf-hamburger-open');
+
+            // Tablet: permanece recolhido por padrão e sem overlay
+            if (isTabletViewport()) {
+                document.body.classList.remove('pf-tablet-sidebar-expanded');
+                updateTabletSidebarToggleIcon();
+            } else {
+                // Desktop
+                document.body.classList.remove('pf-tablet-sidebar-expanded');
+            }
         } else {
+            // Mobile
             sidebar.classList.add('-translate-x-full');
+            document.body.classList.remove('pf-hamburger-open');
+            document.body.classList.remove('pf-tablet-sidebar-expanded');
+        }
+
+        // Evita animação "piscando" enquanto redimensiona a janela
+        schedulePlotlyResize(false);
+    });
+
+    window.addEventListener('load', () => {
+        // Tablet: sidebar recolhido por padrão
+        if (isTabletViewport()) {
+            document.body.classList.remove('pf-tablet-sidebar-expanded');
+            document.body.classList.remove('pf-hamburger-open');
+            updateTabletSidebarToggleIcon();
+        }
+
+        // Mobile: garante estado inicial do ícone
+        if (window.innerWidth < 768) {
+            document.body.classList.remove('pf-hamburger-open');
         }
     });
 
