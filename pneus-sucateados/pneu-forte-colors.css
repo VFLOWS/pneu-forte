@@ -11,6 +11,38 @@
 ::-webkit-scrollbar { display: none;}
 ::-webkit-scrollbar { display: none;}
 ::-webkit-scrollbar { display: none;}
+
+@media (min-width: 768px) {
+  #sidebar nav a svg,
+  #sidebar nav a .svg-inline--fa {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 1.25rem;
+  }
+
+  body:not(.pf-tablet-sidebar-expanded) #sidebar .pf-tablet-toggle-wrap {
+    justify-content: center !important;
+  }
+
+  body:not(.pf-tablet-sidebar-expanded) #sidebar nav a i,
+  body:not(.pf-tablet-sidebar-expanded) #sidebar nav a svg,
+  body:not(.pf-tablet-sidebar-expanded) #sidebar nav a .svg-inline--fa {
+    margin-right: 0 !important;
+    transform: translateX(-0.0900rem);
+    transition: transform 150ms ease 240ms, margin-right 150ms ease 240ms;
+    will-change: transform;
+  }
+
+  body.pf-tablet-sidebar-expanded #sidebar nav a i,
+  body.pf-tablet-sidebar-expanded #sidebar nav a svg,
+  body.pf-tablet-sidebar-expanded #sidebar nav a .svg-inline--fa {
+    margin-right: 0.75rem !important;
+    transform: translateX(0);
+    transition: transform 150ms ease, margin-right 150ms ease;
+    will-change: transform;
+  }
+}
 ::-webkit-scrollbar { display: none;}
 ::-webkit-scrollbar { display: none;}
 ::-webkit-scrollbar { display: none;}

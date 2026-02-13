@@ -18,7 +18,7 @@
 
     <style>
         /* Tablet-only (md..lg): sidebar recolhido (ícones) com toggle */
-        @media (min-width: 768px) and (max-width: 1023.98px) {
+        @media (min-width: 768px) {
             #sidebar { transition: width 300ms ease; }
             #main-content { transition: margin-left 300ms ease; }
 
@@ -89,6 +89,9 @@
             #main-content { margin-left: 5rem !important; /* w-20 */ }
             body.pf-tablet-sidebar-expanded #main-content { margin-left: 20rem !important; /* w-80 */ }
 
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
             /* KPIs: em tablet com menu expandido, 1 coluna para não "espremir" cards */
             body:not(.pf-tablet-sidebar-expanded) #brand-stats-section {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -155,10 +158,10 @@
     <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden opacity-0 transition-opacity duration-300 md:hidden"></div>
 
     <aside id="sidebar"
-        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 md:w-20 lg:w-64 bg-white border-r border-gray-200 flex flex-col z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 md:w-20 bg-white border-r border-gray-200 flex flex-col z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
         <nav class="p-4 flex-1 overflow-y-auto">
             <!-- Tablet toggle (somente md..lg) -->
-            <div class="pf-tablet-toggle-wrap hidden md:flex lg:hidden justify-end mb-3">
+            <div class="pf-tablet-toggle-wrap hidden md:flex justify-end mb-3">
                 <button id="tablet-sidebar-toggle" type="button" class="h-9 w-9 inline-flex items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Expandir/Recolher menu">
                     <i class="fa-solid fa-angles-right"></i>
                 </button>
@@ -794,7 +797,7 @@
         const tabletSidebarToggleBtn = document.getElementById('tablet-sidebar-toggle');
 
         function isTabletViewport() {
-            return window.innerWidth >= 768 && window.innerWidth < 1024;
+            return window.innerWidth >= 768;
         }
 
         function updateTabletSidebarToggleIcon() {
@@ -854,7 +857,9 @@
         }
 
         function syncTabletStateToViewport() {
-            if (!isTabletViewport()) {
+            if (window.innerWidth >= 768) {
+                document.body.classList.remove('pf-tablet-sidebar-expanded');
+            } else {
                 document.body.classList.remove('pf-tablet-sidebar-expanded');
             }
             updateTabletSidebarToggleIcon();
@@ -877,4 +882,3 @@
 </body>
 
 </html>
-

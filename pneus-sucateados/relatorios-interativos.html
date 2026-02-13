@@ -19,7 +19,7 @@
 
     <style>
         /* Tablet-only (md..lg): sidebar recolhido (ícones) com toggle */
-        @media (min-width: 768px) and (max-width: 1023.98px) {
+        @media (min-width: 768px) {
             #sidebar { transition: width 300ms ease; }
             #main-content { transition: margin-left 300ms ease; }
 
@@ -145,10 +145,10 @@
 <!-- Overlay for mobile -->
 <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 
-<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 md:w-20 lg:w-64 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
+<aside id="sidebar" class="fixed left-0 top-[61px] h-[calc(100vh-61px)] w-64 md:w-20 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 -translate-x-full md:translate-x-0 z-40">
         <nav class="p-4 flex-1 overflow-y-auto">
             <!-- Tablet toggle (somente md..lg) -->
-            <div class="pf-tablet-toggle-wrap hidden md:flex lg:hidden justify-end mb-3">
+            <div class="pf-tablet-toggle-wrap hidden md:flex justify-end mb-3">
                 <button id="tablet-sidebar-toggle" type="button" class="h-9 w-9 inline-flex items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Expandir/Recolher menu">
                     <i class="fa-solid fa-angles-right"></i>
                 </button>
@@ -940,6 +940,10 @@
         return window.innerWidth >= 768 && window.innerWidth < 1024;
     }
 
+    function isMenuViewport() {
+        return window.innerWidth >= 768;
+    }
+
     function getPlotlyElements() {
         return Array.from(document.querySelectorAll('#main-content .js-plotly-plot'));
     }
@@ -962,7 +966,7 @@
     }
 
     function startPlotlyHide() {
-        if (!isTabletViewport()) return;
+        if (!isMenuViewport()) return;
 
         clearPlotlyFadeTimers();
 
@@ -983,7 +987,7 @@
     }
 
     function schedulePlotlyShow(delayMs) {
-        if (!isTabletViewport()) return;
+        if (!isMenuViewport()) return;
 
         if (plotlyFadeTimer) clearTimeout(plotlyFadeTimer);
         if (plotlyFadeInTimer) clearTimeout(plotlyFadeInTimer);
@@ -1003,7 +1007,7 @@
     }
 
     function resizeAllPlotly() {
-        if (!isTabletViewport()) return;
+        if (!isMenuViewport()) return;
         if (!window.Plotly || !window.Plotly.Plots || !window.Plotly.Plots.resize) return;
 
         getPlotlyElements().forEach((plot) => {
@@ -1018,7 +1022,7 @@
     function updateTabletSidebarToggleIcon() {
         const btn = tabletSidebarToggleBtn;
         if (!btn) return;
-        if (!isTabletViewport()) return;
+        if (!isMenuViewport()) return;
 
         const expanded = document.body.classList.contains('pf-tablet-sidebar-expanded');
         btn.innerHTML = expanded
@@ -1031,7 +1035,7 @@
     }
 
     function setTabletSidebarExpanded(expanded) {
-        if (!isTabletViewport()) return;
+        if (!isMenuViewport()) return;
         startPlotlyHide();
 
         requestAnimationFrame(() => {
@@ -1075,16 +1079,10 @@
         if (window.innerWidth >= 768) {
             sidebar.classList.remove('-translate-x-full');
             sidebarOverlay.classList.add('hidden', 'opacity-0');
-
-            if (isTabletViewport()) {
-                document.body.classList.remove('pf-tablet-sidebar-expanded');
-                updateTabletSidebarToggleIcon();
-                resetPlotlyVisibility();
-                setTimeout(() => resizeAllPlotly(), 0);
-            } else {
-                document.body.classList.remove('pf-tablet-sidebar-expanded');
-                resetPlotlyVisibility();
-            }
+            document.body.classList.remove('pf-tablet-sidebar-expanded');
+            updateTabletSidebarToggleIcon();
+            resetPlotlyVisibility();
+            setTimeout(() => resizeAllPlotly(), 0);
         } else {
             sidebar.classList.add('-translate-x-full');
             document.body.classList.remove('pf-tablet-sidebar-expanded');
@@ -1093,7 +1091,7 @@
     });
 
     window.addEventListener('load', () => {
-        if (isTabletViewport()) {
+        if (window.innerWidth >= 768) {
             document.body.classList.remove('pf-tablet-sidebar-expanded');
             updateTabletSidebarToggleIcon();
             resetPlotlyVisibility();
