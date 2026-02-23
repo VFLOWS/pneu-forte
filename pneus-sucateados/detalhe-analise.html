@@ -433,13 +433,17 @@
             }
         };
         const config = {responsive: true, displayModeBar: false, displaylogo: false};
+        const paletteBase = ['#10B981', '#FBBF24', '#EF4444'];
+        const paletteBrand = ['#10B981', '#FBBF24', '#EF4444', '#10B981'];
+        const paletteStatus = ['#10B981', '#EF4444'];
+        const paletteCause = ['#10B981', '#FBBF24', '#EF4444'];
 
         const brandData = [{ 
             y: [3, 1, 1, 1], 
             x: ['Michelin', 'Pirelli', 'Goodyear', 'Bridgestone'], 
             type: 'bar',
             marker: {
-                color: '#031590'
+                color: paletteBrand
             }
         }];
         Plotly.newPlot('chart-brand', brandData, { ...chartLayout, yaxis: {title: 'Qtd. Pneus'} }, config);
@@ -449,8 +453,11 @@
             labels: ['Aprovado', 'Sucateado'],
             type: 'pie',
             hole: .4,
+            textinfo: 'percent',
+            textposition: 'inside',
+            insidetextfont: { color: '#ffffff', size: 12 },
             marker: {
-                colors: ['#22c55e', '#ef4444']
+                colors: paletteStatus
             }
         }];
         Plotly.newPlot('chart-status', statusData, { ...chartLayout, showlegend: true, legend: {orientation: 'h', y: -0.2} }, config);
@@ -460,8 +467,11 @@
             labels: ['Desgaste Irregular', 'Corte Lateral', 'Separação de Banda'],
             type: 'pie',
             hole: .4,
+            textinfo: 'percent',
+            textposition: 'inside',
+            insidetextfont: { color: '#ffffff', size: 12 },
             marker: {
-                colors: ['#031590', '#2D44BD', '#6699FF']
+                colors: paletteCause
             }
         }];
         Plotly.newPlot('chart-cause', causeData, { ...chartLayout, showlegend: true, legend: {orientation: 'h', y: -0.2} }, config);

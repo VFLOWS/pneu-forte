@@ -450,13 +450,19 @@
             }
         };
         const config = {responsive: true, displayModeBar: false, displaylogo: false};
+        const cGreen = '#10B981';
+        const cGreen2 = '#059669';
+        const cYellow = '#FBBF24';
+        const cYellow2 = '#D97706';
+        const cRed = '#EF4444';
+        const cRed2 = '#DC2626';
 
         const lifeExpectancyData = [{ 
             y: [63, 3, 0], 
             x: ['Em condição de uso', 'Requer atenção', 'Remover pneu'], 
             type: 'bar',
             marker: {
-                color: ['#10B981', '#FBBF24', '#EF4444']
+                color: [cGreen, cYellow2, cRed2]
             }
         }];
         if (chartPosition) {
@@ -468,7 +474,9 @@
             labels: ['Pressão Correta', 'Pressão Alta', 'Pressão Baixa'],
             type: 'pie',
             textinfo: 'label+percent',
-            marker: { colors: ['#2D44BD', '#4B63D1', '#6699FF'] }
+            textposition: 'inside',
+            insidetextfont: { color: '#ffffff', size: 12 },
+            marker: { colors: [cGreen2, cYellow, cRed] }
         }];
         if (chartPressure) {
             Plotly.newPlot('chart-pressure', pressureData, { ...chartLayout, showlegend: true, margin: { t: 20, r: 20, b: 20, l: 20 } }, config);
@@ -483,8 +491,8 @@
                 name: 'Correta',
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { color: '#10B981', width: 3 }, // Green-500
-                marker: { size: 8 }
+                line: { color: cGreen2, width: 3 },
+                marker: { size: 8, color: cGreen2 }
             };
 
             const traceLow = {
@@ -493,8 +501,8 @@
                 name: 'Baixa',
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { color: '#EF4444', width: 3 }, // Red-500
-                marker: { size: 8 }
+                line: { color: cRed2, width: 3 },
+                marker: { size: 8, color: cRed2 }
             };
 
             const traceHigh = {
@@ -503,8 +511,8 @@
                 name: 'Alta',
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { color: '#FBBF24', width: 3 }, // Yellow-500
-                marker: { size: 8 }
+                line: { color: cYellow2, width: 3 },
+                marker: { size: 8, color: cYellow2 }
             };
 
             const trendLayout = {

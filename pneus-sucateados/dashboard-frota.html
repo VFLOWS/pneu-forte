@@ -741,11 +741,15 @@
 
     window.addEventListener('load', function () {
         try {
+            const paletteBrand = ['#10B981', '#FBBF24', '#EF4444', '#10B981', '#FBBF24'];
+            const paletteTread = ['#10B981', '#FBBF24', '#EF4444'];
+            const palettePressure = ['#10B981', '#FBBF24', '#EF4444'];
+
             var brandData = [{
                 type: 'bar',
                 x: ['Michelin', 'Goodyear', 'Pirelli', 'Continental', 'Bridgestone'],
                 y: [45, 38, 32, 28, 24],
-                marker: { color: '#031590' }
+                marker: { color: paletteBrand }
             }];
 
             var brandLayout = {
@@ -765,11 +769,12 @@
                 labels: ['Em condição de uso', 'Requer atenção', 'Remover pneu'],
                 values: [15, 5, 3],
                 marker: {
-                    colors: ['#031590', '#2D44BD', '#6699FF'] // Azul-02, Azul-03, Azul-05
+                    colors: paletteTread
                 },
                 hole: 0.4,
                 textinfo: 'label+value',
-                textposition: 'inside'
+                textposition: 'inside',
+                insidetextfont: { color: '#ffffff', size: 12 }
             }];
 
             var sulcoLayout = {
@@ -786,11 +791,12 @@
                 labels: ['Correta', 'Alta', 'Baixa'],
                 values: [6, 0, 3],
                 marker: {
-                    colors: ['#031590', '#2D44BD', '#6699FF'] // Azul-02, Azul-03, Azul-05
+                    colors: palettePressure
                 },
                 hole: 0.4,
                 textinfo: 'label+value',
-                textposition: 'inside'
+                textposition: 'inside',
+                insidetextfont: { color: '#ffffff', size: 12 }
             }];
 
             var pressaoLayout = {
@@ -807,9 +813,9 @@
                 mode: 'lines',
                 x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
                 y: [42, 48, 45, 52, 50, 58, 55, 60, 58, 65, 62, 68],
-                line: { color: '#031590', width: 3 },
+                line: { color: '#10B981', width: 3 },
                 fill: 'tozeroy',
-                fillcolor: 'rgba(3, 21, 144, 0.1)'
+                fillcolor: 'rgba(16, 185, 129, 0.18)'
             }];
 
             var trendLayout = {

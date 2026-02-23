@@ -723,6 +723,11 @@
             plot_bgcolor: 'rgba(0,0,0,0)',
             margin: { t: 30, r: 20, b: 40, l: 50 }
         };
+        const paletteStatus = ['#10B981', '#FBBF24', '#EF4444'];
+        const palettePressure = ['#10B981', '#FBBF24', '#EF4444', '#10B981'];
+        const paletteTread = ['#EF4444', '#FBBF24', '#10B981'];
+        const paletteBrandStack = ['#10B981', '#FBBF24'];
+        const paletteTimeline = ['#EF4444', '#FBBF24'];
 
         // 1. Chart Status (Pie)
         const statusData = [{
@@ -730,9 +735,12 @@
             labels: ['Em condição de uso', 'Requer atenção', 'Remover pneu'],
             type: 'pie',
             marker: {
-                colors: ['#031590', '#1E40AF', '#3B82F6']
+                colors: paletteStatus
             },
-            hole: 0.4
+            hole: 0.4,
+            textinfo: 'percent',
+            textposition: 'inside',
+            insidetextfont: { color: '#ffffff', size: 12 }
         }];
         const statusLayout = { ...commonLayout, showlegend: true, legend: {orientation: 'h', y: -0.1} };
         Plotly.newPlot('chart-status-fleet', statusData, statusLayout, commonConfig);
@@ -743,7 +751,7 @@
             y: [120, 8, 30, 10],
             type: 'bar',
             marker: {
-                color: ['#031590', '#1E40AF', '#3B82F6', '#60A5FA']
+                color: palettePressure
             }
         }];
         Plotly.newPlot('chart-pressure-fleet', pressureData, { ...commonLayout, yaxis: {title: 'Qtd Pneus'} }, commonConfig);
@@ -754,7 +762,7 @@
             y: [8, 45, 115],
             type: 'bar',
             marker: {
-                color: ['#031590', '#1E40AF', '#3B82F6']
+                color: paletteTread
             }
         }];
         Plotly.newPlot('chart-tread-fleet', treadData, { ...commonLayout, yaxis: {title: 'Qtd Pneus'} }, commonConfig);
@@ -766,14 +774,14 @@
                 y: [50, 40, 30, 20],
                 name: 'Ok',
                 type: 'bar',
-                marker: { color: '#031590' }
+                marker: { color: paletteBrandStack[0] }
             },
             {
                 x: ['Michelin', 'Goodyear', 'Pirelli', 'Bridgestone'],
                 y: [5, 8, 4, 3],
                 name: 'Atenção',
                 type: 'bar',
-                marker: { color: '#1226A2' }
+                marker: { color: paletteBrandStack[1] }
             }
         ];
         Plotly.newPlot('chart-brands-fleet', brandsData, { ...commonLayout, barmode: 'stack', yaxis: {title: 'Qtd Pneus'} }, commonConfig);
@@ -786,8 +794,8 @@
                 name: 'Pressão Baixa',
                 x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
                 y: [12, 15, 10, 8, 14, 11, 9, 7, 8, 10, 5, 4],
-                line: { color: '#1E40AF', width: 3 },
-                marker: { size: 6 }
+                line: { color: paletteTimeline[0], width: 3 },
+                marker: { size: 6, color: paletteTimeline[0] }
             },
             {
                 type: 'scatter',
@@ -795,8 +803,8 @@
                 name: 'Sulco < 3mm',
                 x: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
                 y: [5, 4, 6, 5, 7, 8, 6, 5, 4, 5, 3, 2],
-                line: { color: '#031590', width: 3 },
-                marker: { size: 6 }
+                line: { color: paletteTimeline[1], width: 3 },
+                marker: { size: 6, color: paletteTimeline[1] }
             }
         ];
         const timelineLayout = {
